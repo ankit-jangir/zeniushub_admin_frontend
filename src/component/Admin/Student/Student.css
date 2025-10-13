@@ -1,0 +1,18 @@
+.box{
+    box-shadow: 10px 10px 5px #e6ebee,  
+    -10px -10px 5px #e6ebee,  
+    -10px 10px 5px #e6ebee,
+    10px -10px 5px #e6ebee;  
+}
+
+
+ 
+  /* White Background me Black Icon */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0);
+}
+
+/* Black Background me White Icon */
+.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}

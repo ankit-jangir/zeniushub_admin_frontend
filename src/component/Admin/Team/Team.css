@@ -1,0 +1,19 @@
+.Teacher_name {
+    line-height: 1.5;
+    color: #303972;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+
+/* globals.css ya tailwind.css me add karo */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari */
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE & Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}

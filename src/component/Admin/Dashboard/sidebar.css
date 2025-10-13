@@ -1,0 +1,13 @@
+.sidebar-content::-webkit-scrollbar {
+    display: none;
+}
+.sidebar-content {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+}
+.sidebar-content {
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
