@@ -60,10 +60,10 @@ const Add_Payment = ({ studentId, back, studentEnrollmentId }) => {
   const [selected, setSelected] = useState("Pay in EMIs");
   const [emiSchedule, setEmiSchedule] = useState([]);
   const [coursePrice, setCoursePrice] = useState(0);
- let token = localStorage.getItem("token");
- console.log('====================================');
- console.log("%%%%%%%%%%%%%%%%%%%%%%%",token);
- console.log('====================================');
+  let token = localStorage.getItem("token");
+  console.log('====================================');
+  console.log("%%%%%%%%%%%%%%%%%%%%%%%", token);
+  console.log('====================================');
   // Select Redux states
   const { loading: emisLoading, error: emisError, data: emisData } = useSelector(
     (state) => state.emis || {}
@@ -100,7 +100,7 @@ const Add_Payment = ({ studentId, back, studentEnrollmentId }) => {
   // Fetch student data if not available
   useEffect(() => {
     if (!students?.data && !courseLoading && !courseError) {
-      dispatch(getSingleStudent({ id: studentEnrollmentId ,token},));
+      dispatch(getSingleStudent({ id: studentEnrollmentId, token },));
     }
   }, [dispatch, studentId, students, courseLoading, courseError, studentEnrollmentId]);
 
@@ -128,7 +128,7 @@ const Add_Payment = ({ studentId, back, studentEnrollmentId }) => {
             discount_percentage: parseInt(discount),
           };
           console.log("Calling showEmis with filters:", filters);
-          const result = await dispatch(showEmis({filters, token})).unwrap();
+          const result = await dispatch(showEmis({ filters, token })).unwrap();
           console.log("showEmis response:", result);
           if (result && result.data && Array.isArray(result.data.emi_preview)) {
             const currentDate = new Date();
@@ -208,10 +208,10 @@ const Add_Payment = ({ studentId, back, studentEnrollmentId }) => {
     try {
       let result;
       if (data.paymentType === "Pay in EMIs") {
-        result = await dispatch(addEmis({emiData, token})).unwrap();
+        result = await dispatch(addEmis({ emiData, token })).unwrap();
         console.log("addEmis successful:", result, "emisLoading:", emisLoading);
       } else {
-        result = await dispatch(addOneShotEmis({emiData, token})).unwrap();
+        result = await dispatch(addOneShotEmis({ emiData, token })).unwrap();
         console.log(
           "addOneShotEmis successful:",
           result,
@@ -526,7 +526,7 @@ const Add_Payment = ({ studentId, back, studentEnrollmentId }) => {
         <div className="flex justify-center mt-8">
           <Button
             type="submit"
-            className="px-8 py-3 text-xl bg-blue-600 hover:bg-blue-700 text-white rounded-md"
+            className="px-8 py-3 text-xl bg-blue-900 hover:bg-blue-800 text-white rounded-md"
             disabled={emisLoading || !isValid}
           >
             {emisLoading ? "Loading..." : "Submit"}

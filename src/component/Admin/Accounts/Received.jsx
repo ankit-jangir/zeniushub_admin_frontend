@@ -67,7 +67,7 @@ const isDarkMode = true;
 const Received = () => {
   const location = useLocation();
   const source = location.state?.source || "Accounts"; // default fallback
- let token = localStorage.getItem("token");
+  let token = localStorage.getItem("token");
 
   token = useSelector((state) => state.logout.token);
   // const { fromDate, toDate } = getCurrentDates(source);
@@ -238,7 +238,7 @@ const Received = () => {
 
     // Only fetch batches if a specific course is selected (not "All")
     if (courseId !== "") {
-      dispatch(fetchBatchesByCourseId({courseId, token}));
+      dispatch(fetchBatchesByCourseId({ courseId, token }));
     } else {
       // Optionally clear batches from Redux state (if your Redux store allows)
       // dispatch(clearBatches()); // Add this action if needed
@@ -318,7 +318,7 @@ const Received = () => {
             <div className="flex justify-center md:justify-start">
               <Button
                 onClick={() => window.history.back()}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center justify-center md:justify-start gap-2"
+                className="w-full bg-blue-900 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center justify-center md:justify-start gap-2"
               >
                 <ArrowLeft size={18} />
                 <span className="hidden md:inline text">Back </span>
@@ -411,7 +411,7 @@ const Received = () => {
             {/* Export Excel Button */}
             <Button
               onClick={handleExport}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
+              className="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg"
             >
               Export Excel
             </Button>
@@ -473,7 +473,7 @@ const Received = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="max-h-60 overflow-y-auto">
                 {emiState.courseId !== "" &&
-                batches?.batches?.data?.batches?.length > 0 ? (
+                  batches?.batches?.data?.batches?.length > 0 ? (
                   batches.batches.data.batches.map((batch) => (
                     <DropdownMenuItem
                       key={batch.id}
@@ -501,30 +501,30 @@ const Received = () => {
             </DropdownMenu>
           </div>
 
-      {loading ? (
-  <div className="flex items-center justify-center h-64">
-    <div className="relative">
-      <div className="absolute animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500"></div>
-      <img src={logo} alt="Loading" className="rounded-full h-12 w-12" />
-    </div>
-  </div>
-) : paginatedData?.length > 0 ? (
-  <>
-    <div className="bg-white dark:bg-gray-900 shadow-xl rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
-      <div className="overflow-x-auto">
-        <Table className="min-w-full text-sm text-gray-800 dark:text-gray-200">
-          <TableHeader className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-            <TableRow>
-              <TableHead className="p-4 border-b">ID</TableHead>
-              <TableHead className="p-4 border-b">Batch</TableHead>
-              <TableHead className="p-4 border-b">Course</TableHead>
-              <TableHead className="p-4 border-b">Student</TableHead>
-              <TableHead className="p-4 border-b">Payment Date</TableHead>
-              <TableHead className="p-4 border-b">Amount</TableHead>
-              <TableHead className="p-4 border-b">Received Amount</TableHead>
-              <TableHead className="p-4 border-b text-center">Action</TableHead>
-            </TableRow>
-          </TableHeader>
+          {loading ? (
+            <div className="flex items-center justify-center h-64">
+              <div className="relative">
+                <div className="absolute animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500"></div>
+                <img src={logo} alt="Loading" className="rounded-full h-12 w-12" />
+              </div>
+            </div>
+          ) : paginatedData?.length > 0 ? (
+            <>
+              <div className="bg-white dark:bg-gray-900 shadow-xl rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700">
+                <div className="overflow-x-auto">
+                  <Table className="min-w-full text-sm text-gray-800 dark:text-gray-200">
+                    <TableHeader className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                      <TableRow>
+                        <TableHead className="p-4 border-b">ID</TableHead>
+                        <TableHead className="p-4 border-b">Batch</TableHead>
+                        <TableHead className="p-4 border-b">Course</TableHead>
+                        <TableHead className="p-4 border-b">Student</TableHead>
+                        <TableHead className="p-4 border-b">Payment Date</TableHead>
+                        <TableHead className="p-4 border-b">Amount</TableHead>
+                        <TableHead className="p-4 border-b">Received Amount</TableHead>
+                        <TableHead className="p-4 border-b text-center">Action</TableHead>
+                      </TableRow>
+                    </TableHeader>
 
                     <TableBody>
                       {paginatedData.map((row, index) => (
@@ -537,23 +537,23 @@ const Received = () => {
                             {(emiState.page - 1) * rowsPerPage + index + 1}
                           </TableCell>
                           <TableCell className="p-4 border-b ">
-                          {
-  row.Student_Enrollment?.Batch?.BatchesName
-    ? row.Student_Enrollment.Batch.BatchesName.length > 10
-      ? row.Student_Enrollment.Batch.BatchesName.slice(0, 10) + "..."
-      : row.Student_Enrollment.Batch.BatchesName
-    : "N/A"
-}
+                            {
+                              row.Student_Enrollment?.Batch?.BatchesName
+                                ? row.Student_Enrollment.Batch.BatchesName.length > 10
+                                  ? row.Student_Enrollment.Batch.BatchesName.slice(0, 10) + "..."
+                                  : row.Student_Enrollment.Batch.BatchesName
+                                : "N/A"
+                            }
 
                           </TableCell>
                           <TableCell className="p-4 border-b">
                             {
-  row.Student_Enrollment?.Course?.course_name
-    ? row.Student_Enrollment.Course.course_name.length > 20
-      ? row.Student_Enrollment.Course.course_name.slice(0, 20) + "..."
-      : row.Student_Enrollment.Course.course_name
-    : "N/A"
-}
+                              row.Student_Enrollment?.Course?.course_name
+                                ? row.Student_Enrollment.Course.course_name.length > 20
+                                  ? row.Student_Enrollment.Course.course_name.slice(0, 20) + "..."
+                                  : row.Student_Enrollment.Course.course_name
+                                : "N/A"
+                            }
 
                           </TableCell>
                           <TableCell className="p-4 border-b">
@@ -592,70 +592,69 @@ const Received = () => {
                 </div>
               </div>
 
-    {/* Only show pagination if data exists */}
-    <div className="flex justify-center mt-6">
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                if (emiState.page > 1) {
-                  setemiState((prev) => ({ ...prev, page: prev.page - 1 }));
-                }
-              }}
-              className={emiState.page === 1 ? "opacity-50 cursor-not-allowed" : ""}
-              aria-disabled={emiState.page === 1}
-            />
-          </PaginationItem>
+              {/* Only show pagination if data exists */}
+              <div className="flex justify-center mt-6">
+                <Pagination>
+                  <PaginationContent>
+                    <PaginationItem>
+                      <PaginationPrevious
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          if (emiState.page > 1) {
+                            setemiState((prev) => ({ ...prev, page: prev.page - 1 }));
+                          }
+                        }}
+                        className={emiState.page === 1 ? "opacity-50 cursor-not-allowed" : ""}
+                        aria-disabled={emiState.page === 1}
+                      />
+                    </PaginationItem>
 
-          {Array.from({ length: meta?.totalPages || 0 }, (_, i) => (
-            <PaginationItem key={i}>
-              <PaginationLink
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setemiState((prev) => ({ ...prev, page: i + 1 }));
-                }}
-                className={`px-4 py-2 rounded-md transition ${
-                  emiState.page === i + 1
-                    ? "bg-blue-600 text-white"
-                    : "hover:bg-blue-500 hover:text-white"
-                }`}
-                aria-current={emiState.page === i + 1 ? "page" : undefined}
-              >
-                {i + 1}
-              </PaginationLink>
-            </PaginationItem>
-          ))}
+                    {Array.from({ length: meta?.totalPages || 0 }, (_, i) => (
+                      <PaginationItem key={i}>
+                        <PaginationLink
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            setemiState((prev) => ({ ...prev, page: i + 1 }));
+                          }}
+                          className={`px-4 py-2 rounded-md transition ${emiState.page === i + 1
+                            ? "bg-blue-600 text-white"
+                            : "hover:bg-blue-500 hover:text-white"
+                            }`}
+                          aria-current={emiState.page === i + 1 ? "page" : undefined}
+                        >
+                          {i + 1}
+                        </PaginationLink>
+                      </PaginationItem>
+                    ))}
 
-          <PaginationItem>
-            <PaginationNext
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                if (emiState.page < meta?.totalPages) {
-                  setemiState((prev) => ({ ...prev, page: prev.page + 1 }));
-                }
-              }}
-              className={
-                emiState.page === meta?.totalPages
-                  ? "opacity-50 cursor-not-allowed"
-                  : ""
-              }
-              aria-disabled={emiState.page === meta?.totalPages}
-            />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
-    </div>
-  </>
-) : (
-  <div className="flex items-center justify-center h-[300px]">
-    <No_data_found />
-  </div>
-)}
+                    <PaginationItem>
+                      <PaginationNext
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          if (emiState.page < meta?.totalPages) {
+                            setemiState((prev) => ({ ...prev, page: prev.page + 1 }));
+                          }
+                        }}
+                        className={
+                          emiState.page === meta?.totalPages
+                            ? "opacity-50 cursor-not-allowed"
+                            : ""
+                        }
+                        aria-disabled={emiState.page === meta?.totalPages}
+                      />
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
+              </div>
+            </>
+          ) : (
+            <div className="flex items-center justify-center h-[300px]">
+              <No_data_found />
+            </div>
+          )}
 
         </main>
       </SidebarInset>

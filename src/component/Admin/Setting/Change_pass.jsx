@@ -36,33 +36,30 @@ const Settings = () => {
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                     <button
                       onClick={() => setTab(1)}
-                      className={`w-full rounded-md px-3 py-2 text-[12px] font-medium ${
-                        tab === 1
-                          ? "bg-blue-600 text-white"
-                          : "bg-gray-200 text-gray-800 hover:bg-blue-500 hover:text-white"
-                      }`}
+                      className={`w-full rounded-md px-3 py-2 text-[12px] font-medium ${tab === 1
+                        ? "bg-blue-900 text-white"
+                        : "bg-gray-200 text-gray-800 hover:bg-blue-700 hover:text-white"
+                        }`}
                     >
                       View Profile
                     </button>
 
                     <button
                       onClick={() => setTab(2)}
-                      className={`w-full rounded-md px-3 py-2 text-[13px] font-medium ${
-                        tab === 2
-                          ? "bg-blue-600 text-white"
-                          : "bg-gray-200 text-gray-800 hover:bg-blue-500 hover:text-white"
-                      }`}
+                      className={`w-full rounded-md px-3 py-2 text-[13px] font-medium ${tab === 2
+                        ? "bg-blue-900 text-white"
+                        : "bg-gray-200 text-gray-800 hover:bg-blue-700 hover:text-white"
+                        }`}
                     >
                       Change Password
                     </button>
 
                     <button
                       onClick={() => setTab(3)}
-                      className={`w-full rounded-md px-3 py-2 text-[13px] font-medium ${
-                        tab === 3
-                          ? "bg-blue-600 text-white"
-                          : "bg-gray-200 text-gray-800 hover:bg-blue-500 hover:text-white"
-                      }`}
+                      className={`w-full rounded-md px-3 py-2 text-[13px] font-medium ${tab === 3
+                        ? "bg-blue-900 text-white"
+                        : "bg-gray-200 text-gray-800 hover:bg-blue-700 hover:text-white"
+                        }`}
                     >
                       Update Profile
                     </button>

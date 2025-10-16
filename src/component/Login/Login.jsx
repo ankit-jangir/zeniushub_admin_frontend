@@ -1,8 +1,7 @@
-import React from 'react';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import '../../../src/App.css';
+import React from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 import {
   Form,
   FormControl,
@@ -10,22 +9,19 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '../../component/src/components/ui/form';
-import { Input } from '../../component/src/components/ui/input';
-import { Label } from '../../component/src/components/ui/label';
-import { Checkbox } from '../../component/src/components/ui/checkbox';
-import { Button } from '../src/components/ui/button';
-import { useNavigate } from 'react-router';
+} from "../../component/src/components/ui/form";
+import { Input } from "../../component/src/components/ui/input";
+import { Button } from "../src/components/ui/button";
+import { useNavigate } from "react-router";
 
 const FormSchema = z.object({
   Code: z
     .string()
-    .min(1, "School code is required")
-    .refine((val) => val === "19", {
+    .max(4, "School code is required")
+    .refine((val) => val === "1918", {
       message: "School code is wrong",
     }),
 });
-
 
 const Login = () => {
   const navigate = useNavigate();
@@ -37,45 +33,90 @@ const Login = () => {
   });
 
   const onSubmit = (data) => {
-    console.log('Form data:', data);
-    navigate("/Adminlogin")
+    console.log("Form data:", data);
+    navigate("/Adminlogin");
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-r from-blue-600 to-blue-400 px-4 sm:px-6">
-      <div className="bg-white shadow-2xl rounded-3xl p-8 sm:p-16 w-full max-w-md sm:max-w-4xl flex flex-col sm:flex-row overflow-hidden transform transition-all duration-500 hover:scale-105">
+    <div className="min-h-screen flex items-center justify-center bg-[#fff]">
+      <div className="flex w-full h-screen">
+        {/* LEFT SECTION */}
+        <div className="hidden md:flex w-1/2 bg-[#ff4500] relative overflow-hidden flex-col justify-center px-16 text-white">
+          {/* background circular pattern */}
+          <div className="absolute inset-0 overflow-hidden">
+            <svg
+              viewBox="0 0 800 800"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-full h-full opacity-15 scale-150"
+            >
+              <circle cx="400" cy="400" r="300" fill="none" stroke="white" strokeWidth="80" />
+              <circle cx="400" cy="400" r="500" fill="none" stroke="white" strokeWidth="40" />
+            </svg>
+          </div>
 
-        {/* Left Side - Welcome Message (Hidden on small screens) */}
-        <div className="hidden sm:flex flex-col justify-center  w-1/2 bg-gradient-to-r from-indigo-600 to-blue-600 text-white p-8 sm:p-16 rounded-l-3xl">
-          <h2 className="text-3xl sm:text-4xl font-bold animate-bounce">Welcome to Intellix</h2>
-          <p className="text-sm sm:text-lg mt-4 opacity-90">Your trusted admin portal</p>
+          {/* text */}
+          <div className="relative z-10">
+            <div className="flex items-center gap-2 mb-8">
+              <div className="w-6 h-6 rounded-full border-2 border-white flex items-center justify-center">
+                <div className="w-3 h-3 rounded-full bg-white" />
+              </div>
+              <h1 className="text-xl font-semibold tracking-wide">Zeniushub</h1>
+            </div>
+
+            <h2 className="text-4xl font-bold leading-snug mb-3">
+              Login into <br /> your account
+            </h2>
+            <p className="text-white/90 text-sm max-w-xs">
+              Enter right credentials to access your panel
+            </p>
+          </div>
+
+
         </div>
 
-        {/* Right Side - Login Form */}
-        <div className="w-full sm:w-1/2 px-6 sm:px-12 py-8 sm:py-10  flex flex-col justify-center">
-          <h3 className='text-2xl sm:text-4xl font-bold text-gray-800 text-center'>Admin Login</h3>
-          <p className='text-gray-500 mt-3 sm:mt-4 text-center mb-6 sm:mb-10 text-sm sm:text-lg'>Enter your credentials to access the dashboard.</p>
+        {/* RIGHT SECTION */}
+        <div className="w-full md:w-1/2 flex items-center justify-center bg-[#fff]">
+          <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-10 border border-gray-100">
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <h2 className="text-2xl font-bold text-center text-[#ff4500]">
+                  Admin Login
+                </h2>
+                <p className="text-center text-gray-500 text-sm mb-6">
+                  Enter your credentials to access the panel
+                </p>
 
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 sm:space-y-10">
-              <FormField
-                control={form.control}
-                name="Code"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="block pb-5 text-gray-700 font-semibold text-lg sm:text-xl">School Code</FormLabel>
-                    <FormControl>
-                      <Input className="w-full text-black border-gray-300 rounded-xl p-3 sm:p-5 focus:ring-4 focus:ring-blue-500 shadow-lg" placeholder="Enter Your Code" type="text" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                <FormField
+                  control={form.control}
+                  name="Code"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-600 font-medium">
+                        Code
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          placeholder="Enter your school code"
+                          className="w-full mt-1 border border-gray-300 rounded-md px-3 py-3 text-gray-800 focus:ring-2 focus:ring-[#ff4500]/70 focus:outline-none"
+                        />
+                      </FormControl>
+                      <FormMessage className="text-red-500 text-sm" />
+                    </FormItem>
+                  )}
+                />
 
-              <Button
-                className='w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-4 sm:py-6 rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-xl text-lg sm:text-xl font-bold' type="submit">Login</Button>
-            </form>
-          </Form>
+                <Button
+                  type="submit"
+                  className="w-full bg-[#ff4500] hover:bg-[#e03e00] text-white py-3 rounded-md text-md font-semibold transition-all duration-300 shadow-md hover:shadow-lg"
+                >
+                  Login
+                </Button>
+
+
+              </form>
+            </Form>
+          </div>
         </div>
       </div>
     </div>

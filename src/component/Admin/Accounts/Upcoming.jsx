@@ -57,7 +57,7 @@ const Upcoming = () => {
   const getData = useLocation();
   const getPathName = getData?.pathname;
   const output = getPathName.replace("/", "");
- let token = localStorage.getItem("token");
+  let token = localStorage.getItem("token");
 
   token = useSelector((state) => state.logout.token);
   const [storeid, setstoreid] = useState("");
@@ -224,7 +224,7 @@ const Upcoming = () => {
 
     // Only fetch batches if a specific course is selected (not "All")
     if (courseId !== "") {
-      dispatch(fetchBatchesByCourseId({courseId, token}));
+      dispatch(fetchBatchesByCourseId({ courseId, token }));
     } else {
       // Optionally clear batches from Redux state (if your Redux store allows)
       // dispatch(clearBatches()); // Add this action if needed
@@ -324,7 +324,7 @@ const Upcoming = () => {
             <div className="flex justify-center md:justify-start">
               <Button
                 onClick={() => window.history.back()}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center justify-center md:justify-start gap-2"
+                className="w-full bg-blue-800 hover:bg-blue-900 text-white px-4 py-2 rounded-lg flex items-center justify-center md:justify-start gap-2"
               >
                 <ArrowLeft size={18} />
                 <span className="hidden md:inline">Back</span>
@@ -411,7 +411,7 @@ const Upcoming = () => {
             {/* Export Excel */}
             <Button
               onClick={handleExport}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
+              className="w-full bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg"
             >
               Export Excel
             </Button>
@@ -473,7 +473,7 @@ const Upcoming = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="max-h-60 overflow-y-auto">
                 {emiState.courseId !== "" &&
-                batches?.batches?.data?.batches?.length > 0 ? (
+                  batches?.batches?.data?.batches?.length > 0 ? (
                   batches.batches.data.batches.map((batch) => (
                     <DropdownMenuItem
                       key={batch.id}
@@ -565,19 +565,19 @@ const Upcoming = () => {
                             {(emiState.page - 1) * rowsPerPage + index + 1}
                           </td>
                           <td className="p-4 border-b">
-                           {row.Student_Enrollment?.Batch?.BatchesName
-  ? row.Student_Enrollment.Batch.BatchesName.length > 15
-    ? row.Student_Enrollment.Batch.BatchesName.substring(0, 15) + "..."
-    : row.Student_Enrollment.Batch.BatchesName
-  : "N/A"}
+                            {row.Student_Enrollment?.Batch?.BatchesName
+                              ? row.Student_Enrollment.Batch.BatchesName.length > 15
+                                ? row.Student_Enrollment.Batch.BatchesName.substring(0, 15) + "..."
+                                : row.Student_Enrollment.Batch.BatchesName
+                              : "N/A"}
 
                           </td>
                           <td className="p-4 border-b">
-                           {row.Student_Enrollment?.Course?.course_name
-  ? row.Student_Enrollment.Course.course_name.length > 15
-    ? row.Student_Enrollment.Course.course_name.slice(0, 15) + '...'
-    : row.Student_Enrollment.Course.course_name
-  : 'N/A'}
+                            {row.Student_Enrollment?.Course?.course_name
+                              ? row.Student_Enrollment.Course.course_name.length > 15
+                                ? row.Student_Enrollment.Course.course_name.slice(0, 15) + '...'
+                                : row.Student_Enrollment.Course.course_name
+                              : 'N/A'}
 
                           </td>
                           <td className="p-4 border-b">
@@ -700,11 +700,10 @@ const Upcoming = () => {
                               page: i + 1,
                             }));
                           }}
-                          className={`px-4 py-2 rounded-md transition ${
-                            emiState.page === i + 1
-                              ? "bg-blue-600 text-white"
-                              : "hover:bg-blue-500 hover:text-white"
-                          }`}
+                          className={`px-4 py-2 rounded-md transition ${emiState.page === i + 1
+                            ? "bg-blue-600 text-white"
+                            : "hover:bg-blue-500 hover:text-white"
+                            }`}
                           aria-current={
                             emiState.page === i + 1 ? "page" : undefined
                           }

@@ -59,9 +59,9 @@ const formSchema = z.object({
 });
 
 const Stu_Attendance = () => {
-   let token = localStorage.getItem("token");
-  
-    token = useSelector((state) => state.logout.token);
+  let token = localStorage.getItem("token");
+
+  token = useSelector((state) => state.logout.token);
   const { id: enrollmentId } = useParams();
   const [attendanceData, setAttendanceData] = useState([]);
   const [selectedTab, setSelectedTab] = useState("Attendance");
@@ -155,18 +155,16 @@ const Stu_Attendance = () => {
 
   return (
     <div
-      className={`flex flex-col md:flex-row min-h-screen ${
-        darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-black"
-      }`}
+      className={`flex flex-col md:flex-row min-h-screen ${darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-black"
+        }`}
     >
       <aside
-        className={`md:w-64 w-full p-6 shadow-md flex flex-col gap-4 ${
-          darkMode ? "bg-gray-800" : "bg-white"
-        }`}
+        className={`md:w-64 w-full p-6 shadow-md flex flex-col gap-4 ${darkMode ? "bg-gray-800" : "bg-white"
+          }`}
       >
         <Button
           onClick={goback}
-          className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 border border-gray-300"
+          className="flex items-center gap-2 bg-blue-900 hover:bg-blue-800 border border-gray-300"
         >
           <ArrowLeft className="w-5 h-5" /> Back
         </Button>
@@ -212,7 +210,7 @@ const Stu_Attendance = () => {
                   }}
                 />
                 <Button
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white mt-4"
+                  className="w-full bg-orange-600 hover:bg-orange-700 text-white mt-4"
                   onClick={handleViewAttendance}
                   disabled={loading}
                 >
@@ -287,11 +285,10 @@ const Stu_Attendance = () => {
               {["Attendance"].map((status) => (
                 <button
                   key={status}
-                  className={`px-4 py-2 ${
-                    selectedTab === status
-                      ? "border-b-2 border-blue-600"
-                      : "text-gray-600"
-                  }`}
+                  className={`px-4 py-2 ${selectedTab === status
+                    ? "border-b-2 border-blue-600"
+                    : "text-gray-600"
+                    }`}
                   onClick={() => setSelectedTab(status)}
                 >
                   {status}

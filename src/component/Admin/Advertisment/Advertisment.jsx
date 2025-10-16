@@ -184,41 +184,37 @@ const Advertisment = () => {
                   <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 mb-5">
                     <TabsTrigger
                       value="tab1"
-                      className={`w-full rounded-md px-3 py-2 text-[12px] font-medium ${
-                        activeTab === "tab1"
-                          ? "bg-blue-600 text-white"
-                          : "bg-gray-200 text-gray-800 hover:bg-blue-500 hover:text-white"
-                      }`}
+                      className={`w-full rounded-md px-3 py-2 text-[12px] font-medium ${activeTab === "tab1"
+                        ? "bg-blue-800 text-white"
+                        : "bg-gray-200 text-gray-800 hover:bg-blue-800 hover:text-white"
+                        }`}
                     >
                       Banner
                     </TabsTrigger>
                     <TabsTrigger
                       value="tab2"
-                      className={`w-full rounded-md px-3 py-2 text-[12px] font-medium ${
-                        activeTab === "tab2"
-                          ? "bg-blue-600 text-white"
-                          : "bg-gray-200 text-gray-800 hover:bg-blue-500 hover:text-white"
-                      }`}
+                      className={`w-full rounded-md px-3 py-2 text-[12px] font-medium ${activeTab === "tab2"
+                        ? "bg-blue-800 text-white"
+                        : "bg-gray-200 text-gray-800 hover:bg-blue-800 hover:text-white"
+                        }`}
                     >
                       School Image
                     </TabsTrigger>
                     <TabsTrigger
                       value="tab3"
-                      className={`w-full rounded-md px-3 py-2 text-[12px] font-medium ${
-                        activeTab === "tab3"
-                          ? "bg-blue-600 text-white"
-                          : "bg-gray-200 text-gray-800 hover:bg-blue-500 hover:text-white"
-                      }`}
+                      className={`w-full rounded-md px-3 py-2 text-[12px] font-medium ${activeTab === "tab3"
+                        ? "bg-blue-800 text-white"
+                        : "bg-gray-200 text-gray-800 hover:bg-blue-800 hover:text-white"
+                        }`}
                     >
                       Popular Course
                     </TabsTrigger>
                     <TabsTrigger
                       value="tab4"
-                      className={`w-full rounded-md px-3 py-2 text-[12px] font-medium ${
-                        activeTab === "tab4"
-                          ? "bg-blue-600 text-white"
-                          : "bg-gray-200 text-gray-800 hover:bg-blue-500 hover:text-white"
-                      }`}
+                      className={`w-full rounded-md px-3 py-2 text-[12px] font-medium ${activeTab === "tab4"
+                        ? "bg-blue-800 text-white"
+                        : "bg-gray-200 text-gray-800 hover:bg-blue-800 hover:text-white"
+                        }`}
                     >
                       Notification
                     </TabsTrigger>
@@ -235,7 +231,7 @@ const Advertisment = () => {
                   <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                     <DialogTrigger asChild>
                       <Button
-                        className="text-md"
+                        className="text-md bg-blue-900 hover:bg-blue-800 text-white "
                         onClick={() => setDialogOpen(true)}
                       >
                         Add Banner

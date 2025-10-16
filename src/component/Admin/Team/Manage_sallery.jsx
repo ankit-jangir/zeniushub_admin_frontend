@@ -207,24 +207,21 @@ const ManageSalary = () => {
   /* ------------ Styles ------------- */
   const containerCls = useMemo(
     () =>
-      `flex flex-col md:flex-row min-h-screen ${
-        darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
+      `flex flex-col md:flex-row min-h-screen ${darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
       }`,
     [darkMode]
   );
 
   const sidebarCls = useMemo(
     () =>
-      `w-full md:w-56 lg:w-64 p-4 md:p-6 flex flex-col gap-4 ${
-        darkMode ? "bg-gray-800" : "bg-white"
+      `w-full md:w-56 lg:w-64 p-4 md:p-6 flex flex-col gap-4 ${darkMode ? "bg-gray-800" : "bg-white"
       } md:shadow-md`,
     [darkMode]
   );
 
   const mainCls = useMemo(
     () =>
-      `flex-1 p-4 md:p-6 lg:p-8 ${
-        darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
+      `flex-1 p-4 md:p-6 lg:p-8 ${darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
       }`,
     [darkMode]
   );
@@ -236,22 +233,20 @@ const ManageSalary = () => {
       <aside className={sidebarCls}>
         <Button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 border border-gray-300 w-full text-xs sm:text-sm md:text-base py-1.5 sm:py-2 md:py-2.5"
+          className="flex items-center gap-2 bg-blue-900 hover:bg-blue-800 border border-gray-300 w-full text-xs sm:text-sm md:text-base py-1.5 sm:py-2 md:py-2.5"
         >
           <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5" /> Back
         </Button>
         <Button
-          className={`w-full bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm md:text-base py-1.5 sm:py-2 md:py-2.5 ${
-            tab === "tab1" ? "font-bold" : ""
-          }`}
+          className={`w-full bg-orange-600 hover:bg-orange-700 text-white text-xs sm:text-sm md:text-base py-1.5 sm:py-2 md:py-2.5 ${tab === "tab1" ? "font-bold" : ""
+            }`}
           onClick={() => setTab("tab1")}
         >
           Upcoming Salary
         </Button>
         <Button
-          className={`w-full bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm md:text-base py-1.5 sm:py-2 md:py-2.5 ${
-            tab === "tab2" ? "font-bold" : ""
-          }`}
+          className={`w-full bg-blue-900 hover:bg-blue-800 text-white text-xs sm:text-sm md:text-base py-1.5 sm:py-2 md:py-2.5 ${tab === "tab2" ? "font-bold" : ""
+            }`}
           onClick={() => setTab("tab2")}
         >
           Salary History
@@ -278,7 +273,7 @@ const ManageSalary = () => {
                 <DialogTrigger asChild>
                   <Button
                     onClick={() => setOpenGrantSalary(true)}
-                    className="bg-blue-600 hover:bg-blue-700 text-xs sm:text-sm md:text-base py-1.5 sm:py-2 md:py-2.5"
+                    className="bg-orange-600 hover:bg-orange-700 text-xs sm:text-sm md:text-base py-1.5 sm:py-2 md:py-2.5"
                   >
                     Grant Salary
                   </Button>

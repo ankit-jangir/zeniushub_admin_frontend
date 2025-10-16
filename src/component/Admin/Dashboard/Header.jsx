@@ -207,7 +207,7 @@ const Header = () => {
         <SidebarTrigger className="-ml-1" />
         <div className="flex w-full items-center justify-between">
           {/* Dynamic Page Title */}
-          <h1 className="lg:text-2xl mt-1 sm:text-sm ps-7 font-semibold text-blue-700 dark:text-white">
+          <h1 className="lg:text-2xl mt-1 sm:text-sm ps-7 font-semibold text-orange-600 dark:text-white">
             {getActiveTabName()} {/* Display active tab name here */}
           </h1>
 
@@ -218,7 +218,7 @@ const Header = () => {
               {shouldShowDropdown && (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button className="w-full font-medium max-w-lg border border-blue-400 dark:border-blue-300 shadow rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-9 py-2 flex justify-between items-center hover:bg-blue-500 hover:text-white">
+                    <Button className="w-full font-medium max-w-lg border border-orange-400 dark:border-orange-500 shadow rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-9 py-2 flex justify-between items-center hover:bg-blue-500 hover:text-white">
                       <span>
                         {loading
                           ? "Loading..."
@@ -232,7 +232,7 @@ const Header = () => {
 
                   <DropdownMenuContent
                     align="start"
-                    className="w-full font-medium max-w-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white mt-2 border border-blue-400 dark:border-blue-300 rounded-lg shadow-md"
+                    className="w-full font-medium max-w-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white mt-2 border border-orange-600 dark:border-orange-500 rounded-lg shadow-md"
                   >
                     {loading ? (
                       <div className="px-4 py-2 text-center text-gray-500">
@@ -252,7 +252,7 @@ const Header = () => {
                           onClick={() =>
                             handleSessionSelect(year.session_year, year.id)
                           }
-                          className="cursor-pointer hover:bg-blue-600 hover:text-white px-4 py-2 text-center"
+                          className="cursor-pointer hover:bg-orange-600 hover:text-white px-4 py-2 text-center"
                         >
                           {year.session_year}
                         </DropdownMenuItem>

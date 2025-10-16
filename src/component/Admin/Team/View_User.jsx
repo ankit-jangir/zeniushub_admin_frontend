@@ -78,7 +78,7 @@ const View_User = () => {
           {/* Top Header */}
           <div className="w-full shadow-md shadow-blue-300/30 rounded-lg flex flex-wrap sm:flex-nowrap items-center justify-between px-4 sm:px-8 py-4 gap-3">
             <Button
-              className="bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-md text-sm flex items-center gap-2"
+              className="bg-blue-900 text-white hover:bg-blue-800 px-4 py-2 rounded-md text-sm flex items-center gap-2"
               onClick={() => navigate(-1)}
             >
               <ArrowLeft size={18} />
@@ -145,11 +145,10 @@ const View_User = () => {
                       </h2>
                     </div>
                     <Badge
-                      className={`text-xs px-3 py-0.5 rounded-full ${
-                        user.status === "Active"
-                          ? "bg-green-100 text-green-700"
-                          : "bg-gray-200 text-gray-500"
-                      }`}
+                      className={`text-xs px-3 py-0.5 rounded-full ${user.status === "Active"
+                        ? "bg-green-100 text-green-700"
+                        : "bg-gray-200 text-gray-500"
+                        }`}
                     >
                       {user.status || "Inactive"}
                     </Badge>
@@ -206,7 +205,7 @@ const View_User = () => {
                       onClick={() =>
                         navigate(`/employee/view-profile/${user.id}`)
                       }
-                      className="w-full mt-4 py-2 text-sm font-medium text-white rounded-md bg-blue-500 flex items-center justify-center gap-2"
+                      className="w-full mt-4 py-2 text-sm font-medium text-white rounded-md bg-blue-900 flex items-center justify-center gap-2"
                     >
                       <Eye className="w-4 h-4" />
                       View Details
@@ -240,11 +239,10 @@ const View_User = () => {
                     <PaginationLink
                       as="button"
                       onClick={() => setCurrentPage(i + 1)}
-                      className={`px-4 py-2 rounded-md ${
-                        currentPage === i + 1
-                          ? "bg-blue-600 text-white"
-                          : "hover:bg-blue-500 hover:text-white"
-                      }`}
+                      className={`px-4 py-2 rounded-md ${currentPage === i + 1
+                        ? "bg-blue-600 text-white"
+                        : "hover:bg-blue-500 hover:text-white"
+                        }`}
                     >
                       {i + 1}
                     </PaginationLink>

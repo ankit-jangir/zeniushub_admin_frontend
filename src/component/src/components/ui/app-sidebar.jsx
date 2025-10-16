@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import intellix_icon from "../../../../assets/Image/intellix.png";
+import zeniushub from "../../../../assets/Image/intellix.png";
 import { Grip, Home, User, Users, Wallet, ChartColumnIncreasing, CircleHelp, Settings, Clipboard, ListFilterPlus, FileBadge, X, Coins } from "lucide-react";
 import {
   Sidebar,
@@ -40,8 +40,8 @@ const AppSidebar = ({ ...props }) => {
           <div className="flex items-center gap-4"
 
           >
-            <img className="w-10 h-10 " src={intellix_icon} alt="Intellix Logo" />
-            {!isOpen && <h5 className="text-xl font-semibold">Intellix</h5>}
+            <img className="w-10 h-10 " src={zeniushub} alt="zeniushub Logo" />
+            {!isOpen && <h5 className="text-xl font-semibold">Zeniushub</h5>}
           </div>
           <button
             onClick={() => toggleSidebar(false)}
@@ -56,7 +56,7 @@ const AppSidebar = ({ ...props }) => {
         <NavMain items={data} />
       </SidebarContent>
       <SidebarFooter>
-        © 2025 Intellix
+        © 2025 Zeniushub
       </SidebarFooter>
       <SidebarRail />
 

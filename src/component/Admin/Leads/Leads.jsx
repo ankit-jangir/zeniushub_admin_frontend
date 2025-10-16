@@ -490,13 +490,13 @@ const Leads = () => {
       ...data,
       dob: data.dob
         ? new Date(data.dob)
-            .toLocaleDateString("en-GB", {
-              day: "2-digit",
-              month: "2-digit",
-              year: "numeric",
-            })
-            .split("/")
-            .join("/")
+          .toLocaleDateString("en-GB", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric",
+          })
+          .split("/")
+          .join("/")
         : data.dob,
     };
 
@@ -783,7 +783,7 @@ const Leads = () => {
               </DropdownMenu>
               <Button
                 variant="default"
-                className="bg-blue-600"
+                className="bg-blue-900 hover:bg-blue-800"
                 onClick={() => {
                   const resetQuery = {
                     name: "",
@@ -806,7 +806,7 @@ const Leads = () => {
 
               <Dialog open={leadModalStatus} onOpenChange={setLeadModalStatus}>
                 <DialogTrigger asChild>
-                  <Button className="bg-blue-600 text-white">
+                  <Button className="bg-orange-600 hover:bg-orange-500 text-white">
                     <PlusIcon className="mr-1" /> Add Leads
                   </Button>
                 </DialogTrigger>
@@ -887,13 +887,13 @@ const Leads = () => {
                             rules={
                               name === "contact"
                                 ? {
-                                    required: "Contact is required",
-                                    pattern: {
-                                      value: /^[0-9]{10}$/,
-                                      message:
-                                        "Contact must be exactly 10 digits",
-                                    },
-                                  }
+                                  required: "Contact is required",
+                                  pattern: {
+                                    value: /^[0-9]{10}$/,
+                                    message:
+                                      "Contact must be exactly 10 digits",
+                                  },
+                                }
                                 : {}
                             }
                             render={({ field }) => (
@@ -915,7 +915,7 @@ const Leads = () => {
                                           ...prev,
                                           [name]:
                                             name === "assign_to" ||
-                                            name === "category_id"
+                                              name === "category_id"
                                               ? Number(e.target.value)
                                               : e.target.value,
                                         }));
@@ -1454,15 +1454,14 @@ const Leads = () => {
                           </TableCell>
                           <TableCell className="border-r border-gray-300 dark:border-gray-600">
                             <Badge
-                              className={`capitalize w-28 justify-center text-white ${
-                                item?.status === "Hot"
-                                  ? "bg-[rgb(26,255,129)] text-black"
-                                  : item?.status === "Droped"
+                              className={`capitalize w-28 justify-center text-white ${item?.status === "Hot"
+                                ? "bg-[rgb(26,255,129)] text-black"
+                                : item?.status === "Droped"
                                   ? "bg-[rgb(255,72,44)]"
                                   : item?.status === "Inconservation"
-                                  ? "bg-[rgb(234,227,8)] text-black"
-                                  : "bg-gray-300 text-black"
-                              }`}
+                                    ? "bg-[rgb(234,227,8)] text-black"
+                                    : "bg-gray-300 text-black"
+                                }`}
                             >
                               {item?.status || "N/A"}
                             </Badge>
@@ -1480,9 +1479,8 @@ const Leads = () => {
                                   `/employee/view-profile/${item?.assign_to}`
                                 )
                               }
-                              aria-label={`View profile of ${
-                                item?.first_name || "employee"
-                              }`}
+                              aria-label={`View profile of ${item?.first_name || "employee"
+                                }`}
                             >
                               {item?.Employee?.first_name || "N/A"}
                             </button>
@@ -1645,7 +1643,7 @@ const Leads = () => {
                                               </SelectTrigger>
                                               <SelectContent>
                                                 {Array.isArray(courses) &&
-                                                courses.length > 0 ? (
+                                                  courses.length > 0 ? (
                                                   courses.map((item) => (
                                                     <SelectItem
                                                       key={item.id}

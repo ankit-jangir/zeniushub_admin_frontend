@@ -1028,11 +1028,11 @@ const Subjects = () => {
             transition={Zoom}
           />
 
-             <div className="w-full shadow-md shadow-blue-300/30 rounded-lg flex flex-wrap sm:flex-nowrap items-center justify-between px-4 sm:px-8 py-4 gap-3">
+          <div className="w-full shadow-md shadow-blue-300/30 rounded-lg flex flex-wrap sm:flex-nowrap items-center justify-between px-4 sm:px-8 py-4 gap-3">
             <div className="flex items-center gap-3">
               <Button
                 onClick={back}
-                className="bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-md text-sm flex items-center gap-2"
+                className="bg-blue-900 text-white hover:bg-blue-800 px-4 py-2 rounded-md text-sm flex items-center gap-2"
               >
                 <ArrowLeft size={18} />
                 <span className="hidden md:inline">Back to Academics</span>
@@ -1042,7 +1042,7 @@ const Subjects = () => {
                   form.reset({ subject_name: "", course_id: [] }); // Reset form before opening Add dialog
                   setAddSubjects(true);
                 }}
-                className="bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-md text-sm flex items-center gap-2"
+                className="bg-orange-600 text-white hover:bg-orange-500 px-4 py-2 rounded-md text-sm flex items-center gap-2"
               >
                 <span className="text-lg">+</span>
                 <span>Add Subjects</span>
@@ -1152,7 +1152,8 @@ const Subjects = () => {
 
                     <CardFooter className="flex flex-col sm:flex-row gap-2 px-4 py-4">
                       <Button
-                        className="w-full"
+
+                        className="w-full bg-blue-900 hover:bg-blue-800 text-white"
                         onClick={() => handleEditSubject(sub)}
                       >
                         <Edit className="mr-2 h-4 w-4" /> Edit
@@ -1271,8 +1272,8 @@ const Subjects = () => {
                                         const newValue = checked
                                           ? [...(field.value || []), course.id]
                                           : field.value?.filter(
-                                              (id) => id !== course.id
-                                            );
+                                            (id) => id !== course.id
+                                          );
                                         field.onChange(newValue);
                                       }}
                                     />
@@ -1303,7 +1304,7 @@ const Subjects = () => {
                   {/* Submit Button */}
                   <Button
                     type="submit"
-                    className="w-full bg-blue-600 text-white"
+                    className="w-full bg-blue-900 hover:bg-blue-800 text-white"
                   >
                     Confirm
                   </Button>
@@ -1373,8 +1374,8 @@ const Subjects = () => {
                                       const newValue = checked
                                         ? [...(field.value || []), course.id]
                                         : field.value?.filter(
-                                            (id) => id !== course.id
-                                          );
+                                          (id) => id !== course.id
+                                        );
                                       field.onChange(newValue);
                                     }}
                                   />
@@ -1419,11 +1420,10 @@ const Subjects = () => {
                   <PaginationLink
                     href="#"
                     onClick={() => setCurrentPage(i + 1)}
-                    className={`px-4 py-2 rounded-md ${
-                      currentPage === i + 1
-                        ? "bg-blue-600 text-white"
-                        : "hover:bg-blue-500 hover:text-white"
-                    }`}
+                    className={`px-4 py-2 rounded-md ${currentPage === i + 1
+                      ? "bg-blue-600 text-white"
+                      : "hover:bg-blue-500 hover:text-white"
+                      }`}
                   >
                     {i + 1}
                   </PaginationLink>

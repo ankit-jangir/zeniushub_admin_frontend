@@ -27,7 +27,7 @@ const Account = () => {
   const location = useLocation();
 
   const [activeTab, setActiveTab] = useState(() => {
-    const fromAccounts = location?.state?.from === "accounts"; 
+    const fromAccounts = location?.state?.from === "accounts";
     if (fromAccounts) return "Student";
     return localStorage.getItem("activeTab") || "Student";
   });
@@ -61,22 +61,20 @@ const Account = () => {
                             </button> */}
 
               <button
-                className={`rounded-md px-9 py-2 text-sm font-medium ${
-                  activeTab === "Student"
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-200 text-gray-800 hover:bg-blue-500 hover:text-white"
-                }`}
+                className={`rounded-md px-9 py-2 text-sm font-medium ${activeTab === "Student"
+                  ? "bg-blue-900 text-white"
+                  : "bg-gray-200 text-gray-800 hover:bg-blue-800 hover:text-white"
+                  }`}
                 onClick={() => handleTabChange("Student")}
               >
                 Students Account
               </button>
 
               <button
-                className={`rounded-md px-9 py-2 text-sm font-medium ${
-                  activeTab === "Employee"
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-200 text-gray-800 hover:bg-blue-500 hover:text-white"
-                }`}
+                className={`rounded-md px-9 py-2 text-sm font-medium ${activeTab === "Employee"
+                  ? "bg-blue-900 text-white"
+                  : "bg-gray-200 text-gray-800 hover:bg-blue-800 hover:text-white"
+                  }`}
                 onClick={() => handleTabChange("Employee")}
               >
                 Employee Account

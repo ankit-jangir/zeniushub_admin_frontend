@@ -108,13 +108,13 @@ const PasswordChange = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-   theme: isDarkMode ? "dark" : "light",
+        theme: isDarkMode ? "dark" : "light",
         transition: Zoom,
       });
 
       form.reset();
     } catch (err) {
-       const errorMessage =
+      const errorMessage =
         error?.error?.length > 0
           ? error?.error?.[0]?.message
           : error?.message || "An error occurred"
@@ -126,7 +126,7 @@ const PasswordChange = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-  theme: isDarkMode ? "dark" : "light",
+        theme: isDarkMode ? "dark" : "light",
         transition: Zoom,
       });
 
@@ -269,7 +269,7 @@ const PasswordChange = () => {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full sm:w-[300px] bg-blue-500 shadow-lg hover:bg-blue-700"
+                  className="w-full sm:w-[300px] bg-blue-900 shadow-lg hover:bg-blue-800"
                 >
                   {loading ? "Updating..." : "CHANGE PASSWORD"}
                 </Button>

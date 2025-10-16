@@ -63,7 +63,7 @@ const batchSchema = z
     starttime: z.string().min(1, { message: "Start time is required" }),
     endtime: z.string().min(1, { message: "End time is required" }),
   })
- 
+
 
 export default function StudentUploadModal() {
   const navigate = useNavigate();
@@ -72,7 +72,7 @@ export default function StudentUploadModal() {
   const endDateRef = useRef(null);
   const startTimeRef = useRef(null);
   const endTimeRef = useRef(null);
- let token = localStorage.getItem("token");
+  let token = localStorage.getItem("token");
 
   token = useSelector((state) => state.logout.token);
   // Redux state selectors
@@ -117,7 +117,7 @@ export default function StudentUploadModal() {
   // Fetch batches when course changes
   useEffect(() => {
     if (selectedCourse) {
-      dispatch(fetchBatchesByCourseId({courseId:selectedCourse, token}));
+      dispatch(fetchBatchesByCourseId({ courseId: selectedCourse, token }));
       setValue("batch", "");
     }
   }, [selectedCourse, dispatch, setValue]);
@@ -152,7 +152,7 @@ export default function StudentUploadModal() {
   // }, [studentsError, batchesError, coursesError]);
 
   // Handle form submission
-  
+
   const onSubmit = async (data) => {
     try {
       await dispatch(
@@ -168,8 +168,8 @@ export default function StudentUploadModal() {
         state: { success: "Students uploaded successfully!" },
       });
     } catch (error) {
-     
-      
+
+
       Swal.fire({
         icon: 'error',
         title: 'Error',
@@ -221,14 +221,14 @@ export default function StudentUploadModal() {
     try {
       await dispatch(Add_Batches(batchPayload)).unwrap();
       if (selectedCourse) {
-        await dispatch(fetchBatchesByCourseId({courseId:selectedCourse, token}));
+        await dispatch(fetchBatchesByCourseId({ courseId: selectedCourse, token }));
       }
       form.reset();
       Swal.fire({
         icon: 'success',
         title: 'Success',
         text: 'Batch added successfully!',
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#14518aff',
       });
     } catch (error) {
       Swal.fire({
@@ -244,7 +244,7 @@ export default function StudentUploadModal() {
 
   return (
     <div>
-      <Button className="bg-blue-500 m-3" onClick={goBack}>
+      <Button className="bg-blue-800 m-3" onClick={goBack}>
         <FaArrowLeftLong aria-label="Navigate back to previous page" role="button" />
         Back To Students
       </Button>
@@ -276,7 +276,7 @@ export default function StudentUploadModal() {
                     {courses?.data?.length > 0 ? (
                       courses.data.map((course) => (
                         <SelectItem key={course.id} value={course.id.toString()}>
-                          {course.course_name} 
+                          {course.course_name}
                           {/* {course.id} */}
                         </SelectItem>
                       ))
@@ -315,8 +315,8 @@ export default function StudentUploadModal() {
                     {batches?.data?.batches?.length > 0 ? (
                       batches?.data?.batches?.map((batch) => (
                         <SelectItem key={batch.id} value={batch.id.toString()}>
-                          {batch.BatchesName} 
-                           {/* {batch.id} */}
+                          {batch.BatchesName}
+                          {/* {batch.id} */}
                         </SelectItem>
                       ))
                     ) : (
@@ -409,7 +409,7 @@ export default function StudentUploadModal() {
                               </FormItem>
                             )}
                           />
-                         
+
                           <div className="flex items-center gap-4">
                             <FormField
                               control={form.control}
@@ -497,7 +497,7 @@ export default function StudentUploadModal() {
                 <Button
                   type="submit"
                   disabled={studentsLoading || batchesLoading || coursesLoading}
-                  className="h-12 w-60 rounded-lg bg-blue-600 text-lg font-semibold text-white hover:bg-blue-700"
+                  className="h-12 w-60 rounded-lg bg-blue-900 text-lg font-semibold text-white hover:bg-blue-800"
                 >
                   {studentsLoading ? "Uploading..." : "Add Students"}
                 </Button>

@@ -243,7 +243,7 @@ const Viewdetail = ({ batchid, s, e, n, a, courseid, cn }) => {
           <DialogTrigger asChild>
             <Button
               variant="destructive"
-              className="w-full bg-blue-600 text-white hover:bg-blue-700 transition duration-200"
+              className="w-full bg-blue-900 text-white hover:bg-blue-800 transition duration-200"
             >
               <Eye className="w-4 h-4" />
               Detail
@@ -265,7 +265,7 @@ const Viewdetail = ({ batchid, s, e, n, a, courseid, cn }) => {
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mt-4">
                 <Button
                   onClick={handleNext}
-                  className="bg-blue-600 text-white px-3 py-2 rounded-lg text-sm flex items-center gap-1"
+                  className="bg-orange-600 hover:bg-orange-500 text-white px-3 py-2 rounded-lg text-sm flex items-center gap-1"
                 >
                   <Pencil className="w-4 h-4" />
                   Edit
@@ -290,7 +290,7 @@ const Viewdetail = ({ batchid, s, e, n, a, courseid, cn }) => {
                       }/${sessionId}/${sessionYear}`
                     );
                   }}
-                  className="bg-blue-600 text-white px-3 py-2 rounded-lg text-sm flex items-center gap-1"
+                  className="bg-blue-900 hover:bg-blue-800 text-white px-3 py-2 rounded-lg text-sm flex items-center gap-1"
                 >
                   <Pencil className="w-4 h-4" />
                   Add student
@@ -459,7 +459,7 @@ const Viewdetail = ({ batchid, s, e, n, a, courseid, cn }) => {
             <DialogFooter className="mt-6 flex justify-center">
               <Button
                 onClick={() => setOpenFirst(false)}
-                className="bg-blue-500 hover:bg-blue-600 px-8 text-white"
+                className="bg-blue-800 hover:bg-blue-700 px-8 text-white"
               >
                 Back
               </Button>

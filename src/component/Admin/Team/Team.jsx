@@ -1281,7 +1281,7 @@ const Team = ({ teacherData }) => {
                 {/* Departments Button */}
                 <Button
                   onClick={() => navigate("/Departments")}
-                  className="w-full lg:w-auto bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-md text-sm"
+                  className="w-full lg:w-auto bg-blue-900 text-white hover:bg-blue-800 px-4 py-2 rounded-md text-sm"
                 >
                   Departments
                 </Button>
@@ -1289,7 +1289,7 @@ const Team = ({ teacherData }) => {
                 {/* Ex-Employee Button */}
                 <Button
                   onClick={() => Navigate("/Ex-Employee")}
-                  className="w-full lg:w-auto bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-md text-sm flex items-center gap-2"
+                  className="w-full lg:w-auto bg-blue-900 text-white hover:bg-blue-800 px-4 py-2 rounded-md text-sm flex items-center gap-2"
                 >
                   <Users className="w-4 h-4" />
                   Ex-Employee
@@ -1298,7 +1298,7 @@ const Team = ({ teacherData }) => {
                 {/* Add Employee Button */}
                 <Button
                   onClick={() => setTeacher(true)}
-                  className="w-full lg:w-auto bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-md text-sm"
+                  className="w-full lg:w-auto bg-blue-900 text-white hover:bg-blue-800 px-4 py-2 rounded-md text-sm"
                 >
                   + Add Employee
                 </Button>
@@ -1721,7 +1721,7 @@ const Team = ({ teacherData }) => {
                         <Button
                           onClick={(e) => main(e)} // ✅ Pass event to function
                           type="button" // ✅ Prevent unwanted form submission
-                          className="bg-indigo-600 text-white px-9 py-2 rounded-lg hover:bg-indigo-700"
+                          className="bg-blue-800 text-white px-9 py-2 rounded-lg hover:bg-blue-900"
                         >
                           Save
                         </Button>
@@ -2424,7 +2424,7 @@ const Team = ({ teacherData }) => {
                         <Button
                           onClick={handleFinalSubmit}
                           type="submit"
-                          className="bg-indigo-600 text-white px-9 py-2 rounded-lg hover:bg-indigo-700"
+                          className="bg-blue-900 text-white px-9 py-2 rounded-lg hover:bg-blue-800"
                         >
                           Save
                         </Button>
@@ -2484,7 +2484,7 @@ const Team = ({ teacherData }) => {
                             setSelectedEmployeeId(employee.id);
                             setOpenTask(true);  // ✅ dialog khol do
                           }}
-                          className="cursor-pointer text-gray-800 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-blue-900/50 px-4 py-2.5 text-sm font-medium whitespace-nowrap border-b border-gray-200 dark:border-gray-700 last:border-b-0"
+                          className="cursor-pointer text-gray-800 dark:text-gray-200 hover:bg-blue-800 dark:hover:bg-blue-900/50 px-4 py-2.5 text-sm font-medium whitespace-nowrap border-b border-gray-200 dark:border-gray-700 last:border-b-0"
                         >
                           +Assign Task
                         </DropdownMenuItem>

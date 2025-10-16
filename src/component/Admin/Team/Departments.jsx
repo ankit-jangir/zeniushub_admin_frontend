@@ -138,7 +138,7 @@ const Departments = () => {
           theme: isDarkMode ? "dark" : "light",
         });
         setAddDepartment(false);
-        dispatch(get_Deparment({token, searchName: searchTerm}));
+        dispatch(get_Deparment({ token, searchName: searchTerm }));
         form.reset();
       }
     } catch (error) {
@@ -173,7 +173,7 @@ const Departments = () => {
         theme: isDarkMode ? "dark" : "light",
       });
       setDeleteDepartments(false);
-      dispatch(get_Deparment({token, searchName: searchTerm}));
+      dispatch(get_Deparment({ token, searchName: searchTerm }));
     } catch (error) {
       const errorMessage =
         error?.error?.length > 0
@@ -227,7 +227,7 @@ const Departments = () => {
           <div className="w-full shadow-md shadow-blue-300/30 rounded-lg flex flex-wrap sm:flex-nowrap items-center justify-between px-4 sm:px-8 py-4 gap-3">
             <div className="flex items-center gap-3">
               <Button
-                className="bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-md text-sm flex items-center gap-2"
+                className="bg-blue-900 text-white hover:bg-blue-800 px-4 py-2 rounded-md text-sm flex items-center gap-2"
                 onClick={() => navigate("/team")}
               >
                 <ArrowLeft size={18} />
@@ -235,7 +235,7 @@ const Departments = () => {
               </Button>
               <Button
                 onClick={() => setAddDepartment(true)}
-                className="bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-md text-sm flex items-center gap-2"
+                className="bg-orange-600 text-white hover:bg-orange-500 px-4 py-2 rounded-md text-sm flex items-center gap-2"
               >
                 + Add Department
               </Button>
@@ -297,8 +297,8 @@ const Departments = () => {
                                         onClick={() => {
                                           const newValue = isChecked
                                             ? field.value.filter(
-                                                (v) => v !== item.id
-                                              )
+                                              (v) => v !== item.id
+                                            )
                                             : [...(field.value || []), item.id];
                                           field.onChange(newValue);
                                         }}
@@ -474,7 +474,7 @@ const Departments = () => {
                   <CardFooter className="flex justify-center gap-4 mt-1">
                     <Button
                       onClick={() => navigate(`/View_User/${department.id}`)}
-                      className="bg-blue-600 text-xs text-white px-5 py-2 rounded-lg shadow-md flex items-center gap-2 hover:bg-blue-500 transition-all"
+                      className="bg-blue-900 text-xs text-white px-5 py-2 rounded-lg shadow-md flex items-center gap-2 hover:bg-blue-800 transition-all"
                     >
                       <User size={18} /> View User
                     </Button>

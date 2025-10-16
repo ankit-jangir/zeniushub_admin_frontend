@@ -205,7 +205,7 @@ const ExStudentsData = () => {
           variant="ghost"
           disabled={currentPage === 1}
           onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
-          className="h-10 w-10 rounded-full hover:bg-indigo-100 dark:hover:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 transition-all duration-300 disabled:opacity-40"
+          className="h-10 w-10 rounded-full hover:bg-indigo-500 dark:hover:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 transition-all duration-300 disabled:opacity-40"
           aria-label="Previous page"
         >
           <ChevronLeft className="h-5 w-5" />
@@ -216,8 +216,8 @@ const ExStudentsData = () => {
             onClick={() => handlePageChange(page)}
             variant={currentPage === page ? "default" : "outline"}
             className={`h-10 w-10 rounded-full font-semibold transition-all duration-300 ${currentPage === page
-                ? "bg-indigo-600 text-white hover:bg-indigo-700"
-                : "border-indigo-200 text-indigo-600 hover:bg-indigo-100 dark:border-indigo-800 dark:text-indigo-400 dark:hover:bg-indigo-900/50"
+              ? "bg-indigo-600 text-white hover:bg-indigo-700"
+              : "border-indigo-200 text-indigo-600 hover:bg-indigo-100 dark:border-indigo-800 dark:text-indigo-400 dark:hover:bg-indigo-900/50"
               }`}
             aria-label={`Page ${page}`}
           >
@@ -250,7 +250,7 @@ const ExStudentsData = () => {
           <div className="grid w-full gap-4 sm:grid-cols-12 items-center">
             <Button
               onClick={() => navigate(-1)}
-              className="sm:col-span-4 md:col-span-3 bg-blue-500 text-white font-semibold px-4 py-2.5 rounded-md hover:bg-blue-600 flex items-center justify-center sm:justify-start gap-2 transition-all duration-300 shadow-md hover:shadow-lg"
+              className="sm:col-span-4 md:col-span-3 bg-blue-800 text-white font-semibold px-4 py-2.5 rounded-md hover:bg-blue-900 flex items-center justify-center sm:justify-start gap-2 transition-all duration-300 shadow-md hover:shadow-lg"
               aria-label="Back to students"
             >
               <ArrowLeft className="w-5 h-5" />
@@ -344,8 +344,8 @@ const ExStudentsData = () => {
                                 onClick={() => handleViewProfile(student?.enrollment?.id)}
                                 disabled={singleLoading}
                                 className={`py-2 px-4 text-gray-700 dark:text-gray-200 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors duration-200 ${singleLoading
-                                    ? "opacity-50 cursor-not-allowed"
-                                    : ""
+                                  ? "opacity-50 cursor-not-allowed"
+                                  : ""
                                   }`}
                               >
                                 {singleLoading ? "Loading…" : "View Profile"}

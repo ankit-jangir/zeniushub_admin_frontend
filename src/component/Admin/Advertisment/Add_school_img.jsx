@@ -113,12 +113,12 @@ const AddSchoolImg = () => {
         description: img.school_description || "",
         images: img.image_path
           ? [
-              {
-                id: img.id,
-                url: `${base_img_url}viewimagefromazure?filePath=${img.image_path}`,
-                file: null,
-              },
-            ]
+            {
+              id: img.id,
+              url: `${base_img_url}viewimagefromazure?filePath=${img.image_path}`,
+              file: null,
+            },
+          ]
           : [],
         errors: {},
       }));
@@ -273,7 +273,7 @@ const AddSchoolImg = () => {
 
               <DialogFooter>
                 <DialogClose asChild>
-                  <Button onClick={handleSubmit2} disabled={loading}>
+                  <Button className="bg-blue-800 hover:bg-blue-900" onClick={handleSubmit2} disabled={loading}>
                     {loading ? "Submitting..." : "Submit"}
                   </Button>
                 </DialogClose>

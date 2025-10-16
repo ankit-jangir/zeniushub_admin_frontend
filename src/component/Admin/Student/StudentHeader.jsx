@@ -191,7 +191,7 @@ const StudentHeader = () => {
   };
 
   return (
-    <SidebarProvider className="w-full">
+    <SidebarProvider style={{ "--sidebar-width": "15rem" }}>
       <AppSidebar />
       <SidebarInset>
         <Header />
@@ -299,7 +299,7 @@ const StudentHeader = () => {
                 {/* Action Buttons */}
                 <Button
                   onClick={() => navigate("/ExStudents")}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors w-full"
+                  className="bg-blue-900 hover:bg-blue-800 text-white px-3 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors w-full"
                 >
                   Ex-Student
                 </Button>
@@ -311,7 +311,7 @@ const StudentHeader = () => {
                 </Button>
                 <Button
                   onClick={() => navigate("/add_student_model")}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors w-full"
+                  className="bg-orange-600 hover:bg-orange-700 text-white px-3 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors w-full"
                 >
                   + Add Student
                 </Button>
@@ -334,9 +334,9 @@ const StudentHeader = () => {
             {/* Table Section */}
             <div className="bg-white dark:bg-gray-800 shadow-lg rounded-xl overflow-hidden">
               {loading ||
-              sessionsLoading ||
-              batchesLoading ||
-              coursesLoading ? (
+                sessionsLoading ||
+                batchesLoading ||
+                coursesLoading ? (
                 <div className="flex h-[60vh] items-center justify-center">
                   <div className="relative flex flex-col items-center">
                     <div className="animate-spin rounded-full h-16 w-16 sm:h-20 sm:w-20 border-t-4 border-blue-500"></div>
@@ -420,11 +420,9 @@ const StudentHeader = () => {
                                 className="w-12 h-12 object-cover rounded-full border border-gray-200 dark:border-gray-600"
                                 src={
                                   student.profile_image
-                                    ? `${
-                                        import.meta.env.VITE_BASE_URL
-                                      }/viewimagefromazure?filePath=${
-                                        student.profile_image
-                                      }`
+                                    ? `${import.meta.env.VITE_BASE_URL
+                                    }/viewimagefromazure?filePath=${student.profile_image
+                                    }`
                                     : avatar
                                 }
                                 alt={student.name}
@@ -475,7 +473,7 @@ const StudentHeader = () => {
                               <Dialog>
                                 <DialogTrigger asChild>
                                   <Button
-                                    className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
+                                    className="bg-blue-900 hover:bg-blue-800 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition-colors"
                                     onClick={() => {
                                       console.log(
                                         "%%%%%%%%%%%%%%%%%",
@@ -517,7 +515,7 @@ const StudentHeader = () => {
                                       studentEnrollmentId={
                                         student?.enrollment?.id
                                       }
-                                      back={() => {}}
+                                      back={() => { }}
                                     />
                                   </DialogContent>
                                 )}
@@ -710,7 +708,7 @@ const StudentHeader = () => {
                         {currentPage !== 1 && currentPage !== totalPages && (
                           <PaginationItem>
                             <Button
-                              className="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium"
+                              className="bg-blue-900 text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium"
                               onClick={() => setCurrentPage(currentPage)}
                               aria-label={`Page ${currentPage}`}
                             >
@@ -740,7 +738,7 @@ const StudentHeader = () => {
                           <Button
                             className={
                               currentPage === totalPages
-                                ? "bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium"
+                                ? "bg-blue-900 text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium"
                                 : "bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100 px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium"
                             }
                             onClick={() => setCurrentPage(totalPages)}
@@ -753,7 +751,7 @@ const StudentHeader = () => {
                     )}
                     <PaginationItem>
                       <Button
-                        className="bg-blue-600 hover:bg-blue-700 text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors"
+                        className="bg-blue-900 hover:bg-blue-800 text-white px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors"
                         onClick={() =>
                           setCurrentPage((prev) =>
                             Math.min(prev + 1, totalPages)

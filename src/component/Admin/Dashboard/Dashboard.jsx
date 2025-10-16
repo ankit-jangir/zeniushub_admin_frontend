@@ -113,16 +113,16 @@ const Dashboard = ({ children }) => {
               <div className="flex-1 p-4">
                 {/* Stats Cards */}
                 <div className="w-full">
-                  <Card className="shadow-none border-none p-0 mt-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {" "}
+                  <Card className="shadow-none border-none p-0 mt-4 bg-white dark:bg-[#0B1120]">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                       {[
                         {
                           label: "Total Received",
                           count: emiData?.data?.total_received || 0,
-                          borderColor: "border-l-4 border-indigo-500",
-                          bgColor: "bg-indigo-50",
-                          textColor: "text-indigo-700",
+                          borderColor: "border-l-4 border-orange-500",
+                          bgColor: "bg-orange-50 dark:bg-orange-900/20",
+                          textColor: "text-orange-700 dark:text-orange-400",
+                          hover: "hover:bg-orange-100 dark:hover:bg-orange-900/30",
                           link: {
                             pathname: "/paid",
                             state: { source: "dashboard" },
@@ -132,8 +132,9 @@ const Dashboard = ({ children }) => {
                           label: "Today's Missed Fees",
                           count: emiData?.data?.totalMissedFees || 0,
                           borderColor: "border-l-4 border-rose-500",
-                          bgColor: "bg-rose-50",
-                          textColor: "text-rose-700",
+                          bgColor: "bg-rose-50 dark:bg-rose-900/20",
+                          textColor: "text-rose-700 dark:text-rose-400",
+                          hover: "hover:bg-rose-100 dark:hover:bg-rose-900/30",
                           link: {
                             pathname: "/missed",
                             state: { source: "dashboard" },
@@ -142,9 +143,10 @@ const Dashboard = ({ children }) => {
                         {
                           label: "Today's Upcoming Amount",
                           count: emiData?.data?.amount_to_collect || 0,
-                          borderColor: "border-l-4 border-amber-500",
-                          bgColor: "bg-amber-50",
-                          textColor: "text-amber-700",
+                          borderColor: "border-l-4 border-indigo-600",
+                          bgColor: "bg-indigo-50 dark:bg-indigo-900/20",
+                          textColor: "text-indigo-700 dark:text-indigo-400",
+                          hover: "hover:bg-indigo-100 dark:hover:bg-indigo-900/30",
                           link: {
                             pathname: "/upcoming",
                             state: { source: "dashboard" },
@@ -154,16 +156,14 @@ const Dashboard = ({ children }) => {
                         const CardContentComponent = (
                           <Card
                             key={index}
-                            className={`rounded-xl shadow-sm cursor-pointer w-full ${item.borderColor} ${item.bgColor}`}
+                            className={`rounded-xl shadow-md transition-all duration-300 cursor-pointer w-full ${item.borderColor} ${item.bgColor} ${item.hover}`}
                           >
-                            <CardContent className="p-5 flex justify-between items-start">
+                            <CardContent className="p-6 flex justify-between items-start">
                               <div>
-                                <p
-                                  className={`text-sm font-medium ${item.textColor}`}
-                                >
+                                <p className={`text-sm font-semibold ${item.textColor}`}>
                                   {item.label}
                                 </p>
-                                <p className="text-2xl font-semibold mt-1 text-gray-900">
+                                <p className="text-3xl font-bold mt-2 text-gray-900 dark:text-white">
                                   {item.count}
                                 </p>
                               </div>
@@ -183,15 +183,17 @@ const Dashboard = ({ children }) => {
                   </Card>
                 </div>
 
-                <div className="flex flex-col md:flex-row gap-6 pt-4">
+                <div className="flex flex-col lg:flex-row gap-6 pt-4">
+                  {/* ===== Fees Overview Chart Section ===== */}
                   <div className="flex-[7]">
-                    <Card className="w-full">
-                      <CardHeader>
-                        <CardTitle className="text-2xl font-bold">
+                    <Card className="w-full bg-white dark:bg-[#0f172a] border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow duration-300">
+                      <CardHeader className="border-b border-gray-100 dark:border-gray-800 bg-orange-50 dark:bg-[#1e293b] rounded-t-lg">
+                        <CardTitle className="text-xl font-semibold text-orange-600 dark:text-orange-400">
                           Fees Overview
                         </CardTitle>
                       </CardHeader>
-                      <CardContent>
+
+                      <CardContent className="p-6">
                         {chartData.length === 0 ? (
                           <div className="text-center text-gray-500 py-8">
                             📊 No data found to display.
@@ -199,39 +201,43 @@ const Dashboard = ({ children }) => {
                         ) : (
                           <ChartContainer config={chartConfig}>
                             <AreaChart
-                              accessibilityLayer
                               data={chartData}
-                              margin={{ left: 12, right: 12 }}
+                              margin={{ left: 8, right: 8, top: 12, bottom: 8 }}
                             >
-                              <CartesianGrid vertical={false} />
+                              <CartesianGrid
+                                strokeDasharray="3 3"
+                                stroke="rgba(0,0,0,0.1)"
+                                opacity={0.5}
+                              />
                               <XAxis
                                 dataKey="month"
                                 tickLine={false}
                                 axisLine={false}
                                 tickMargin={8}
+                                tick={{ fill: "#6b7280", fontSize: 12 }}
                                 tickFormatter={(value) => value.slice(0, 3)}
                               />
                               <ChartTooltip
                                 cursor={false}
-                                content={
-                                  <ChartTooltipContent indicator="dot" />
-                                }
+                                content={<ChartTooltipContent indicator="dot" />}
                               />
                               <Area
                                 dataKey="totalExpectedAmount"
-                                type="natural"
-                                fill="var(--color-mobile)"
-                                fillOpacity={0.4}
-                                stroke="var(--color-mobile)"
-                                stackId="a"
+                                type="monotone"
+                                stroke="#f97316"
+                                fill="#f97316"
+                                fillOpacity={0.2}
+                                strokeWidth={2}
+                                dot={{ r: 3 }}
                               />
                               <Area
                                 dataKey="TotalAmount"
-                                type="natural"
-                                fill="var(--color-desktop)"
-                                fillOpacity={0.4}
-                                stroke="var(--color-desktop)"
-                                stackId="a"
+                                type="monotone"
+                                stroke="#2563eb"
+                                fill="#2563eb"
+                                fillOpacity={0.2}
+                                strokeWidth={2}
+                                dot={{ r: 3 }}
                               />
                             </AreaChart>
                           </ChartContainer>
@@ -240,28 +246,28 @@ const Dashboard = ({ children }) => {
                     </Card>
                   </div>
 
-                  <div className="flex-[3] p-4 shadow-lg rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#0f172a]">
-                    <div className="flex justify-between items-center mb-4">
-                      <h2 className="text-lg font-semibold text-black dark:text-white">
+                  {/* ===== Department Table Section ===== */}
+                  <div className="flex-[3] bg-white dark:bg-[#0f172a] rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm hover:shadow-md transition-all duration-300 p-4">
+                    <div className="flex justify-between items-center mb-4 border-b border-gray-100 dark:border-gray-700 pb-2">
+                      <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                         Department
                       </h2>
-                      <a
-                        href="#"
+                      <button
                         onClick={() => Navigate("/Departments")}
-                        className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
+                        className="text-sm text-orange-600 dark:text-orange-400 hover:underline"
                       >
                         View All
-                      </a>
+                      </button>
                     </div>
 
-                    <div className="max-h-[300px] overflow-y-auto rounded-md">
+                    <div className="max-h-[300px] overflow-y-auto rounded-md custom-scrollbar">
                       <Table>
-                        <TableHeader className="bg-gray-100 dark:bg-gray-800 sticky top-0 z-10">
+                        <TableHeader className="bg-orange-50 dark:bg-[#1e293b] sticky top-0 z-10">
                           <TableRow>
-                            <TableHead className="text-black dark:text-white text-sm border-b border-gray-300 dark:border-gray-700 px-4 py-2 w-[50px]">
-                              S.NO.
+                            <TableHead className="text-gray-800 dark:text-gray-100 text-sm border-b border-gray-300 dark:border-gray-700 px-4 py-2 w-[60px]">
+                              #
                             </TableHead>
-                            <TableHead className="text-black dark:text-white text-sm border-b border-gray-300 dark:border-gray-700 px-4 py-2 w-[180px]">
+                            <TableHead className="text-gray-800 dark:text-gray-100 text-sm border-b border-gray-300 dark:border-gray-700 px-4 py-2">
                               Name
                             </TableHead>
                           </TableRow>
@@ -271,16 +277,15 @@ const Dashboard = ({ children }) => {
                           {departments?.departments?.map((dept, index) => (
                             <TableRow
                               key={dept.id}
-                              className={`${
-                                index % 2 === 0
-                                  ? "bg-white dark:bg-gray-900"
-                                  : "bg-gray-100 dark:bg-gray-800"
-                              } hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors`}
+                              className={`transition-colors duration-200 ${index % 2 === 0
+                                ? "bg-white dark:bg-gray-900"
+                                : "bg-gray-50 dark:bg-gray-800"
+                                } hover:bg-orange-50 dark:hover:bg-[#1e293b]`}
                             >
-                              <TableCell className="px-4 py-2 text-black dark:text-gray-100">
-                                {startIndex + index + 1}   
+                              <TableCell className="px-4 py-2 text-gray-900 dark:text-gray-100">
+                                {startIndex + index + 1}
                               </TableCell>
-                              <TableCell className="px-4 py-2 text-black dark:text-gray-100 max-w-[180px] truncate">
+                              <TableCell className="px-4 py-2 text-gray-900 dark:text-gray-100 truncate max-w-[160px]">
                                 <span title={dept.name}>{dept.name}</span>
                               </TableCell>
                             </TableRow>
@@ -291,87 +296,68 @@ const Dashboard = ({ children }) => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 w-full pt-5">
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full pt-5">
+                  {/* ===== Active Students Card ===== */}
                   <Card
-                    className="w-full flex items-center justify-between border p-4 cursor-pointer"
                     onClick={() => navigate("/students")}
+                    className="group relative overflow-hidden w-full rounded-3xl p-6 cursor-pointer 
+      bg-gradient-to-br from-orange-50 to-white dark:from-[#1a202c] dark:to-[#111827] 
+      border border-gray-200 dark:border-gray-800 shadow-md hover:shadow-xl transition-all duration-300"
                   >
-                    <div className="flex items-center gap-3 font-bold min-w-0">
-                      <div className="bg-red-100 text-red-500 p-6 rounded-full">
-                        <Book size={20} />
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4 min-w-0">
+                        <div className="flex items-center justify-center w-16 h-16 rounded-full bg-orange-100 dark:bg-orange-900/30 
+          text-orange-600 group-hover:bg-orange-500 group-hover:text-white transition-colors duration-300">
+                          <Book size={24} />
+                        </div>
+                        <div className="truncate">
+                          <p className="text-3xl font-bold text-gray-900 dark:text-white truncate">
+                            {employees?.data?.Students?.count}
+                          </p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400 truncate">
+                            Total Active Students
+                          </p>
+                        </div>
                       </div>
-                      <div className="truncate ">
-                        <p className="text-3xl  font-semibold text-red-500 truncate">
-                          {employees?.data?.Students?.count}
-                        </p>
-                        <p className="text-sm  truncate">
-                          Total Active Students
-                        </p>
+                      <div className="text-gray-400 dark:text-gray-500 group-hover:text-orange-500 transition-colors">
+                        <ChevronRight size={20} />
                       </div>
                     </div>
-                    <ChevronRight
-                      className="text-gray-500 cursor-pointer"
-                      size={18}
-                      onClick={() => navigate("/students")}
-                    />
+                    {/* Optional subtle background pattern */}
+                    <div className="absolute -right-10 -bottom-10 w-32 h-32 bg-orange-200/20 dark:bg-orange-500/10 rounded-full pointer-events-none"></div>
                   </Card>
 
+                  {/* ===== Active Employees Card ===== */}
                   <Card
-                    className="w-full flex items-center justify-between border p-4 cursor-pointer"
                     onClick={() => navigate("/team")}
+                    className="group relative overflow-hidden w-full rounded-3xl p-6 cursor-pointer 
+      bg-gradient-to-br from-blue-50 to-white dark:from-[#1a202c] dark:to-[#111827] 
+      border border-gray-200 dark:border-gray-800 shadow-md hover:shadow-xl transition-all duration-300"
                   >
-                    <div className="flex items-center gap-3 font-bold min-w-0">
-                      <div className="bg-pink-100 text-pink-500 p-6 rounded-full">
-                        <Users size={20} />
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4 min-w-0">
+                        <div className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 dark:bg-blue-900/30 
+          text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                          <Users size={24} />
+                        </div>
+                        <div className="truncate">
+                          <p className="text-3xl font-bold text-gray-900 dark:text-white truncate">
+                            {employees?.data?.allemploye?.count}
+                          </p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400 truncate">
+                            Total Active Employees
+                          </p>
+                        </div>
                       </div>
-                      <div className="truncate">
-                        <p className="text-3xl font-semibold text-emerald-500 truncate">
-                          {employees?.data?.allemploye?.count}
-                        </p>
-                        <p className="text-sm  truncate">
-                          Total Active Employees
-                        </p>
+                      <div className="text-gray-400 dark:text-gray-500 group-hover:text-blue-600 transition-colors">
+                        <ChevronRight size={20} />
                       </div>
                     </div>
-                    <ChevronRight
-                      className="text-gray-500 cursor-pointer"
-                      size={18}
-                      onClick={() => navigate("/team")}
-                    />
+                    <div className="absolute -right-10 -bottom-10 w-32 h-32 bg-blue-200/20 dark:bg-blue-500/10 rounded-full pointer-events-none"></div>
                   </Card>
-                  {/* <Card className="w-full flex items-center justify-between border p-4 bg-white dark:bg-[#0f172a]">
-                  <div className="flex flex-col gap-2">
-                    <div className="flex items-center gap-6">
-                      <p className="text-base font-semibold text-black dark:text-white">
-                        Complaints
-                      </p>
-                      <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-1">
-                          <p className="text-xl font-semibold text-emerald-600">
-                            3
-                          </p>
-                          <span className="text-wrap text-gray-500 dark:text-gray-400">
-                            Closed
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <p className="text-xl font-semibold text-red-500">
-                            11
-                          </p>
-                          <span className="text-wrap text-gray-500 dark:text-gray-400">
-                            New
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <ChevronRight
-                    className="text-gray-500 dark:text-gray-300 cursor-pointer"
-                    size={18}
-                    onClick={() => navigate("/support")}
-                  />
-                </Card> */}
                 </div>
+
               </div>
             </div>
           </main>

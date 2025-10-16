@@ -160,7 +160,7 @@ const Sessions = () => {
           <div className="w-full shadow-md shadow-blue-300/30 rounded-lg flex flex-wrap sm:flex-nowrap items-center justify-between px-4 sm:px-8 py-4 gap-3">
             <div className="flex items-center gap-3">
               <Button
-                className="bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-md text-sm flex items-center gap-2"
+                className="bg-blue-900 text-white hover:bg-blue-800 px-4 py-2 rounded-md text-sm flex items-center gap-2"
                 onClick={back}
               >
                 <ArrowLeft size={18} />
@@ -168,7 +168,7 @@ const Sessions = () => {
               </Button>
               <Button
                 onClick={() => setAddSessions(true)}
-                className="bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-md text-sm flex items-center gap-2"
+                className="bg-orange-600 text-white hover:bg-orange-500 px-4 py-2 rounded-md text-sm flex items-center gap-2"
               >
                 <span className="text-lg">+</span>
                 <span>Add Sessions</span>

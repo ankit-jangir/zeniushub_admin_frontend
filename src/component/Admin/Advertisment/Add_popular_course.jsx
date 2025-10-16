@@ -190,31 +190,31 @@ const AddPopularCourse = () => {
       />
 
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4 md:gap-0">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-gray-100">
             Popular Courses
           </h1>
 
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-              <Button className="bg-blue-600 hover:bg-blue-700 transition-all duration-300">
+              <Button className="bg-blue-900 hover:bg-blue-800 transition-all duration-300 w-full md:w-auto">
                 Add New Course
               </Button>
             </DialogTrigger>
             <DialogContent
               onPointerDownOutside={(e) => e.preventDefault()}
               onEscapeKeyDown={(e) => e.preventDefault()}
-              className="dark:bg-gray-800 bg-white text-black dark:text-white  rounded-xl max-w-lg w-full"
+              className="dark:bg-gray-800 bg-white text-black dark:text-white rounded-xl max-w-lg w-full p-6"
             >
               <DialogHeader>
-                <DialogTitle className="text-2xl font-semibold text-center">
+                <DialogTitle className="text-xl md:text-2xl font-semibold text-center">
                   Add New Course
                 </DialogTitle>
               </DialogHeader>
               <Form {...form}>
                 <form
                   onSubmit={form.handleSubmit(handleAddCourse)}
-                  className="space-y-6"
+                  className="space-y-4 md:space-y-6"
                 >
                   <FormField
                     control={form.control}
@@ -225,7 +225,7 @@ const AddPopularCourse = () => {
                         <FormControl>
                           <Input
                             placeholder="Enter course title"
-                            className="bg-white dark:bg-gray-700 border-gray-600 text-white focus:ring-blue-500"
+                            className="bg-white dark:bg-gray-700 border-gray-600 text-black dark:text-white focus:ring-blue-500"
                             {...field}
                           />
                         </FormControl>
@@ -242,7 +242,7 @@ const AddPopularCourse = () => {
                         <FormControl>
                           <Input
                             placeholder="Enter course description"
-                            className=" bg-white dark:bg-gray-700 border-gray-600 text-white focus:ring-blue-500"
+                            className="bg-white dark:bg-gray-700 border-gray-600 text-black dark:text-white focus:ring-blue-500"
                             {...field}
                           />
                         </FormControl>
@@ -273,7 +273,7 @@ const AddPopularCourse = () => {
                       <img
                         src={imagePreview}
                         alt="Preview"
-                        className="mt-4 w-full h-40 object-cover rounded-lg"
+                        className="mt-4 w-full h-40 md:h-48 object-cover rounded-lg"
                       />
                     )}
                     <FormMessage className="text-red-400" />
@@ -289,6 +289,7 @@ const AddPopularCourse = () => {
             </DialogContent>
           </Dialog>
         </div>
+
 
         {loading && (
           <div className="flex items-center justify-center h-64">

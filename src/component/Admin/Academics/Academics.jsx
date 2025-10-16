@@ -19,7 +19,7 @@ const circleBase =
   "flex items-center justify-center w-14 h-14 rounded-xl shadow-lg";
 
 const Academics = () => {
-   let token = localStorage.getItem("token");
+  let token = localStorage.getItem("token");
 
   token = useSelector((state) => state.logout.token);
   const navigate = useNavigate();

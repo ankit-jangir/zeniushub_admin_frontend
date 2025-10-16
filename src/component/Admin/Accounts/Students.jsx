@@ -24,14 +24,14 @@ import { fromDate, toDate } from "../../../Redux_store/slices/EmisSlice";
 import { setMonth, setYear } from "../../../Redux_store/slices/dateFilterSlice";
 
 const Students = () => {
-   let token = localStorage.getItem("token");
+  let token = localStorage.getItem("token");
 
   token = useSelector((state) => state.logout.token);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { data, loading, error } = useSelector(
     (state) => state.emis.data || {}
-  );  
+  );
   console.log('====================================');
   console.log(data);
   console.log('====================================');
@@ -53,7 +53,7 @@ const Students = () => {
     }
   }, [dispatch, month, year]);
 
-  useEffect(() => {}, [data, loading, error]);
+  useEffect(() => { }, [data, loading, error]);
 
   const cardData = [
     {
@@ -194,14 +194,14 @@ const Students = () => {
                     ₹ {card.value.toLocaleString()}
                   </span>
                 )}
-                
+
               </CardContent>
               <CardFooter className="flex flex-col items-center space-y-2">
                 <CardDescription className="text-gray-700 font-bold dark:text-gray-500">
                   Updated Amount
                 </CardDescription>
                 <Button
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition"
+                  className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 rounded-md transition"
                   onClick={() =>
                     navigate(`${card.link}?month=${month}&year=${year}`)
                   }

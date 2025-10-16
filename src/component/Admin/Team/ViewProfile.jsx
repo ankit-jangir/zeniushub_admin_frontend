@@ -503,7 +503,7 @@ const ViewProfile = () => {
           />
           <Button
             onClick={goBack}
-            className="mb-4 bg-blue-600 hover:bg-blue-500 text-white rounded-lg px-4 py-2 flex items-center gap-2 transition-all shadow-sm"
+            className="mb-4 bg-blue-800 hover:bg-blue-900 text-white rounded-lg px-4 py-2 flex items-center gap-2 transition-all shadow-sm"
           >
             <ArrowLeft size={18} />
             <span>Back</span>
@@ -546,7 +546,7 @@ const ViewProfile = () => {
               <TabsTrigger
                 value="salary"
                 onClick={goToSalaryPage}
-                    className="flex items-center justify-center gap-1 transition-colors duration-200 text-base font-medium py-2 px-4 rounded-md hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-gray-700 dark:hover:text-white data-[state=active]:bg-blue-500 data-[state=active]:text-white"
+                className="flex items-center justify-center gap-1 transition-colors duration-200 text-base font-medium py-2 px-4 rounded-md hover:bg-blue-50 hover:text-blue-600 dark:hover:bg-gray-700 dark:hover:text-white data-[state=active]:bg-blue-500 data-[state=active]:text-white"
               >
                 <span>💵</span> Salary
               </TabsTrigger>
@@ -555,7 +555,7 @@ const ViewProfile = () => {
             {/* Profile Tab */}
             <TabsContent value="profile" className="mt-4">
               <Card className="rounded-2xl shadow-lg overflow-hidden">
-                <div className="bg-gradient-to-r from-blue-700 to-blue-500 p-6 flex flex-col sm:flex-row items-center rounded-t-2xl">
+                <div className="bg-gradient-to-r from-orange-600 to-red-500 p-6 flex flex-col sm:flex-row items-center rounded-t-2xl">
                   <Dialog open={isOpen} onOpenChange={setIsOpen}>
                     <DialogTrigger asChild>
                       <Avatar
@@ -1051,10 +1051,10 @@ const ViewProfile = () => {
                             <Badge
                               variant="outline"
                               className={`text-sm font-medium px-3 py-1 rounded-full ${task.status === "Pending"
-                                  ? "bg-yellow-100 text-yellow-800"
-                                  : task.status === "Completed"
-                                    ? "bg-green-100 text-green-800"
-                                    : "bg-gray-100 text-gray-700"
+                                ? "bg-yellow-100 text-yellow-800"
+                                : task.status === "Completed"
+                                  ? "bg-green-100 text-green-800"
+                                  : "bg-gray-100 text-gray-700"
                                 }`}
                             >
                               Status: {task.status}
@@ -1487,8 +1487,8 @@ const ViewProfile = () => {
                                       <div className="flex items-center gap-2">
                                         <Check
                                           className={`h-4 w-4 ${selected.includes(opt.id)
-                                              ? "opacity-100"
-                                              : "opacity-0"
+                                            ? "opacity-100"
+                                            : "opacity-0"
                                             }`}
                                         />
                                         {opt.name}

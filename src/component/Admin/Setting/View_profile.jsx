@@ -65,20 +65,20 @@ const View_Profile = () => {
                   <AvatarFallback>{admin.full_name?.at(0)}</AvatarFallback>
                 </Avatar>
                 {/* 
-                <input
-                  type="file"
-                  ref={fileInputRef}
-                  accept="image/*"
-                  className="hidden"
-                  onChange={handleImageChange}
-                />
-                <button
-                  className="absolute bottom-0 right-0 bg-blue-600 p-2 rounded-full shadow-lg hover:bg-blue-700 transition"
-                  onClick={() => fileInputRef.current.click()}
-                >
-                  <Camera className="w-5 h-5 text-white" />
-                </button>
-                */}
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    accept="image/*"
+                    className="hidden"
+                    onChange={handleImageChange}
+                  />
+                  <button
+                    className="absolute bottom-0 right-0 bg-blue-600 p-2 rounded-full shadow-lg hover:bg-blue-700 transition"
+                    onClick={() => fileInputRef.current.click()}
+                  >
+                    <Camera className="w-5 h-5 text-white" />
+                  </button>
+                  */}
               </div>
               <CardTitle className="mt-4 text-xl text-gray-600 dark:text-white font-semibold truncate  w-[190px]  block" title={admin.full_name || "Admin"}>
                 {admin.full_name || "Admin"}

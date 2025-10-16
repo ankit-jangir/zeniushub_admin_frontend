@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const CardHeaderAtt = ({ value, count, apiData }) => {
 
-   let token = localStorage.getItem("token");
+  let token = localStorage.getItem("token");
 
   token = useSelector((state) => state.logout.token);
   const dispatch = useDispatch();
@@ -33,13 +33,13 @@ const CardHeaderAtt = ({ value, count, apiData }) => {
         token
       })
     ) :
-      dispatch(fetchEmployeeAttendance({token, first_name: apiData.n, attendence_date: apiData.d, page: apiData.cp, limit: apiData.l, status: status }));
+      dispatch(fetchEmployeeAttendance({ token, first_name: apiData.n, attendence_date: apiData.d, page: apiData.cp, limit: apiData.l, status: status }));
   }
 
 
   const cardCount = [
     {
-      class: "bg-blue-600",
+      class: "bg-blue-800",
       title: `Total ${value === "student_att" ? "Student" : "Team"}`,
       icon: Users,
       count: count.t,

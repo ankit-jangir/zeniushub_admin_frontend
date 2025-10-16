@@ -51,8 +51,8 @@ import {
 import No_data_found from "../No_data_found";
 
 const FormSchema = z.object({
-  title: z.string().min(1, "Title is required!").max(255, "Title must be at most 255 characters!"), 
-  desc: z.string().min(1, "Description is required!"), 
+  title: z.string().min(1, "Title is required!").max(255, "Title must be at most 255 characters!"),
+  desc: z.string().min(1, "Description is required!"),
   batchId: z.string().optional(),
   isPublic: z.boolean({ required_error: "Please select visibility type" }),
 });
@@ -70,7 +70,7 @@ const Notification = () => {
   const [isPublic, setIsPublic] = useState(null);
   const inputRef = useRef(null);
   const dispatch = useDispatch();
-  const { notii, loading } = useSelector((s) => s.notify); 
+  const { notii, loading } = useSelector((s) => s.notify);
   const [selectedBatch, setSelectedBatch] = useState("");
   const [selectedCourse, setSelectedCourse] = useState("Select Course");
   const { course } = useSelector((s) => s.acad_courses);
@@ -97,13 +97,13 @@ const Notification = () => {
     defaultValues: {
       isPublic: null,
       batchId: "",
-      courseId: "", 
+      courseId: "",
     },
   });
 
   useEffect(() => {
     dispatch(get_notification(token));
-    dispatch(get_Batches({token}));
+    dispatch(get_Batches({ token }));
     dispatch(get_course(token));
   }, [dispatch]);
 
@@ -115,13 +115,13 @@ const Notification = () => {
       batchId: data.isPublic
         ? null
         : filterState.batchId
-        ? parseInt(filterState.batchId)
-        : null,
+          ? parseInt(filterState.batchId)
+          : null,
       course_id: data.isPublic
         ? null
         : filterState.courseId
-        ? parseInt(filterState.courseId)
-        : null,
+          ? parseInt(filterState.courseId)
+          : null,
       status: data.isPublic ? "public" : "private",
     };
 
@@ -146,7 +146,7 @@ const Notification = () => {
           transition: Zoom,
         });
       } else {
-        throw new Error("Failed to add"); 
+        throw new Error("Failed to add");
       }
     } catch (error) {
       const errorMessage =
@@ -154,7 +154,7 @@ const Notification = () => {
           ? error?.error?.[0]?.message
           : error?.message || "Failed to add notification.";
       console.error(errorMessage);
-      toast.error(errorMessage, { 
+      toast.error(errorMessage, {
         position: "top-right",
         autoClose: 3000,
         theme: isDarkMode ? "dark" : "light",
@@ -180,7 +180,7 @@ const Notification = () => {
         transition: Zoom,
       });
     }
-   
+
   };
 
   const confirmDelete = async () => {
@@ -230,17 +230,17 @@ const Notification = () => {
 
   const handleSelectCourse = (courseName, courseId) => {
     setSelectedCourse(courseName === "" ? "Select Course" : courseName);
-    setSelectedBatch(""); 
+    setSelectedBatch("");
     setFilterState((prev) => ({
       ...prev,
       courseId,
       batchId: "",
       page: 1,
     }));
-    setValue("batchId", ""); 
+    setValue("batchId", "");
 
     if (courseId !== "") {
-      dispatch(fetchBatchesByCourseId({courseId, token}));
+      dispatch(fetchBatchesByCourseId({ courseId, token }));
     }
   };
 
@@ -250,10 +250,10 @@ const Notification = () => {
     setSelectedBatch(batchName);
     setFilterState((prev) => ({
       ...prev,
-      batchId: String(batchId), 
+      batchId: String(batchId),
       page: 1,
     }));
-    setValue("batchId", String(batchId)); 
+    setValue("batchId", String(batchId));
     console.log(batchId);
   };
 
@@ -270,7 +270,7 @@ const Notification = () => {
             onOpenChange={setVisibilityDialogOpen}
           >
             <DialogTrigger asChild>
-              <Button className="bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-lg transition-all">
+              <Button className="bg-blue-900 hover:bg-blue-800 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-lg transition-all">
                 <Plus className="h-5 w-5 mr-2" /> Add Notification
               </Button>
             </DialogTrigger>
@@ -343,7 +343,7 @@ const Notification = () => {
                 </Button>
                 <Button
                   onClick={handleVisibilitySelection}
-                  className="rounded-lg bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white transition-all"
+                  className="rounded-lg bg-blue-800 hover:bg-blue-900 dark:bg-blue-500 dark:hover:bg-blue-600 text-white transition-all"
                   disabled={isPublic === null}
                 >
                   Continue
@@ -364,7 +364,7 @@ const Notification = () => {
                 Create Notification
               </DialogTitle>
             </DialogHeader>
-            <form onSubmit={handleSubmit(onSubmit, onInvalid)} className="space-y-5 mt-4"> 
+            <form onSubmit={handleSubmit(onSubmit, onInvalid)} className="space-y-5 mt-4">
               <div className="space-y-1">
                 <Label
                   htmlFor="title"
@@ -378,7 +378,7 @@ const Notification = () => {
                   {...register("title")}
                   className="rounded-lg border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 transition-all"
                 />
-                {errors.title && ( 
+                {errors.title && (
                   <p className="text-xs text-red-500">{errors.title.message}</p>
                 )}
               </div>
@@ -421,7 +421,7 @@ const Notification = () => {
                       <DropdownMenuContent className="max-h-60 overflow-y-auto">
                         <DropdownMenuGroup>
                           {Array.isArray(course?.data) &&
-                          course.data.length > 0 ? (
+                            course.data.length > 0 ? (
                             course.data.map((c) => (
                               <DropdownMenuItem
                                 key={c.course_id}

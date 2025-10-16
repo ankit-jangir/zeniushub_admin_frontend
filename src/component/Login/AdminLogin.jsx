@@ -15,12 +15,11 @@ import {
   FormMessage,
 } from "../../component/src/components/ui/form";
 import { Input } from "../../component/src/components/ui/input";
-import { Label } from "../../component/src/components/ui/label";
 import { Checkbox } from "../../component/src/components/ui/checkbox";
 import { Button } from "../src/components/ui/button";
 
 import { useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import loginAdmin from "../../Redux_store/Api/Login_admin";
 import { setToken } from "../../Redux_store/slices/Logout_Admin";
 import { setAdminToken } from "../../Redux_store/slices/adminProfileSlice";
@@ -34,13 +33,9 @@ const FormSchema = z.object({
 });
 
 const AdminLogin = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const dispatch = useDispatch();
-  const { error } = useSelector((state) => state.login || {});
   const navigate = useNavigate();
 
   const form = useForm({
@@ -55,20 +50,15 @@ const AdminLogin = () => {
   const onSubmit = async (data, event) => {
     event.preventDefault();
     setIsSubmitting(true);
-
     try {
       const response = await dispatch(
-        loginAdmin({
-          email: data.email,
-          password: data.password,
-        })
+        loginAdmin({ email: data.email, password: data.password })
       ).unwrap();
 
       if (response.status === "001" && response.token) {
         localStorage.setItem("token", response.token);
         dispatch(setToken(response.token));
         dispatch(setAdminToken(response.token));
-
         setTimeout(() => {
           setIsSubmitting(false);
           navigate("/Dashboard");
@@ -83,51 +73,67 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-r from-blue-600 to-blue-400 px-4 sm:px-6">
-      <div className="bg-white shadow-2xl rounded-3xl p-8 sm:p-16 w-full max-w-md sm:max-w-4xl flex flex-col sm:flex-row overflow-hidden transform transition-all duration-500 hover:scale-105 h-auto sm:h-[600px]">
-        <div className="hidden sm:flex flex-col justify-center w-1/2 bg-gradient-to-r from-indigo-600 to-blue-600 text-white p-8 sm:p-16 rounded-l-3xl">
-          <h2 className="text-3xl sm:text-4xl font-bold animate-bounce">
-            Welcome to Intellix
-          </h2>
-          <p className="text-sm sm:text-lg mt-4 opacity-90">
-            Your trusted admin portal
-          </p>
+    <div className="min-h-screen flex flex-col md:flex-row bg-gray-50">
+      {/* LEFT SIDE */}
+      <div className="hidden md:flex w-full md:w-1/2 bg-[#ff4500] relative overflow-hidden flex-col justify-center px-8 lg:px-16 text-white">
+        <div className="absolute inset-0 overflow-hidden">
+          <svg
+            viewBox="0 0 800 800"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-full opacity-10 scale-150"
+          >
+            <circle cx="400" cy="400" r="300" fill="none" stroke="white" strokeWidth="80" />
+            <circle cx="400" cy="400" r="500" fill="none" stroke="white" strokeWidth="40" />
+          </svg>
         </div>
 
-        <div className="w-full sm:w-1/2 px-6 sm:px-12 py-8 sm:py-10 flex flex-col justify-center">
-          <h3 className="text-2xl sm:text-4xl font-bold text-gray-800 text-center">
+        <div className="relative z-10 text-center md:text-left">
+          <div className="flex items-center justify-center md:justify-start gap-2 mb-6">
+            <div className="w-6 h-6 rounded-full border-2 border-white flex items-center justify-center">
+              <div className="w-3 h-3 rounded-full bg-white" />
+            </div>
+            <h1 className="text-lg md:text-xl font-semibold tracking-wide">Zeniushub</h1>
+          </div>
+
+          <h2 className="text-3xl md:text-4xl font-bold leading-snug mb-3">
+            Login into <br /> your account
+          </h2>
+          <p className="text-white/90 text-sm md:text-base max-w-sm">
+            Enter the correct credentials to access your panel
+          </p>
+        </div>
+      </div>
+
+      {/* RIGHT SIDE */}
+      <div className="w-full md:w-1/2 flex justify-center items-center bg-white px-6 sm:px-8 lg:px-12 py-12 md:py-0">
+        <div className="w-full max-w-sm sm:max-w-md md:max-w-lg bg-white shadow-xl rounded-2xl p-6 sm:p-8 md:p-10">
+          <h2 className="text-center text-[#ff4500] text-2xl sm:text-3xl font-bold mb-2">
             Admin Login
-          </h3>
-          <p className="text-gray-500 mt-3 sm:mt-4 text-center mb-6 sm:mb-10 text-sm sm:text-lg">
-            Enter your credentials to access the dashboard.
+          </h2>
+          <p className="text-center text-gray-600 mb-6 sm:mb-8 text-sm sm:text-base">
+            Enter your credentials to access the panel
           </p>
 
           <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-6 sm:space-y-10"
-            >
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6">
+              {/* Email */}
               <FormField
                 control={form.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="block margin text-gray-700 font-semibold text-lg sm:text-xl">
+                    <FormLabel className="text-gray-700 font-medium text-sm sm:text-base">
                       Email
                     </FormLabel>
                     <FormControl>
                       <div className="relative flex items-center">
                         <Input
-                          className="w-full text-black border-gray-300 rounded-xl pl-12 p-3 sm:p-5 focus:ring-4 focus:ring-blue-500 shadow-lg"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          placeholder="Enter Your Email"
+                          className="w-full border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ff4500] focus:border-[#ff4500] p-3 pl-10 sm:pl-12 text-sm sm:text-base"
+                          placeholder="Enter your email"
                           type="email"
                           {...field}
                         />
-                        <span className="absolute right-4 text-gray-500">
-                          <Mail size={21} />
-                        </span>
+                        <Mail size={18} className="absolute left-3 text-gray-500" />
                       </div>
                     </FormControl>
                     <FormMessage />
@@ -135,75 +141,62 @@ const AdminLogin = () => {
                 )}
               />
 
+              {/* Password */}
               <FormField
                 control={form.control}
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="block margin text-gray-700 font-semibold text-lg sm:text-xl">
+                    <FormLabel className="text-gray-700 font-medium text-sm sm:text-base">
                       Password
                     </FormLabel>
                     <FormControl>
                       <div className="relative flex items-center">
                         <Input
-                          className="w-full border-gray-300 text-black rounded-xl p-3 sm:p-5 pr-12 focus:ring-4 focus:ring-blue-500 shadow-lg"
-                          placeholder="Enter Your Password"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
+                          className="w-full border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ff4500] focus:border-[#ff4500] p-3 pr-10 text-sm sm:text-base"
+                          placeholder="Enter your password"
                           type={showPassword ? "text" : "password"}
                           {...field}
                         />
                         <span
-                          className="absolute right-4 text-gray-500 cursor-pointer"
+                          className="absolute right-3 text-gray-500 cursor-pointer"
                           onClick={() => setShowPassword(!showPassword)}
                         >
-                          {showPassword ? (
-                            <Eye size={21} />
-                          ) : (
-                            <EyeOff size={21} />
-                          )}
+                          {showPassword ? <Eye size={18} /> : <EyeOff size={18} />}
                         </span>
                       </div>
                     </FormControl>
-                    {error && (
-                      <p className="text-sm text-red-600 mt-2">
-                        {error?.error?.[0]?.message ||
-                          error?.message ||
-                          "Login failed. Please try again."}
-                      </p>
-                    )}
                     <FormMessage />
                   </FormItem>
                 )}
               />
 
+              {/* Checkbox */}
               <FormField
                 control={form.control}
                 name="terms"
                 render={({ field }) => (
                   <FormItem>
-                    <div className="flex margin items-center space-x-3">
+                    <div className="flex items-center space-x-2">
                       <Checkbox
                         id="terms"
-                        className="w-4 sm:w-5 h-4 sm:h-5"
                         checked={field.value}
                         onCheckedChange={field.onChange}
+                        className="data-[state=checked]:bg-[#ff4500] data-[state=checked]:border-[#ff4500]"
                       />
-                      <Label
-                        htmlFor="terms"
-                        className="text-gray-700 checkbox text-sm sm:text-lg"
-                      >
+                      <label htmlFor="terms" className="text-gray-700 text-xs sm:text-sm">
                         Accept terms and conditions
-                      </Label>
+                      </label>
                     </div>
                     <FormMessage />
                   </FormItem>
                 )}
               />
 
+              {/* Button */}
               <Button
                 disabled={isSubmitting}
-                className="w-full margin bg-gradient-to-r from-blue-500 to-blue-700 text-white py-4 sm:py-6 rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-xl text-lg sm:text-xl font-bold"
+                className="w-full bg-[#ff4500] hover:bg-[#ff5c1c] text-white text-sm sm:text-base md:text-lg rounded-lg py-2 sm:py-3 transition-all shadow-md"
                 type="submit"
               >
                 {isSubmitting ? "Logging in..." : "Login"}

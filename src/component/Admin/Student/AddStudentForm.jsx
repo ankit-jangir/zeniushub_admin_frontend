@@ -159,9 +159,8 @@ const AddStudentForm = () => {
   const validateDate = (dateValue, fieldName) => {
     const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
     if (!dateRegex.test(dateValue)) {
-      return `${
-        fieldName === "dob" ? "Date of Birth" : "Joining Date"
-      } must be in YYYY-MM-DD format`;
+      return `${fieldName === "dob" ? "Date of Birth" : "Joining Date"
+        } must be in YYYY-MM-DD format`;
     }
 
     const selectedDate = new Date(dateValue);
@@ -257,7 +256,7 @@ const AddStudentForm = () => {
     <div>
       <div className="flex items-center gap-4 mb-6 mt-5">
         <Button
-          className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-full flex items-center gap-2 transition duration-300 shadow-md"
+          className="bg-blue-800 hover:bg-blue-900 px-4 py-2 rounded-full flex items-center gap-2 transition duration-300 shadow-md"
           onClick={() => navigate(-1)}
         >
           <ArrowLeft size={18} />
@@ -315,9 +314,8 @@ const AddStudentForm = () => {
               render={({ field }) => (
                 <input
                   {...field}
-                  className={`w-full border border-gray-300 bg-transparent rounded-xl p-3 shadow-lg ${
-                    errors.name ? "border-red-500" : ""
-                  }`}
+                  className={`w-full border border-gray-300 bg-transparent rounded-xl p-3 shadow-lg ${errors.name ? "border-red-500" : ""
+                    }`}
                   placeholder="Your name"
                 />
               )}
@@ -348,9 +346,8 @@ const AddStudentForm = () => {
                   value={field.value || ""}
                 >
                   <SelectTrigger
-                    className={`w-full border border-gray-300 rounded-xl h-12 p-3 shadow-lg ${
-                      errors.gender ? "border-red-500" : ""
-                    }`}
+                    className={`w-full border border-gray-300 rounded-xl h-12 p-3 shadow-lg ${errors.gender ? "border-red-500" : ""
+                      }`}
                   >
                     <SelectValue placeholder="Select Gender" />
                   </SelectTrigger>
@@ -381,9 +378,8 @@ const AddStudentForm = () => {
               render={({ field }) => (
                 <input
                   {...field}
-                  className={`w-full border border-gray-300 bg-transparent rounded-xl p-3 shadow-lg ${
-                    errors.address ? "border-red-500" : ""
-                  }`}
+                  className={`w-full border border-gray-300 bg-transparent rounded-xl p-3 shadow-lg ${errors.address ? "border-red-500" : ""
+                    }`}
                   placeholder="Enter your address"
                 />
               )}
@@ -409,9 +405,8 @@ const AddStudentForm = () => {
                   type="date"
                   {...field}
                   ref={inputRef}
-                  className={`w-full h-[3.3rem] border rounded-xl p-3 shadow-lg cursor-pointer dark:text-white dark:[color-scheme:dark] ${
-                    errors.dob ? "border-red-500" : "border-gray-300"
-                  }`}
+                  className={`w-full h-[3.3rem] border rounded-xl p-3 shadow-lg cursor-pointer dark:text-white dark:[color-scheme:dark] ${errors.dob ? "border-red-500" : "border-gray-300"
+                    }`}
                   onChange={(e) => {
                     field.onChange(e);
                     handleDateChange(e.target.value, "dob", "dob");
@@ -440,9 +435,8 @@ const AddStudentForm = () => {
                   type="date"
                   {...field}
                   ref={joining_dateInputRef}
-                  className={`w-full h-[3.3rem] border rounded-xl p-4 shadow-lg cursor-pointer dark:text-white dark:[color-scheme:dark] ${
-                    errors.joining_date ? "border-red-500" : "border-gray-300"
-                  }`}
+                  className={`w-full h-[3.3rem] border rounded-xl p-4 shadow-lg cursor-pointer dark:text-white dark:[color-scheme:dark] ${errors.joining_date ? "border-red-500" : "border-gray-300"
+                    }`}
                   onChange={(e) => {
                     field.onChange(e);
                     handleDateChange(
@@ -478,9 +472,8 @@ const AddStudentForm = () => {
                   value={field.value || ""}
                 >
                   <SelectTrigger
-                    className={`w-full border border-gray-300 rounded-xl h-12 p-3 shadow-lg ${
-                      errors.session_id ? "border-red-500" : ""
-                    }`}
+                    className={`w-full border border-gray-300 rounded-xl h-12 p-3 shadow-lg ${errors.session_id ? "border-red-500" : ""
+                      }`}
                   >
                     <SelectValue placeholder="Select Session" />
                   </SelectTrigger>
@@ -510,7 +503,7 @@ const AddStudentForm = () => {
           <div className="col-span-1 sm:col-span-2 flex justify-center">
             <Button
               type="submit"
-              className="bg-blue-700 hover:bg-blue-500 px-10 py-3 rounded-lg text-white"
+              className="bg-blue-900 hover:bg-blue-800 px-10 py-3 rounded-lg text-white"
             >
               Proceed
             </Button>

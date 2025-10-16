@@ -95,7 +95,7 @@ const expenseSchema = z.object({
   //   .string()
   //   .min(10, "Description must be at least 10 characters")
   //   .max(500),
-  description: z.string().max(500).optional(), 
+  description: z.string().max(500).optional(),
   referenceBy: z
     .string()
     .min(3, "Reference must be at least 3 characters")
@@ -232,7 +232,7 @@ const Expenses = () => {
 
   const [isRefetching, setIsRefetching] = useState(false);
 
- 
+
   useEffect(() => {
     if (isRefetching) return;
     dispatch(
@@ -263,7 +263,7 @@ const Expenses = () => {
     }
   }, [error]);
 
- 
+
   useEffect(() => {
     setErrorMessage(null);
   }, [expenses]);
@@ -272,7 +272,7 @@ const Expenses = () => {
   useEffect(() => {
     if (!isRefetching && !errorMessage && !isAddExpenseOpen) {
       console.log("useEffect: Ensuring dialog is closed when isRefetching is false");
-      setIsAddExpenseOpen(false); 
+      setIsAddExpenseOpen(false);
     }
   }, [isRefetching, errorMessage, isAddExpenseOpen]);
 
@@ -338,7 +338,7 @@ const Expenses = () => {
     };
 
     try {
-      setIsRefetching(true); 
+      setIsRefetching(true);
       console.log("Submitting expense:", payload);
       if (editingExpense) {
         await dispatch(
@@ -366,7 +366,7 @@ const Expenses = () => {
           paymentMethod: paymentModeMapping[filters.paymentMode],
           startDate: filters.fromDate,
           endDate: filters.toDate,
-          page: 1, 
+          page: 1,
           limit: itemsPerPage,
         })
       ).unwrap();
@@ -385,14 +385,14 @@ const Expenses = () => {
       setEditingExpense(null);
       setTimeout(() => {
         setIsAddExpenseOpen(false);
-        setIsAddExpenseOpen(false); 
+        setIsAddExpenseOpen(false);
         console.log("Dialog closed, isAddExpenseOpen:", false);
       }, 100);
       setErrorMessage(null);
       setCurrentPage(1);
     } catch (err) {
       setErrorMessage(err.message || "Failed to save expense");
-      setIsAddExpenseOpen(false); 
+      setIsAddExpenseOpen(false);
     } finally {
       setIsRefetching(false);
     }
@@ -651,7 +651,7 @@ const Expenses = () => {
                   </div>
 
                   <div className="flex gap-2">
-                    <Button type="submit" className="flex items-center gap-1">
+                    <Button type="submit" className="flex items-center gap-1 bg-orange-500 hover:bg-orange-600 text-white">
                       <Filter className="w-4 h-4" /> Apply
                     </Button>
                     <Button
@@ -690,7 +690,7 @@ const Expenses = () => {
                     >
                       <DialogTrigger asChild>
                         <Button
-                          className="flex items-center gap-2"
+                          className="flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white"
                           onClick={() => {
                             setEditingExpense(null);
                             setIsAddExpenseOpen(true);

@@ -68,6 +68,7 @@ const ExpenseTable = ({
                 </TableCell>
                 <TableCell className="flex gap-2 justify-center">
                   <Button
+                    className='bg-orange-500 hover:bg-orange-600 text-white'
                     variant="outline"
                     size="icon"
                     onClick={() => {

@@ -160,7 +160,7 @@ const UpdateTime = ({ id, s, e, searchTerm, page, limit, querystatus }) => {
           <Button
             variant="destructive"
             onClick={() => setOpen(true)}
-            className="w-full bg-blue-600 text-white hover:bg-blue-700 transition duration-200"
+            className="w-full bg-orange-600 text-white hover:bg-orange-500 transition duration-200"
             disabled={!token} // Disable button if token is missing
           >
             <Clock />
@@ -226,7 +226,7 @@ const UpdateTime = ({ id, s, e, searchTerm, page, limit, querystatus }) => {
           </div>
 
           <DialogFooter className="flex justify-center w-full">
-            <Button onClick={handleSave} type="button" disabled={loading || !token}>
+            <Button className="bg-blue-900 hover:bg-blue-800" onClick={handleSave} type="button" disabled={loading || !token}>
               {loading ? "Saving..." : "Save changes"}
             </Button>
           </DialogFooter>

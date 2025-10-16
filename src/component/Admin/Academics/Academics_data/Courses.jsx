@@ -505,8 +505,8 @@ const Courses = () => {
       setTimeout(() => {
         toast.error(
           error?.error?.[0]?.message ||
-            error?.message ||
-            "Failed To Update Course",
+          error?.message ||
+          "Failed To Update Course",
           {
             position: "top-right",
             autoClose: 2000,
@@ -600,7 +600,7 @@ const Courses = () => {
             <div className="flex gap-3 flex-wrap xl:col-span-2">
               <Button
                 onClick={back}
-                className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-md text-sm flex items-center gap-2 shadow-md"
+                className="bg-blue-900 hover:bg-blue-800 text-white px-4 py-2 rounded-md text-sm flex items-center gap-2 shadow-md"
               >
                 <ArrowLeft size={18} />
                 <span className="hidden md:inline">Back to Academics</span>
@@ -608,7 +608,7 @@ const Courses = () => {
 
               <Button
                 onClick={() => setAddCourses(true)}
-                className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-md text-sm flex items-center gap-2 shadow-md"
+                className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm flex items-center gap-2 shadow-md"
               >
                 <span className="text-lg">+</span>
                 <span>Add Course</span>
@@ -870,11 +870,10 @@ const Courses = () => {
                     <CardTitle className="text-lg sm:text-xl font-semibold text-gray-800 flex items-center justify-between">
                       <Badge
                         variant="outline"
-                        className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          card.course_type === "online"
-                            ? "bg-blue-100 text-blue-700 border-blue-300"
-                            : "bg-green-100 text-green-700 border-green-300"
-                        }`}
+                        className={`px-3 py-1 rounded-full text-xs font-medium ${card.course_type === "online"
+                          ? "bg-blue-100 text-blue-700 border-blue-300"
+                          : "bg-green-100 text-green-700 border-green-300"
+                          }`}
                       >
                         {card.course_type?.charAt(0).toUpperCase() +
                           card.course_type?.slice(1)}
@@ -902,7 +901,7 @@ const Courses = () => {
                       <Dialog>
                         <DialogTrigger asChild>
                           <Button
-                            className="w-full bg-blue-600 text-white hover:bg-blue-500 transition duration-200 ease-in-out"
+                            className="w-full bg-orange-500 text-white hover:bg-orange-600 transition duration-200 ease-in-out"
                             onClick={() => setSelectedCourseid(card.id)}
                           >
                             <Eye className="w-4 h-4" />
@@ -917,13 +916,13 @@ const Courses = () => {
                           {card.status === "active" && (
                             <div className="flex flex-col sm:flex-row justify-between gap-4 mb-6 mt-5">
                               <Button
-                                className="bg-blue-600 text-white hover:bg-blue-500 text-sm px-4 py-2 flex items-center gap-2 transition duration-200"
+                                className="bg-blue-900 text-white hover:bg-blue-800 text-sm px-4 py-2 flex items-center gap-2 transition duration-200"
                                 onClick={() => setEditingCourseId(card.id)}
                               >
                                 <Pencil className="w-4 h-4" /> Edit Course
                               </Button>
                               <Button
-                                className="bg-blue-600 text-white hover:bg-blue-500 text-sm px-4 py-2 flex items-center gap-2 transition duration-200"
+                                className="bg-orange-500 text-white hover:bg-orange-600 text-sm px-4 py-2 flex items-center gap-2 transition duration-200"
                                 onClick={() => setAddBatches(true)}
                               >
                                 <Plus className="w-4 h-4" /> Add Batch
@@ -1127,6 +1126,7 @@ const Courses = () => {
                             </div>
                             <div className="text-lg font-medium text-gray-700 text-end dark:text-white">
                               <Button
+                                className='bg-blue-900 hover:bg-blue-800 text-white  rounded-md text-sm  shadow-md'
                                 onClick={() => handleViewSubjects(card.id)}
                               >
                                 <Eye className="mr-2 h-4 w-4" />
@@ -1214,26 +1214,22 @@ const Courses = () => {
                               Duration:{" "}
                               {card.course_duration
                                 ? (() => {
-                                    const years = Math.floor(
-                                      card.course_duration / 12
-                                    );
-                                    const months = card.course_duration % 12;
-                                    return (
-                                      `${
-                                        years > 0
-                                          ? `${years} year${
-                                              years > 1 ? "s" : ""
-                                            } `
-                                          : ""
-                                      }${
-                                        months > 0
-                                          ? `${months} month${
-                                              months > 1 ? "s" : ""
-                                            }`
-                                          : ""
+                                  const years = Math.floor(
+                                    card.course_duration / 12
+                                  );
+                                  const months = card.course_duration % 12;
+                                  return (
+                                    `${years > 0
+                                      ? `${years} year${years > 1 ? "s" : ""
+                                      } `
+                                      : ""
+                                      }${months > 0
+                                        ? `${months} month${months > 1 ? "s" : ""
+                                        }`
+                                        : ""
                                       }`.trim() || "0 months"
-                                    );
-                                  })()
+                                  );
+                                })()
                                 : "N/A"}
                             </div>
 
@@ -1457,11 +1453,10 @@ const Courses = () => {
                   <PaginationLink
                     href="#"
                     onClick={() => setCurrentPage(i + 1)}
-                    className={`px-4 py-2 rounded-md ${
-                      currentPage === i + 1
-                        ? "bg-blue-600 text-white"
-                        : "hover:bg-blue-500 hover:text-white"
-                    }`}
+                    className={`px-4 py-2 rounded-md ${currentPage === i + 1
+                      ? "bg-blue-600 text-white"
+                      : "hover:bg-blue-500 hover:text-white"
+                      }`}
                   >
                     {i + 1}
                   </PaginationLink>

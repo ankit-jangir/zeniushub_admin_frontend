@@ -564,7 +564,7 @@ const Profile = () => {
         <Header />
         <div className="flex gap-5 mt-2 ms-2">
           <Button
-            className="text-white w-[200px] bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-md text-sm flex items-center justify-center gap-2"
+            className="text-white w-[200px] bg-blue-900 hover:bg-blue-800 px-4 py-2 rounded-md text-sm flex items-center justify-center gap-2"
             onClick={goBack}
           >
             <ArrowLeft size={18} />
@@ -572,7 +572,7 @@ const Profile = () => {
           </Button>
           {profileData?.status !== false && (
             <Button
-              className="w-[160px] text-white bg-blue-600 hover:bg-blue-500 px-4 py-1.5 rounded-md text-sm flex items-center justify-center"
+              className="w-[160px] text-white bg-blue-900 hover:bg-blue-800 px-4 py-1.5 rounded-md text-sm flex items-center justify-center"
               onClick={openModal}
             >
               Edit
@@ -600,30 +600,26 @@ const Profile = () => {
                 <div>No student data available</div>
               ) : (
                 <Card className="w-full max-w-4xl shadow-md border rounded-xl">
-                  <div className="relative w-full h-40 bg-indigo-700 rounded-t-xl flex items-center px-6">
+                  <div className="relative w-full h-40 bg-orange-600 rounded-t-xl flex items-center px-6">
                     <div className="ml-32 mt-10" style={{ cursor: "pointer" }}>
                       <PhotoProvider>
                         <PhotoView
                           src={
                             Profile.data?.Student?.profile_image
-                              ? `${
-                                  import.meta.env.VITE_BASE_URL
-                                }/viewimagefromazure?filePath=${
-                                  Profile.data?.Student?.profile_image
-                                }`
+                              ? `${import.meta.env.VITE_BASE_URL
+                              }/viewimagefromazure?filePath=${Profile.data?.Student?.profile_image
+                              }`
                               : avatar
                           }
                         >
                           <Avatar className="w-24 h-24 border-4 border-white shadow-lg absolute -bottom-12 left-6 cursor-pointer">
                             <AvatarImage
-                              className="rounded-full border-4 border-blue-600"
+                              className="rounded-full border-4 border-orange-600"
                               src={
                                 Profile.data?.Student?.profile_image
-                                  ? `${
-                                      import.meta.env.VITE_BASE_URL
-                                    }/viewimagefromazure?filePath=${
-                                      Profile.data?.Student?.profile_image
-                                    }`
+                                  ? `${import.meta.env.VITE_BASE_URL
+                                  }/viewimagefromazure?filePath=${Profile.data?.Student?.profile_image
+                                  }`
                                   : avatar
                               }
                               alt={Profile.data?.Student?.name || "student"}
@@ -657,12 +653,10 @@ const Profile = () => {
                               didOpen: (popup) => {
                                 // Position the popup near the clicked element
                                 popup.style.position = "absolute";
-                                popup.style.top = `${
-                                  rect.bottom + window.scrollY + 5
-                                }px`; // Slightly below the name
-                                popup.style.left = `${
-                                  rect.left + window.scrollX
-                                }px`; // Aligned with the name
+                                popup.style.top = `${rect.bottom + window.scrollY + 5
+                                  }px`; // Slightly below the name
+                                popup.style.left = `${rect.left + window.scrollX
+                                  }px`; // Aligned with the name
                               },
                             });
                           }}
@@ -677,10 +671,10 @@ const Profile = () => {
                           Profile?.data?.course_id
                             ? handleViewCourseDetails(Profile?.data?.course_id)
                             : Swal.fire({
-                                icon: "error",
-                                title: "Error",
-                                text: "Course ID not found",
-                              })
+                              icon: "error",
+                              title: "Error",
+                              text: "Course ID not found",
+                            })
                         }
                         title="View course details"
                       >
@@ -688,9 +682,9 @@ const Profile = () => {
                           Course:{" "}
                           {Profile?.data?.Course?.course_name?.length > 60
                             ? `${Profile?.data?.Course?.course_name.slice(
-                                0,
-                                60
-                              )}...`
+                              0,
+                              60
+                            )}...`
                             : Profile?.data?.Course?.course_name || "N/A"}
                         </span>
                       </div>
@@ -801,7 +795,7 @@ const Profile = () => {
                                                 error?.error?.length > 0
                                                   ? error?.error?.[0]?.message
                                                   : error?.message ||
-                                                    "Failed To Update Course";
+                                                  "Failed To Update Course";
                                               toast.error(errorMessage, {
                                                 position: "top-right",
                                                 autoClose: 5000,
@@ -839,27 +833,23 @@ const Profile = () => {
                                       Duration:{" "}
                                       {course.course_duration
                                         ? (() => {
-                                            const years = Math.floor(
-                                              course.course_duration / 12
-                                            );
-                                            const months =
-                                              course.course_duration % 12;
-                                            return (
-                                              `${
-                                                years > 0
-                                                  ? `${years} year${
-                                                      years > 1 ? "s" : ""
-                                                    } `
-                                                  : ""
-                                              }${
-                                                months > 0
-                                                  ? `${months} month${
-                                                      months > 1 ? "s" : ""
-                                                    }`
-                                                  : ""
+                                          const years = Math.floor(
+                                            course.course_duration / 12
+                                          );
+                                          const months =
+                                            course.course_duration % 12;
+                                          return (
+                                            `${years > 0
+                                              ? `${years} year${years > 1 ? "s" : ""
+                                              } `
+                                              : ""
+                                              }${months > 0
+                                                ? `${months} month${months > 1 ? "s" : ""
+                                                }`
+                                                : ""
                                               }`.trim() || "0 months"
-                                            );
-                                          })()
+                                          );
+                                        })()
                                         : "N/A"}
                                     </div>
                                     <div className="text-lg font-medium text-gray-700 text-end dark:text-white">
@@ -1128,12 +1118,12 @@ const Profile = () => {
                             <p className="text-lg font-semibold">
                               {Profile?.data?.joining_date
                                 ? new Date(
-                                    Profile.data?.joining_date
-                                  ).toLocaleDateString("en-US", {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                  })
+                                  Profile.data?.joining_date
+                                ).toLocaleDateString("en-US", {
+                                  year: "numeric",
+                                  month: "long",
+                                  day: "numeric",
+                                })
                                 : "N/A"}
                             </p>
                           </div>
@@ -1142,12 +1132,12 @@ const Profile = () => {
                             <p className="text-lg font-semibold">
                               {Profile.data?.Student?.dob
                                 ? new Date(
-                                    Profile.data?.Student?.dob
-                                  ).toLocaleDateString("en-US", {
-                                    year: "numeric",
-                                    month: "long",
-                                    day: "numeric",
-                                  })
+                                  Profile.data?.Student?.dob
+                                ).toLocaleDateString("en-US", {
+                                  year: "numeric",
+                                  month: "long",
+                                  day: "numeric",
+                                })
                                 : "N/A"}
                             </p>
                           </div>
@@ -1175,8 +1165,8 @@ const Profile = () => {
                               {Profile.data?.status === true
                                 ? "Active"
                                 : Profile.data?.status === false
-                                ? "Inactive"
-                                : "False"}
+                                  ? "Inactive"
+                                  : "False"}
                             </p>
                           </div>
                         </div>
@@ -1234,21 +1224,19 @@ const Profile = () => {
                                   allowEscapeKey: true,
                                   didOpen: (popup) => {
                                     popup.style.position = "absolute";
-                                    popup.style.top = `${
-                                      rect.bottom + window.scrollY + 5
-                                    }px`;
-                                    popup.style.left = `${
-                                      rect.left + window.scrollX
-                                    }px`;
+                                    popup.style.top = `${rect.bottom + window.scrollY + 5
+                                      }px`;
+                                    popup.style.left = `${rect.left + window.scrollX
+                                      }px`;
                                   },
                                 });
                               }}
                             >
                               {Profile?.data?.Student?.father_name?.length > 20
                                 ? `${Profile?.data?.Student?.father_name.slice(
-                                    0,
-                                    20
-                                  )}...`
+                                  0,
+                                  20
+                                )}...`
                                 : Profile?.data?.Student?.father_name || "N/A"}
                             </span>
                           </p>
@@ -1279,21 +1267,19 @@ const Profile = () => {
                                   allowEscapeKey: true,
                                   didOpen: (popup) => {
                                     popup.style.position = "absolute";
-                                    popup.style.top = `${
-                                      rect.bottom + window.scrollY + 5
-                                    }px`;
-                                    popup.style.left = `${
-                                      rect.left + window.scrollX
-                                    }px`;
+                                    popup.style.top = `${rect.bottom + window.scrollY + 5
+                                      }px`;
+                                    popup.style.left = `${rect.left + window.scrollX
+                                      }px`;
                                   },
                                 });
                               }}
                             >
                               {Profile?.data?.Student?.mother_name?.length > 20
                                 ? `${Profile?.data?.Student?.mother_name.slice(
-                                    0,
-                                    20
-                                  )}...`
+                                  0,
+                                  20
+                                )}...`
                                 : Profile?.data?.Student?.mother_name || "N/A"}
                             </span>
                           </p>
@@ -1324,24 +1310,22 @@ const Profile = () => {
                                   allowEscapeKey: true,
                                   didOpen: (popup) => {
                                     popup.style.position = "absolute";
-                                    popup.style.top = `${
-                                      rect.bottom + window.scrollY + 5
-                                    }px`;
-                                    popup.style.left = `${
-                                      rect.left + window.scrollX
-                                    }px`;
+                                    popup.style.top = `${rect.bottom + window.scrollY + 5
+                                      }px`;
+                                    popup.style.left = `${rect.left + window.scrollX
+                                      }px`;
                                   },
                                 });
                               }}
                             >
                               {Profile?.data?.Student?.parent_adhar_no?.length >
-                              20
+                                20
                                 ? `${Profile?.data?.Student?.parent_adhar_no.slice(
-                                    0,
-                                    20
-                                  )}...`
+                                  0,
+                                  20
+                                )}...`
                                 : Profile?.data?.Student?.parent_adhar_no ||
-                                  "N/A"}
+                                "N/A"}
                             </span>
                           </p>
                         </div>
@@ -1371,12 +1355,10 @@ const Profile = () => {
                                   allowEscapeKey: true,
                                   didOpen: (popup) => {
                                     popup.style.position = "absolute";
-                                    popup.style.top = `${
-                                      rect.bottom + window.scrollY + 5
-                                    }px`;
-                                    popup.style.left = `${
-                                      rect.left + window.scrollX
-                                    }px`;
+                                    popup.style.top = `${rect.bottom + window.scrollY + 5
+                                      }px`;
+                                    popup.style.left = `${rect.left + window.scrollX
+                                      }px`;
                                   },
                                 });
                               }}
@@ -1384,11 +1366,11 @@ const Profile = () => {
                               {Profile?.data?.Student?.parent_account_no
                                 ?.length > 20
                                 ? `${Profile?.data?.Student?.parent_account_no.slice(
-                                    0,
-                                    20
-                                  )}...`
+                                  0,
+                                  20
+                                )}...`
                                 : Profile?.data?.Student?.parent_account_no ||
-                                  "N/A"}
+                                "N/A"}
                             </span>
                           </p>
                         </div>
@@ -1468,8 +1450,8 @@ const Profile = () => {
                             {Profile.data?.Student?.rt === true
                               ? "YES"
                               : Profile.data?.Student?.rt === false
-                              ? "N/A"
-                              : "False"}
+                                ? "N/A"
+                                : "False"}
                           </p>
                         </div>
                       </div>
@@ -1512,11 +1494,9 @@ const Profile = () => {
                         <AvatarImage
                           src={
                             Profile?.data?.Student?.profile_image
-                              ? `${
-                                  import.meta.env.VITE_BASE_URL
-                                }/viewimagefromazure?filePath=${
-                                  Profile?.data?.Student?.profile_image
-                                }`
+                              ? `${import.meta.env.VITE_BASE_URL
+                              }/viewimagefromazure?filePath=${Profile?.data?.Student?.profile_image
+                              }`
                               : avatar
                           }
                           alt="Profile"

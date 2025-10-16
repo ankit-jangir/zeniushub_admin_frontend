@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"; 
+import React, { useState, useEffect } from "react";
 import { Button } from "../../src/components/ui/button";
 import { Card } from "../../src/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "../../src/components/ui/tabs";
@@ -113,29 +113,27 @@ const Support = () => {
               <div className="flex justify-between">
                 <div>
                   <Tabs
-                    defaultValue="unsolved" 
-                    value={activeTab} 
+                    defaultValue="unsolved"
+                    value={activeTab}
                     onValueChange={setActiveTab}
                     className="flex justify-self-start mb-4 md:mb-6"
                   >
                     <TabsList className="p-2 rounded-lg inline-flex shadow-sm">
                       <TabsTrigger
                         value="unsolved"
-                        className={`px-4 md:px-6 py-2 rounded-md font-medium transition-all ${
-                          activeTab === "unsolved"
-                            ? "bg-indigo-600 text-white"
-                            : "hover:bg-gray-200"
-                        }`}
+                        className={`px-4 md:px-6 py-2 rounded-md font-medium transition-all ${activeTab === "unsolved"
+                          ? "bg-indigo-600 text-white"
+                          : "hover:bg-gray-200"
+                          }`}
                       >
                         Unsolved
                       </TabsTrigger>
                       <TabsTrigger
                         value="solved"
-                        className={`px-4 md:px-6 py-2 rounded-md font-medium transition-all ${
-                          activeTab === "solved"
-                            ? "bg-green-600 text-white"
-                            : "hover:bg-gray-200"
-                        }`}
+                        className={`px-4 md:px-6 py-2 rounded-md font-medium transition-all ${activeTab === "solved"
+                          ? "bg-green-600 text-white"
+                          : "hover:bg-gray-200"
+                          }`}
                       >
                         Solved
                       </TabsTrigger>
@@ -147,11 +145,11 @@ const Support = () => {
                   <Input
                     placeholder="Search tickets..."
                     value={search}
-                    onChange={(e) => setSearch(e.target.value)} 
+                    onChange={(e) => setSearch(e.target.value)}
                     className="w-full md:w-1/2 lg:w-2/3 border-gray-300 rounded-lg px-4 py-2 shadow-sm"
                   />
 
-                  <Button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 md:px-6 py-2 rounded-lg shadow-lg transition-all">
+                  <Button className="bg-blue-800 hover:bg-blue-900 text-white px-4 md:px-6 py-2 rounded-lg shadow-lg transition-all">
                     Search
                   </Button>
                 </div>
@@ -183,7 +181,7 @@ const Support = () => {
                           {ticket.description}
                         </p>
                         {ticket.status === "unsolved" && (
-                          <Button className="mt-3 md:mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg transition-all">
+                          <Button className="mt-3 md:mt-4 bg-blue-900 hover:bg-blue-800 text-white px-4 py-2 rounded-lg shadow-lg transition-all">
                             Mark as Solved
                           </Button>
                         )}

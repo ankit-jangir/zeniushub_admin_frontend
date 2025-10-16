@@ -78,17 +78,17 @@ const Payment_History = () => {
   }, [searchParams]);
   useEffect(() => {
     if (studentId) {
-      dispatch(fetchStudentEmi({studentId, token}));
-      dispatch(showEmisRecipt({studentId, token}));
+      dispatch(fetchStudentEmi({ studentId, token }));
+      dispatch(showEmisRecipt({ studentId, token }));
     }
   }, [dispatch, studentId]);
 
   useEffect(() => {
     if (studentId) {
-      dispatch(getSingleStudent({ id: studentId , token}));
+      dispatch(getSingleStudent({ id: studentId, token }));
     }
   }, [studentId, dispatch]);
- let token = localStorage.getItem("token");
+  let token = localStorage.getItem("token");
 
   token = useSelector((state) => state.logout.token);
   const handleUpdatePayment = async (id, selectedDate) => {
@@ -111,8 +111,8 @@ const Payment_History = () => {
       ).unwrap();
 
       if (res?.emi?.[0] === 1) {
-        dispatch(fetchStudentEmi({studentId, token}));
-        dispatch(showEmisRecipt({studentId, token}));
+        dispatch(fetchStudentEmi({ studentId, token }));
+        dispatch(showEmisRecipt({ studentId, token }));
         Swal.fire({
           icon: "success",
           title: "Success",
@@ -170,20 +170,20 @@ const Payment_History = () => {
 
 
   const payments = {
-  missed: emiList?.filter((item) => {
-    const dueDate = new Date(item.emi_duedate);
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    dueDate.setHours(0, 0, 0, 0);
-    return item.status === "missed" && dueDate < today;
-  }) || [],
-  upcoming: emiList?.filter((item) => {
-    return item.status === "upcoming";
-  }) || [],
-  paid: emiList?.filter((item) => item.status === "paid") || [],
-  all: emiList || [],
-  receipt: receiptData || { data: [] },
-};
+    missed: emiList?.filter((item) => {
+      const dueDate = new Date(item.emi_duedate);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      dueDate.setHours(0, 0, 0, 0);
+      return item.status === "missed" && dueDate < today;
+    }) || [],
+    upcoming: emiList?.filter((item) => {
+      return item.status === "upcoming";
+    }) || [],
+    paid: emiList?.filter((item) => item.status === "paid") || [],
+    all: emiList || [],
+    receipt: receiptData || { data: [] },
+  };
 
   const formatDate = (dateString) => {
     if (!dateString) return "No Date";
@@ -194,7 +194,7 @@ const Payment_History = () => {
   const handleDownload = async (emiId) => {
     setLoadingDownloads((prev) => ({ ...prev, [emiId]: true }));
     try {
-      const resultAction = await dispatch(generateReceipt({emiId,token}));
+      const resultAction = await dispatch(generateReceipt({ emiId, token }));
       const blob = await unwrapResult(resultAction);
 
       if (blob) {
@@ -275,11 +275,11 @@ const Payment_History = () => {
         payment_date: payAllDate,
       };
 
-      const res = await dispatch(checkAmount({filters, token})).unwrap();
+      const res = await dispatch(checkAmount({ filters, token })).unwrap();
 
       if (res) {
-        dispatch(fetchStudentEmi({studentId, token}));
-        dispatch(showEmisRecipt({studentId, token}));
+        dispatch(fetchStudentEmi({ studentId, token }));
+        dispatch(showEmisRecipt({ studentId, token }));
         setShowPayAllForm(false);
         setPayAllAmount("");
         setPayAllDate("");
@@ -319,11 +319,11 @@ const Payment_History = () => {
           <div className="px-4 sm:px-6 lg:px-8 py-4">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8  max-w-[40em]">
               <Button
-                className="bg-blue-500 text-white rounded-lg flex items-center justify-center gap-2 py-2 px-3"
+                className="bg-blue-900 text-white rounded-lg flex items-center justify-center gap-2 py-2 px-3"
                 onClick={() => navigate(-1)}
               >
                 <ArrowLeft />
-              Back from  Payment Details
+                Back
               </Button>
               <Button
                 className="bg-green-500 text-white rounded-lg flex items-center justify-center gap-2 py-2 px-3"
@@ -542,13 +542,12 @@ const Payment_History = () => {
                                 </TableCell>
                                 <TableCell className="p-3">
                                   <span
-                                    className={`inline-block w-full md:w-[100px] px-3 py-1 cursor-pointer rounded-md text-white font-medium capitalize ${
-                                      item.status === "paid"
-                                        ? "bg-green-500 hover:bg-green-600"
-                                        : item.status === "upcoming"
+                                    className={`inline-block w-full md:w-[100px] px-3 py-1 cursor-pointer rounded-md text-white font-medium capitalize ${item.status === "paid"
+                                      ? "bg-green-500 hover:bg-green-600"
+                                      : item.status === "upcoming"
                                         ? "bg-yellow-500 hover:bg-yellow-600"
                                         : "bg-red-500 hover:bg-red-600"
-                                    }`}
+                                      }`}
                                   >
                                     {item.status}
                                   </span>

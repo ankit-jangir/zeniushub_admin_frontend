@@ -30,13 +30,13 @@ const formSchema = z.object({
     .string()
     .trim()
     .min(2, { message: "Name must be at least 2 characters." })
-        .max(30, { message: "Name cannot be more than 30 characters." })
-,
- email: z
+    .max(30, { message: "Name cannot be more than 30 characters." })
+  ,
+  email: z
     .string()
     .email({ message: "Enter a valid email address." }) // valid email check
     .trim() // whitespace remove
-    .max(40, { message: "Email cannot be more than 40 characters." }) ,
+    .max(40, { message: "Email cannot be more than 40 characters." }),
 
   m_number: z
     .string({
@@ -157,11 +157,10 @@ const Update = () => {
                       <FormControl>
                         <div className="relative flex items-center overflow-hidden">
                           <Input
-                            className={`w-full border-2 ${
-                              form.formState.errors.full_name
+                            className={`w-full border-2 ${form.formState.errors.full_name
                                 ? "border-red-500"
                                 : "border-blue-300"
-                            } rounded-xl pl-12 p-5 focus:ring-4 focus:ring-blue-500 shadow-lg`}
+                              } rounded-xl pl-12 p-5 focus:ring-4 focus:ring-blue-500 shadow-lg`}
                             placeholder="Enter Your Name"
                             type="text"
                             {...field}
@@ -186,11 +185,10 @@ const Update = () => {
                       <FormControl>
                         <div className="relative flex items-center overflow-hidden">
                           <Input
-                            className={`w-full border-2 ${
-                              form.formState.errors.email
+                            className={`w-full border-2 ${form.formState.errors.email
                                 ? "border-red-500"
                                 : "border-blue-300"
-                            } rounded-xl pl-12 p-5 focus:ring-4 focus:ring-blue-500 shadow-lg`}
+                              } rounded-xl pl-12 p-5 focus:ring-4 focus:ring-blue-500 shadow-lg`}
                             placeholder="Enter Your Email"
                             type="email"
                             {...field}
@@ -215,11 +213,10 @@ const Update = () => {
                       <FormControl>
                         <div className="relative flex items-center overflow-hidden">
                           <Input
-                            className={`w-full border-2 ${
-                              form.formState.errors.m_number
+                            className={`w-full border-2 ${form.formState.errors.m_number
                                 ? "border-red-500"
                                 : "border-blue-300"
-                            } rounded-xl pl-12 p-5 focus:ring-4 focus:ring-blue-500 shadow-lg`}
+                              } rounded-xl pl-12 p-5 focus:ring-4 focus:ring-blue-500 shadow-lg`}
                             placeholder="Enter Your Phone Number"
                             type="tel"
                             {...field}
@@ -237,7 +234,7 @@ const Update = () => {
               <CardFooter className="flex justify-center mt-5">
                 <Button
                   type="submit"
-                  className="w-full md:w-[300px] mt-8 bg-blue-500 shadow-lg hover:bg-blue-700"
+                  className="w-full md:w-[300px] mt-8 bg-blue-900 shadow-lg hover:bg-blue-800"
                   disabled={loading}
                 >
                   Update

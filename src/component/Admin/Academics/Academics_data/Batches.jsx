@@ -264,8 +264,7 @@ const Batches = () => {
       const errorMessage =
         error?.error?.[0]?.message ||
         error?.message ||
-        `Failed to ${
-          currentStatus === "active" ? "deactivate" : "activate"
+        `Failed to ${currentStatus === "active" ? "deactivate" : "activate"
         } batch. Please try again.`;
 
       toast.error(errorMessage, {
@@ -324,7 +323,7 @@ const Batches = () => {
           >
             <div className="flex flex-wrap sm:flex-nowrap items-center gap-3">
               <Button
-                className="bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-md text-sm flex items-center gap-2"
+                className="bg-blue-900 text-white hover:bg-blue-800 px-4 py-2 rounded-md text-sm flex items-center gap-2"
                 onClick={back}
               >
                 <ArrowLeft size={18} />
@@ -333,7 +332,7 @@ const Batches = () => {
 
               <Button
                 onClick={() => setAddBatches(true)}
-                className="bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-md text-sm flex items-center gap-2"
+                className="bg-orange-600 text-white hover:bg-orange-500 px-4 py-2 rounded-md text-sm flex items-center gap-2"
               >
                 <span className="text-lg">+</span>
                 <span>Add Batches</span>
@@ -556,11 +555,10 @@ const Batches = () => {
                     <div className="flex items-center justify-between w-full">
                       <div className="flex items-center">
                         <span
-                          className={`inline-block w-2 h-2 rounded-full mr-2 ${
-                            pass.status === "active"
-                              ? "bg-green-500"
-                              : "bg-red-500"
-                          }`}
+                          className={`inline-block w-2 h-2 rounded-full mr-2 ${pass.status === "active"
+                            ? "bg-green-500"
+                            : "bg-red-500"
+                            }`}
                           title={
                             pass.status === "active" ? "Active" : "Inactive"
                           }
@@ -712,11 +710,10 @@ const Batches = () => {
                   <PaginationLink
                     href="#"
                     onClick={() => setCurrentPage(i + 1)}
-                    className={`px-4 py-2 rounded-md ${
-                      currentPage === i + 1
-                        ? "bg-blue-600 text-white"
-                        : "hover:bg-blue-500 hover:text-white"
-                    }`}
+                    className={`px-4 py-2 rounded-md ${currentPage === i + 1
+                      ? "bg-blue-600 text-white"
+                      : "hover:bg-blue-500 hover:text-white"
+                      }`}
                   >
                     {i + 1}
                   </PaginationLink>

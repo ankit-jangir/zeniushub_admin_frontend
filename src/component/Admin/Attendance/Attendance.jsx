@@ -145,7 +145,7 @@ const Attendance = () => {
     totalAbsent,
     totalHalfday,
     totalPages,
-  } = useSelector((state) => state.attendance); 
+  } = useSelector((state) => state.attendance);
   console.log('====================================');
   console.log(totalStudent);
   console.log('====================================');
@@ -280,7 +280,7 @@ const Attendance = () => {
   const handleSelect = (courseName, id) => {
     setSelectedCourse(courseName);
     setcourseid(id);
-    dispatch(fetchBatchesByCourseId({courseId:id, token}));
+    dispatch(fetchBatchesByCourseId({ courseId: id, token }));
   };
 
   // Employee Attendance
@@ -303,7 +303,8 @@ const Attendance = () => {
 
   useEffect(() => {
     dispatch(
-      fetchEmployeeAttendance({token,
+      fetchEmployeeAttendance({
+        token,
         first_name: firstName,
         attendence_date: dateSearch,
         page: currentPageAtt,
@@ -318,7 +319,7 @@ const Attendance = () => {
 
   const handleMarkAll = async () => {
     try {
-      const result = await dispatch(markAllPresent({body:{ dates }, token})).unwrap();
+      const result = await dispatch(markAllPresent({ body: { dates }, token })).unwrap();
 
       toast.success(result.message || "Marked successfully!", {
         position: "top-right",
@@ -328,7 +329,8 @@ const Attendance = () => {
       });
 
       dispatch(
-        fetchEmployeeAttendance({token,
+        fetchEmployeeAttendance({
+          token,
           first_name: firstName,
           attendence_date: dateSearch,
           page: currentPageAtt,
@@ -353,49 +355,49 @@ const Attendance = () => {
     }
   };
 
- const handleMarkAllEmployee = async () => {
-  try {
-    const result = await dispatch(
-      markAllPresentByEmployee({body: { dates: datess, employeeIds: selected }, token})
-    );
+  const handleMarkAllEmployee = async () => {
+    try {
+      const result = await dispatch(
+        markAllPresentByEmployee({ body: { dates: datess, employeeIds: selected }, token })
+      );
 
-    if (markAllPresentByEmployee.fulfilled.match(result)) {
-      toast.success(result.payload.message || "Marked successfully!", {
+      if (markAllPresentByEmployee.fulfilled.match(result)) {
+        toast.success(result.payload.message || "Marked successfully!", {
+          position: "top-right",
+          autoClose: 5000,
+          theme: "light",
+          transition: Zoom,
+        });
+
+        dispatch(
+          fetchEmployeeAttendance({
+            first_name: firstName, token,
+            attendence_date: dateSearch,
+            page: currentPageAtt,
+            limit: limitAtt,
+            status: "",
+          })
+        );
+
+        setDatess([]);
+        setSelected([]);
+      } else {
+        throw new Error(result.error?.message || "An error occurred");
+      }
+    } catch (error) {
+      const errorMessage =
+        error?.error?.length > 0
+          ? error?.error?.[0]?.message
+          : error?.message || "An error occurred";
+
+      toast.error(errorMessage, {
         position: "top-right",
         autoClose: 5000,
         theme: "light",
         transition: Zoom,
       });
-
-      dispatch(
-        fetchEmployeeAttendance({
-          first_name: firstName,token,
-          attendence_date: dateSearch,
-          page: currentPageAtt,
-          limit: limitAtt,
-          status: "",
-        })
-      );
-
-      setDatess([]);
-      setSelected([]);
-    } else {
-      throw new Error(result.error?.message || "An error occurred");
     }
-  } catch (error) {
-    const errorMessage =
-      error?.error?.length > 0
-        ? error?.error?.[0]?.message
-        : error?.message || "An error occurred";
-
-    toast.error(errorMessage, {
-      position: "top-right",
-      autoClose: 5000,
-      theme: "light",
-      transition: Zoom,
-    });
-  }
-};
+  };
 
 
   const { employees } = useSelector((state) => state.team);
@@ -457,29 +459,29 @@ const Attendance = () => {
             count={
               valueTab === "student_att"
                 ? {
-                    t: totalStudent,
-                    p: totalPresent,
-                    a: totalAbsent,
-                    h: totalHalfday,
-                  }
+                  t: totalStudent,
+                  p: totalPresent,
+                  a: totalAbsent,
+                  h: totalHalfday,
+                }
                 : { t: totalTeam, p: present, a: absent, h: halfday }
             }
             apiData={
               valueTab === "student_att"
                 ? {
-                    p: page,
-                    l: limit,
-                    s: search,
-                    stb: selectedTab,
-                    d: date,
-                    sn: searchName,
-                  }
+                  p: page,
+                  l: limit,
+                  s: search,
+                  stb: selectedTab,
+                  d: date,
+                  sn: searchName,
+                }
                 : {
-                    n: firstName,
-                    d: dateSearch,
-                    cp: currentPageAtt,
-                    l: limitAtt,
-                  }
+                  n: firstName,
+                  d: dateSearch,
+                  cp: currentPageAtt,
+                  l: limitAtt,
+                }
             }
           />
           <Tabs
@@ -495,11 +497,10 @@ const Attendance = () => {
                 <TabsTrigger
                   value="student_att"
                   className={`flex items-center justify-center gap-2 w-full px-4 py-2 rounded-md font-medium transition-all duration-200 text-sm sm:text-base
-        ${
-          valueTab === "student_att"
-            ? "bg-blue-600 text-white shadow"
-            : "bg-gray-200 text-gray-800 hover:bg-blue-500 hover:text-white"
-        }`}
+        ${valueTab === "student_att"
+                      ? "bg-blue-800 text-white shadow"
+                      : "bg-gray-200 text-gray-800 hover:bg-blue-700 hover:text-white"
+                    }`}
                 >
                   <GraduationCapIcon className="w-4 h-4" />
                   Student
@@ -509,11 +510,10 @@ const Attendance = () => {
                 <TabsTrigger
                   value="employee_att"
                   className={`flex items-center justify-center gap-2 w-full px-4 py-2 rounded-md font-medium transition-all duration-200 text-sm sm:text-base
-        ${
-          valueTab === "employee_att"
-            ? "bg-blue-600 text-white shadow"
-            : "bg-gray-200 text-gray-800 hover:bg-blue-500 hover:text-white"
-        }`}
+        ${valueTab === "employee_att"
+                      ? "bg-blue-800 text-white shadow"
+                      : "bg-gray-200 text-gray-800 hover:bg-blue-700 hover:text-white"
+                    }`}
                 >
                   <UsersIcon className="w-4 h-4" />
                   Employee
@@ -529,7 +529,7 @@ const Attendance = () => {
                 >
                   <DialogTrigger asChild>
                     {/* full-width on ≤ md, auto on lg */}
-                    <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full md:w-auto text-sm sm:text-base">
+                    <Button className="bg-green-600 hover:bg-green-700 text-white w-full md:w-auto text-sm sm:text-base">
                       <Download className="mr-2" /> Export Report
                     </Button>
                   </DialogTrigger>
@@ -566,7 +566,7 @@ const Attendance = () => {
                           </DropdownMenuTrigger>
                           <DropdownMenuContent className="w-full bg-popover text-popover-foreground shadow-md">
                             {Array.isArray(course?.data) &&
-                            course.data.length ? (
+                              course.data.length ? (
                               course.data.map((c) => (
                                 <DropdownMenuItem
                                   key={c.id}
@@ -649,7 +649,7 @@ const Attendance = () => {
                         <Button
                           type="submit"
                           onClick={() => {
-                            dispatch(export_excel({data:formData, token}))
+                            dispatch(export_excel({ data: formData, token }))
                               .unwrap()
                               .then(() => setOpenFirstModal(false))
                               .catch((error) =>
@@ -673,7 +673,7 @@ const Attendance = () => {
                 >
                   <form>
                     <DialogTrigger asChild>
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full md:w-auto rounded-lg border border-blue-500 shadow-md shadow-blue-500/50 text-sm sm:text-base">
+                      <Button className="bg-green-600 hover:bg-green-700 text-white w-full md:w-auto text-sm sm:text-base">
                         <Download className="mr-2" /> Export Report
                       </Button>
                     </DialogTrigger>
@@ -772,7 +772,7 @@ const Attendance = () => {
                   {/* Search button */}
                   <button
                     type="submit"
-                    className="w-full sm:w-auto h-10 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white border border-blue-500 rounded-lg shadow-md shadow-blue-500/50"
+                    className="w-full sm:w-auto h-10 px-4 py-2 bg-blue-800 hover:bg-blue-900 text-white border border-blue-500 rounded-lg shadow-md shadow-blue-500/50"
                   >
                     Search
                   </button>
@@ -811,7 +811,7 @@ const Attendance = () => {
                   {loading ? (
                     <p className="text-center py-4">Loading...</p>
                   ) : error ? (
-                <No_data_found/>
+                    <No_data_found />
 
                   ) : filteredData.length > 0 ? (
                     <table className="w-full border-collapse border">
@@ -844,15 +844,14 @@ const Attendance = () => {
                               {student?.Student?.batch}
                             </td>
                             <td
-                              className={`border sm:px-4 py-2 text-xs sm:text-sm text-center ${
-                                student.status === "present"
-                                  ? "text-green-800"
-                                  : student.status === "absent"
+                              className={`border sm:px-4 py-2 text-xs sm:text-sm text-center ${student.status === "present"
+                                ? "text-green-800"
+                                : student.status === "absent"
                                   ? "text-red-800"
                                   : student.status === "halfday"
-                                  ? "text-yellow-800"
-                                  : ""
-                              }`}
+                                    ? "text-yellow-800"
+                                    : ""
+                                }`}
                             >
                               {student.status}
                             </td>
@@ -879,11 +878,10 @@ const Attendance = () => {
                       <PaginationItem key={i}>
                         <PaginationLink
                           onClick={() => handlePageChange(i + 1)}
-                          className={`px-4 py-2 rounded-md ${
-                            currentPage === i + 1
-                              ? "bg-blue-600 text-white"
-                              : "hover:bg-blue-500 hover:text-white"
-                          }`}
+                          className={`px-4 py-2 rounded-md ${currentPage === i + 1
+                            ? "bg-blue-600 text-white"
+                            : "hover:bg-blue-500 hover:text-white"
+                            }`}
                         >
                           {i + 1}
                         </PaginationLink>
@@ -960,11 +958,10 @@ const Attendance = () => {
                                 >
                                   <div className="flex items-center gap-2">
                                     <Check
-                                      className={`h-4 w-4 ${
-                                        selected.includes(opt.id)
-                                          ? "opacity-100"
-                                          : "opacity-0"
-                                      }`}
+                                      className={`h-4 w-4 ${selected.includes(opt.id)
+                                        ? "opacity-100"
+                                        : "opacity-0"
+                                        }`}
                                     />
                                     {opt.first_name}
                                   </div>
@@ -1086,7 +1083,7 @@ const Attendance = () => {
                   <TableBody>
                     {
                       error ?
-                        <No_data_found/> : attendance?.map((emp, i) => (
+                        <No_data_found /> : attendance?.map((emp, i) => (
                           <TableRow key={i}>
 
                             <TableCell>{(currentPageAtt - 1) * limitAtt + i + 1}</TableCell>
@@ -1125,11 +1122,10 @@ const Attendance = () => {
                       <PaginationItem key={i}>
                         <PaginationLink
                           onClick={() => handlePageChangeAtt(i + 1)}
-                          className={`px-4 py-2 rounded-md ${
-                            currentPageAtt === i + 1
-                              ? "bg-blue-600 text-white"
-                              : "hover:bg-blue-500 hover:text-white"
-                          }`}
+                          className={`px-4 py-2 rounded-md ${currentPageAtt === i + 1
+                            ? "bg-blue-600 text-white"
+                            : "hover:bg-blue-500 hover:text-white"
+                            }`}
                         >
                           {i + 1}
                         </PaginationLink>

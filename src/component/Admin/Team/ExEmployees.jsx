@@ -126,13 +126,13 @@ const ExEmployees = () => {
         // Close dialog
         setActive(false);
         await dispatch(
-      get_ExEmployee({
-        first_name: first_name,
-        token,
-        limit: employeesPerPage,
-        page: currentPage,
-      })
-    );
+          get_ExEmployee({
+            first_name: first_name,
+            token,
+            limit: employeesPerPage,
+            page: currentPage,
+          })
+        );
         setSelectedEmployeeId(null);
       } else {
         // console.warn("No employee ID selected for activation");
@@ -219,7 +219,7 @@ const ExEmployees = () => {
           <div className="w-full shadow-md shadow-blue-300/30 rounded-lg flex flex-wrap sm:flex-nowrap items-center justify-between px-4 sm:px-8 py-4  gap-3">
             {/* Back Button (Responsive) */}
             <Button
-              className="bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-md text-sm flex items-center gap-2"
+              className="bg-blue-900 text-white hover:bg-blue-800 px-4 py-2 rounded-md text-sm flex items-center gap-2"
               onClick={() => navigate(-1)}
             >
               <ArrowLeft size={18} />
@@ -265,9 +265,8 @@ const ExEmployees = () => {
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 p-6">
               {paginatedTeachers?.map((employee) => {
-                const fullName = `${employee.first_name || "N/A"} ${
-                  employee.last_name || ""
-                }`.trim();
+                const fullName = `${employee.first_name || "N/A"} ${employee.last_name || ""
+                  }`.trim();
                 const department =
                   employee.department_names?.length > 0
                     ? employee.department_names.join(", ")
@@ -348,8 +347,8 @@ const ExEmployees = () => {
                         <span className="font-medium">Joined:</span>
                         {employee.joining_date
                           ? new Date(employee.joining_date).toLocaleDateString(
-                              "en-US"
-                            )
+                            "en-US"
+                          )
                           : "N/A"}
                       </p>
                       <p className="flex items-center gap-2">
@@ -440,11 +439,10 @@ const ExEmployees = () => {
                     <PaginationLink
                       href="#"
                       onClick={() => setCurrentPage(i + 1)}
-                      className={`px-4 py-2 rounded-md ${
-                        currentPage === i + 1
+                      className={`px-4 py-2 rounded-md ${currentPage === i + 1
                           ? "bg-blue-600 text-white"
                           : "hover:bg-blue-500 hover:text-white"
-                      }`}
+                        }`}
                     >
                       {i + 1}
                     </PaginationLink>
