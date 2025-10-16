@@ -11,7 +11,7 @@ const ProtectedRoute = () => {
   const token = localStorage.getItem("token");
 
   const { loading, error, success } = useSelector((state) => state.CheckToken);
-  const [checkedToken, setCheckedToken] = useState(false); // ✅ flag to wait for response
+  const [checkedToken, setCheckedToken] = useState(false); 
 
   useEffect(() => {
     if (!token) {
