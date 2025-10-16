@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { CheckToken } from "./Redux_store/Api/ProtectRoute_api";
-import logo from "./assets/Image/intellix.png";
+import logo from "./assets/Image/zeniushub.png";
 
 
 const ProtectedRoute = () => {
@@ -28,7 +28,7 @@ const ProtectedRoute = () => {
     return (
       <div className="h-screen w-full flex items-center justify-center text-white">
         <div className="relative flex justify-center items-center">
-          <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-blue-500"></div>
+          <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-orange-500"></div>
           <img src={logo} alt="Loading" className="rounded-full h-28 w-28" />
         </div>
       </div>

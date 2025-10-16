@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./sidebar.css";
-import intellix_icon from "../../../assets/Image/intellix.png";
+import zeniushub_icon from "../../../assets/Image/zeniushub.png";
 import { X, Grip, Home, Inbox, User, Users, Wallet, ChartColumnIncreasing, CircleHelp, Settings, Coins } from "lucide-react";
 import {
   Sidebar,
@@ -43,8 +43,8 @@ export function AppSidebar() {
         <Sidebar className={`fixed left-0 top-0 h-full shadow-xl transition-all duration-300 ${isOpen ? "w-64" : "w-16"}`}>
           <SidebarHeader>
             <div className="flex items-center gap-3 ps-2">
-             <img sizes={25} className="w-15 h-10 " src={intellix_icon} alt="Intellix Logo" />
-              {isOpen && <h5 className="text-xl font-semibold">Intellix</h5>}
+             <img sizes={25} className="w-15 h-10 " src={zeniushub_icon} alt="zeniushub Logo" />
+              {isOpen && <h5 className="text-xl font-semibold">zeniushub</h5>}
             </div>
           </SidebarHeader>
           <SidebarContent>
@@ -69,7 +69,7 @@ export function AppSidebar() {
             </SidebarGroup>
           </SidebarContent>
           <SidebarFooter>
-            <div className="p-4 text-center text-sm text-gray-400">© 2024 Intellix</div>
+            <div className="p-4 text-center text-sm text-gray-400">© 2024 zeniushub</div>
           </SidebarFooter>
         </Sidebar>
       </div>

@@ -42,8 +42,6 @@ export const updateSchoolInfo = createAsyncThunk(
         const error = await response.json();
         throw new Error(error.message || "Failed to update school info");
       }
-
-      console.log(response, "***********************************************");
       return await response.json();
     } catch (error) {
       return rejectWithValue(error.message);

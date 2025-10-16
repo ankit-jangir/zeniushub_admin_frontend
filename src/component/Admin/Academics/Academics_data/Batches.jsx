@@ -71,7 +71,7 @@ import { get_course } from "../../../../Redux_store/Api/Academic_course";
 import { getSessions } from "../../../../Redux_store/Api/SessionApi";
 import Header from "../../Dashboard/Header";
 import { useNavigate } from "react-router";
-import logo from "../../../../assets/Image/intellix.png";
+import logo from "../../../../assets/Image/zeniushub.png";
 import { toast, ToastContainer, Zoom } from "react-toastify";
 import Lottie from "lottie-react";
 import nodata from "../../../../assets/video/no_data_found.json";

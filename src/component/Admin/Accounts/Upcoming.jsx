@@ -45,7 +45,7 @@ import { format } from "date-fns";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { get_course } from "../../../Redux_store/Api/Academic_course";
 import { useForm } from "react-hook-form";
-import logo from "../../../assets/Image/intellix.png";
+import logo from "../../../assets/Image/zeniushub.png";
 import { fetchBatchesByCourseId } from "../../../Redux_store/Api/Batches";
 import { toast, ToastContainer, Zoom } from "react-toastify";
 import No_data_found from "../No_data_found";
@@ -504,7 +504,7 @@ const Upcoming = () => {
           {loading ? (
             <div className="flex items-center justify-center h-64">
               <div className="relative">
-                <div className="absolute animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500"></div>
+                <div className="absolute animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-orange-500"></div>
                 <img
                   src={logo}
                   alt="Loading"

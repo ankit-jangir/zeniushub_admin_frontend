@@ -26,9 +26,8 @@ import {
   updateSchoolInfo,
 } from "../../../Redux_store/Api/School_image";
 import { Textarea } from "../../src/components/ui/textarea";
-import logo from "../../../assets/Image/intellix.png";
+import logo from "../../../assets/Image/zeniushub.png";
 import { ToastContainer, toast, Zoom } from "react-toastify";
-// import { addSchoolInfo, get_school } from "../../../Redux_store/Api/School_image";
 
 const base_img_url = "https://adminv2-api-dev.intellix360.in/";
 const isDarkMode = true;
@@ -209,7 +208,9 @@ const AddSchoolImg = () => {
       {loading && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
           <div className="relative flex items-center justify-center">
-            <div className="absolute animate-spin h-20 w-20 border-4 border-blue-500 border-t-transparent rounded-full"></div>
+            <div className="absolute animate-spin h-20 w-20 border-4 border-orange-500 border-t-transparent rounded-full"></div>
+
+            
             <img src={logo} alt="Loading" className="h-16 w-16 rounded-full" />
           </div>
         </div>

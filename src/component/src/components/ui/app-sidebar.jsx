@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import zeniushub from "../../../../assets/Image/intellix.png";
+import zeniushub from "../../../../assets/Image/zeniushub.png";
 import { Grip, Home, User, Users, Wallet, ChartColumnIncreasing, CircleHelp, Settings, Clipboard, ListFilterPlus, FileBadge, X, Coins } from "lucide-react";
 import {
   Sidebar,

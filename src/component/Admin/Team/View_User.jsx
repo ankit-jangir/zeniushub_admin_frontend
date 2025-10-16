@@ -29,7 +29,7 @@ import {
 } from "../../src/components/ui/card";
 import { useDispatch, useSelector } from "react-redux";
 import { view_department_users } from "../../../Redux_store/Api/Department";
-import logo from "../../../assets/Image/intellix.png";
+import logo from "../../../assets/Image/zeniushub.png";
 import { Badge } from "../../src/components/ui/badge";
 import No_data_found from "../No_data_found";
 

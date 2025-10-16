@@ -169,8 +169,6 @@ export const searchLeads = createAsyncThunk(
       }
 
       const result = await response.json();
-      // console.log(result.data.data.data[0].id,"*******************************result");
-
       return result.data;
     } catch (error) {
       return rejectWithValue(error.message || "Something went wrong");

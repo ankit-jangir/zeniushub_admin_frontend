@@ -2,7 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // ✅ Base URL from .env
 const BASE_URL = import.meta.env.VITE_BASE_URL + '/api/v1/expenserouter';
-// final: https://adminv2-api-dev.intellix360.in/api/v1/expenserouter
 
 // 1️⃣ Create Expense
 export const create_Expense = createAsyncThunk(

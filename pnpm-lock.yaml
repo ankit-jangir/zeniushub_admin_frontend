@@ -467,7 +467,7 @@ importers:
       imurmurhash:
         specifier: ^0.1.4
         version: 0.1.4
-      intellix-admin-frontend:
+      zeniushub-admin-frontend:
         specifier: 'file:'
         version: file:(@types/react@19.1.8)(redux@5.0.1)
       internal-slot:
@@ -2870,7 +2870,7 @@ packages:
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
 
-  'intellix-admin-frontend@file:':
+  'zeniushub-admin-frontend@file:':
     resolution: {directory: '', type: directory}
 
   internal-slot@1.1.0:
@@ -5853,7 +5853,7 @@ snapshots:
 
   inherits@2.0.4: {}
 
-  intellix-admin-frontend@file:(@types/react@19.1.8)(redux@5.0.1):
+  zeniushub-admin-frontend@file:(@types/react@19.1.8)(redux@5.0.1):
     dependencies:
       '@headlessui/react': 2.2.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@hookform/resolvers': 4.1.3(react-hook-form@7.58.1(react@19.1.0))

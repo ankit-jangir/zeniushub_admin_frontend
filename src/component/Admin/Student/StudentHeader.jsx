@@ -46,7 +46,7 @@ import { get_course } from "../../../Redux_store/Api/Academic_course";
 import { fetchBatchesByCourseId } from "../../../Redux_store/Api/Batches";
 import avatar from "./dummy-avatar (1).jpg";
 import Swal from "sweetalert2";
-import logo from "../../../assets/Image/intellix.png";
+import logo from "../../../assets/Image/zeniushub.png";
 
 const StudentHeader = () => {
   const PAGE_SIZE = 10;
@@ -339,7 +339,7 @@ const StudentHeader = () => {
                 coursesLoading ? (
                 <div className="flex h-[60vh] items-center justify-center">
                   <div className="relative flex flex-col items-center">
-                    <div className="animate-spin rounded-full h-16 w-16 sm:h-20 sm:w-20 border-t-4 border-blue-500"></div>
+                    <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-orange-500"></div>
                     <img
                       src={logo}
                       alt="Loading"

@@ -35,7 +35,7 @@ import {
   deletePopularCourse,
   get_course,
 } from "../../../Redux_store/Api/Add_popular_course";
-import logo from "../../../assets/Image/intellix.png";
+import logo from "../../../assets/Image/zeniushub.png";
 import { toast, ToastContainer, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import No_data_found from "../No_data_found";
@@ -294,7 +294,7 @@ const AddPopularCourse = () => {
         {loading && (
           <div className="flex items-center justify-center h-64">
             <div className="relative">
-              <div className="absolute animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500"></div>
+              <div className="absolute animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-orange-500"></div>
               <img
                 src={logo}
                 alt="Loading"

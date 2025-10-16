@@ -19,7 +19,6 @@ const loginAdmin = createAsyncThunk(
       const data = await response.json();
 
       if (!response.ok) {
-        // Return entire error object to the rejected action
         return rejectWithValue(data);
       }
 

@@ -208,11 +208,10 @@ export const get_assigned_task = createAsyncThunk(
 export const addTask = createAsyncThunk(
   "task/addTask",
   async ({ formData, token }, { rejectWithValue }) => {
-    console.log(token, "gfffffffdhf--hdgvn--token --api");
 
     try {
       const response = await fetch(
-        "https://adminv2-api-dev.intellix360.in/api/v1/employee/task/add",
+        `${BASE_URL}/api/v1/employee/task/add`,
         {
           method: "POST",
           headers: {
@@ -247,7 +246,7 @@ export const fetchTaskCount = createAsyncThunk(
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // ✅ send token
+            Authorization: `Bearer ${token}`, 
           },
         }
       );
@@ -267,10 +266,9 @@ export const fetchTaskCount = createAsyncThunk(
 export const updateEmployee = createAsyncThunk(
   'employee/updateEmployee',
   async ({ id, employeeData, token }, { rejectWithValue }) => {
-    console.log(employeeData,"..................employeeData");
-    
+   
     try {
-      // Create a FormData instance
+
        const formDataToSend = new FormData();
 
 
@@ -302,8 +300,7 @@ export const updateEmployee = createAsyncThunk(
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${token}`,
-
-          // Don't set Content-Type header! Let the browser set it automatically with boundary.
+          
         },
         body: formDataToSend,
       });

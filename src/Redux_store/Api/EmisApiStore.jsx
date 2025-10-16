@@ -194,7 +194,6 @@ export const getEmisTotalAmounts = createAsyncThunk(
 
       const url = new URL(
         `${BASE_URL}/api/v1/emi/getEmisTotalAmounts?month=${month}&year=${year}`
-        // https://adminv2-api-dev.intellix360.in/api/v1/emi/getEmisTotalAmounts?month=9&year=2025
       );
       const response = await fetch(url, requestOptions);
       const result = await response.json();
@@ -422,7 +421,7 @@ export const exportEmisExcel = createAsyncThunk(
     thunkAPI
   ) => {
     try {
-      const url = `https://adminv2-api-dev.intellix360.in/api/v1/emi/emis/download/excel?fromDate=${fromDate}&toDate=${toDate}&status=${status}&courseId=${courseId}&batchId=${batchId}`;
+      const url = `${BASE_URL}/api/v1/emi/emis/download/excel?fromDate=${fromDate}&toDate=${toDate}&status=${status}&courseId=${courseId}&batchId=${batchId}`;
 
       const res = await fetch(url, {
         method: "GET",

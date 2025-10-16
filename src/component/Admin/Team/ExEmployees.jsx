@@ -3,7 +3,7 @@ import "./Team.css";
 import AppSidebar from "../../src/components/ui/app-sidebar";
 import { SidebarInset, SidebarProvider } from "../../src/components/ui/sidebar";
 import Header from "../Dashboard/Header";
-import logo from "../../../assets/Image/intellix.png";
+import logo from "../../../assets/Image/zeniushub.png";
 import {
   ArrowLeft,
   Ellipsis,
@@ -243,7 +243,7 @@ const ExEmployees = () => {
           {loading ? (
             <div className="h-screen w-full flex items-center justify-center text-white">
               <div className="relative flex justify-center items-center">
-                <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-blue-500"></div>
+              <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-orange-500"></div>
                 <img
                   src={logo}
                   alt="Loading"

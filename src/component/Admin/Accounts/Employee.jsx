@@ -13,7 +13,7 @@ import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { EmployeeAccount } from "../../../Redux_store/Api/team_account_api";
 import No_data_found from "../No_data_found";
-import logo from "../../../assets/Image/intellix.png";
+import logo from "../../../assets/Image/zeniushub.png";
 const Employee = () => {
   let token = localStorage.getItem("token");
   token = useSelector((state) => state.logout.token);
@@ -100,7 +100,7 @@ const Employee = () => {
       {loading ? (
         <div className="h-screen flex items-center justify-center">
           <div className="relative flex justify-center items-center">
-            <div className="absolute rounded-full h-32 w-32 border-t-4 border-b-4 border-blue-500"></div>
+            <div className="absolute rounded-full h-32 w-32 border-t-4 border-b-4 border-orange-500"></div>
             <img src={logo} alt="Loading" className="rounded-full h-28 w-28" />
           </div>
         </div>

@@ -60,7 +60,7 @@ export const deletePopularCourse = createAsyncThunk(
   async ({ id, token }, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `https://adminv2-api-dev.intellix360.in/api/v1/popularCourses/remove-course/${id}`,
+        `${BASE_URL}/api/v1/popularCourses/remove-course/${id}`,
         {
           method: "DELETE",
           headers: {

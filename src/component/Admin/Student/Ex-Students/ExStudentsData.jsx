@@ -32,7 +32,7 @@ import Header from "../../Dashboard/Header";
 import AppSidebar from "../../../src/components/ui/app-sidebar";
 import { GetExStudent } from "../../../../Redux_store/Api/Student_ExStudent";
 import { getSingleStudent } from "../../../../Redux_store/Api/StudentsApiStore";
-import logo from "../../../../assets/Image/intellix.png";
+import logo from "../../../../assets/Image/zeniushub.png";
 
 // Constants
 const PAGE_SIZE = 10;
@@ -129,7 +129,7 @@ const ExStudentsData = () => {
   const SkeletonLoader = () => (
     <div className="flex w-full py-16 items-center justify-center animate-pulse">
       <div className="relative flex justify-center items-center">
-        <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-indigo-500 opacity-80"></div>
+        <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-orange-500"></div>
         <img
           src={logo}
           alt="Loading"

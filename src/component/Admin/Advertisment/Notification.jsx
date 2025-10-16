@@ -19,7 +19,7 @@ import { useForm } from "react-hook-form";
 import { Card } from "../../src/components/ui/card";
 import { ScrollArea } from "../../src/components/ui/scroll-area";
 import { useDispatch, useSelector } from "react-redux";
-import logo from "../../../assets/Image/intellix.png";
+import logo from "../../../assets/Image/zeniushub.png";
 import {
   add_notification,
   delete_notify,
@@ -534,7 +534,7 @@ const Notification = () => {
         {loading && (
           <div className="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center">
             <div className="relative flex items-center justify-center">
-              <div className="absolute animate-spin h-20 w-20 border-4 border-blue-500 border-t-transparent rounded-full"></div>
+              <div className="absolute animate-spin h-20 w-20 border-4 border-orange-500 border-t-transparent rounded-full"></div>
               <img
                 src={logo}
                 alt="Loading"

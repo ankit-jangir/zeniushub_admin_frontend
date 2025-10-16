@@ -62,7 +62,7 @@ import {
 } from "../../../src/components/ui/dialog";
 import Swal from "sweetalert2";
 import { toast, Zoom } from "react-toastify";
-import logo from "../../../../assets/Image/intellix.png";
+import logo from "../../../../assets/Image/zeniushub.png";
 import Viewdetail from "../../Academics/Academics_data/batch/Viewdetail";
 
 const threeYearsAgo = new Date();
@@ -586,7 +586,7 @@ const Profile = () => {
               {loading ? (
                 <div className="flex h-[calc(100vh-4rem)] items-center justify-center">
                   <div className="relative flex justify-center items-center">
-                    <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-blue-500"></div>
+                    <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-orange-500"></div>
                     <img
                       src={logo}
                       alt="Loading"

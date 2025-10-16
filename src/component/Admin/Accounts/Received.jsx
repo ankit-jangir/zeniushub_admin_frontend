@@ -50,7 +50,7 @@ import {
   fetchEmis,
   getEmis,
 } from "../../../Redux_store/Api/EmisApiStore";
-import logo from "../../../assets/Image/intellix.png";
+import logo from "../../../assets/Image/zeniushub.png";
 import { generateReceipt } from "../../../Redux_store/Api/recipt_download";
 import { toast, ToastContainer, Zoom } from "react-toastify";
 import { unwrapResult } from "@reduxjs/toolkit";
@@ -504,7 +504,7 @@ const Received = () => {
           {loading ? (
             <div className="flex items-center justify-center h-64">
               <div className="relative">
-                <div className="absolute animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-blue-500"></div>
+                <div className="absolute animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-orange-500"></div>
                 <img src={logo} alt="Loading" className="rounded-full h-12 w-12" />
               </div>
             </div>

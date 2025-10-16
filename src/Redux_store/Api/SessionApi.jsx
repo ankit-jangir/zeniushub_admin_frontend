@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 let token = localStorage.getItem("token");
-// token = useSelector((state) => state.logout.token);
 const BASE_URL = import.meta.env.VITE_BASE_URL;
 //create_Session
 export const addSession = createAsyncThunk(
@@ -31,7 +30,6 @@ export const addSession = createAsyncThunk(
 );
 
 //fetch_Session
-
 export const fetchSessions = createAsyncThunk(
   "session/fetch",
   async (token, { rejectWithValue }) => {
@@ -47,8 +45,6 @@ export const fetchSessions = createAsyncThunk(
       }
 
       const result = await responce.json();
-      // console.log(result,"fetchsession");
-
       return result;
     } catch (error) {
       return rejectWithValue(error.message);

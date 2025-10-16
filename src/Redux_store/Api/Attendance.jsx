@@ -11,7 +11,7 @@
 //   ? date
 //   : new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString().split("T")[0];
 
-//       const url = new URL(`https://adminv2-api-dev.intellix360.in/api/v1/attendence/getstudent`);
+//       const url = new URL(`${BASE_URL}/api/v1/attendence/getstudent`);
 //       url.searchParams.append("sessionId", sessionID);
 //       url.searchParams.append("name", name);
 //       url.searchParams.append("batch", batch);
@@ -60,7 +60,7 @@
 // myHeaders.append("Content-Type", "application/json");
 
 //       const response = await fetch(
-//         `https://adminv2-api-dev.intellix360.in/api/v1/attendence/exportdatainExcel`,
+//         `${BASE_URL}/api/v1/attendence/exportdatainExcel`,
 //         {
 //           method: 'POST',
 //           headers: myHeaders,
@@ -174,7 +174,7 @@ export const export_excel = createAsyncThunk(
       myHeaders.append("Authorization", `Bearer ${token}`);
 
       const response = await fetch(
-        `https://adminv2-api-dev.intellix360.in/api/v1/attendence/exportdatainExcel`,
+        `${BASE_URL}/api/v1/attendence/exportdatainExcel`,
         {
           method: "POST",
           headers: myHeaders,

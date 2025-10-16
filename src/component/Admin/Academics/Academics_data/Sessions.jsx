@@ -33,7 +33,7 @@ import {
   getSessions,
   setDefaultSession,
 } from "../../../../Redux_store/Api/SessionApi";
-import logo from "../../../../assets/Image/intellix.png";
+import logo from "../../../../assets/Image/zeniushub.png";
 import { setSession } from "../../../../Redux_store/slices/SessionSlice";
 import { useNavigate } from "react-router";
 import {
@@ -259,7 +259,7 @@ const Sessions = () => {
           {loading && (
             <div className="h-[50vh] flex items-center justify-center">
               <div className="relative flex justify-center items-center">
-                <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-blue-500"></div>
+                <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-orange-500"></div>
                 <img
                   src={logo}
                   alt="Loading"

@@ -29,7 +29,7 @@ import {
   delete_banner,
   add_banner,
 } from "../../../Redux_store/Api/Baner";
-import logo from "../../../assets/Image/intellix.png";
+import logo from "../../../assets/Image/zeniushub.png";
 import { ToastContainer, Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import No_data_found from "../No_data_found";

@@ -18,7 +18,7 @@ const FormSchema = z.object({
   Code: z
     .string()
     .max(4, "School code is required")
-    .refine((val) => val === "1918", {
+    .refine((val) => val === "5457", {
       message: "School code is wrong",
     }),
 });

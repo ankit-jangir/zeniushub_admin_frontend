@@ -25,7 +25,7 @@ export const getStudents = createAsyncThunk(
         course_id,
         batch_id,
         rt,
-        // ...(session_id && { session_id }),
+        
         session_id,
       }).toString();
 
@@ -51,10 +51,8 @@ export const getStudents = createAsyncThunk(
 
       // Parse response as JSON
       const data = await response.json();
-      // console.log(data);
-      // console.log(data);
 
-      return data; // Return the parsed data
+      return data;
     } catch (error) {
       return rejectWithValue(error || "Something went wrong");
     }
@@ -79,11 +77,10 @@ export const getStudentsCoursesFees = createAsyncThunk(
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const result = await response.json(); // Parse JSON response
+      const result = await response.json();
 
       return result;
     } catch (error) {
-      // Reject with error message
 
       return rejectWithValue(error.message || "Something went wrong");
     }
@@ -93,15 +90,12 @@ export const getStudentsCoursesFees = createAsyncThunk(
 export const getSingleStudent = createAsyncThunk(
   "getSingleStudent",
   async ({ id,token }, {  rejectWithValue }) => {
-    console.log('====================================');
-    console.log(token);
-    console.log('====================================');
     try {
       const requestOptions = {
         method: "GET",
         redirect: "follow",
         headers: {
-          Authorization: `Bearer ${token}`, // ✅ token add
+          Authorization: `Bearer ${token}`, 
         },
       };
 
@@ -114,10 +108,8 @@ export const getSingleStudent = createAsyncThunk(
         throw new Error("Network response was not ok");
       }
 
-      const result = await response.json(); // json() parse karo
-      // console.log(result , "single student data"); // Debugging line to check the result
-
-      return result; // Ab ye proper data return hoga
+      const result = await response.json();
+      return result;
     } catch (error) {
       return rejectWithValue(error.message || "Something went wrong");
     }
@@ -220,7 +212,7 @@ export const check = createAsyncThunk(
       const response = await fetch(
         `${BASE_URL}/api/v1/student/check?adhar_no=${adhar_no}&contact_no=${contact_no}`,
         {
-          method: "GET", // Use uppercase for consistency
+          method: "GET", 
           headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`,

@@ -1,5 +1,5 @@
 {
-  "name": "intellix-admin-frontend",
+  "name": "zeniushub-admin-frontend",
   "version": "1.0.0",
   "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
   "main": "eslint.config.js",
@@ -163,7 +163,7 @@
     "ignore": "^5.3.2",
     "import-fresh": "^3.3.1",
     "imurmurhash": "^0.1.4",
-    "intellix-admin-frontend": "file:",
+    "zeniushub-admin-frontend": "file:",
     "internal-slot": "^1.1.0",
     "internmap": "^2.0.3",
     "is-array-buffer": "^3.0.5",

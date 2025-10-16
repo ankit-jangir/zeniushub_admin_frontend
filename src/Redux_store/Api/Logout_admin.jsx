@@ -20,10 +20,10 @@ export const logoutAdmin = createAsyncThunk(
                 throw new Error(errorData.message || 'Logout failed');
             }
 
-            const data = await response.json(); // ✅ Yeh add karo
+            const data = await response.json();
             return data;
         } catch (error) {
-            console.error("Logout error:", error);  // Log the error for debugging
+            console.error("Logout error:", error); 
             return rejectWithValue(error.message || "Logout failed");
         }
     }

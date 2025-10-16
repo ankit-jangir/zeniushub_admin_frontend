@@ -1,4 +1,4 @@
-// Redux_store/Api/ProtectRoute_api.js
+
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -8,7 +8,7 @@ export const CheckToken = createAsyncThunk(
   async ({ token }, { rejectWithValue }) => {
     try {
       const response = await fetch(`${BASE_URL}/ping`, {
-        method: "GET", // ✅ Change POST to GET
+        method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
         },

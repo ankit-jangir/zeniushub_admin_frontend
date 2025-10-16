@@ -12,7 +12,7 @@ import {
   Users,
   ChevronRight,
 } from "lucide-react";
-import logo from "../../../assets/Image/intellix.png";
+import logo from "../../../assets/Image/zeniushub.png";
 
 const iconClasses = "w-8 h-8 text-white drop-shadow-md";
 const circleBase =
@@ -85,7 +85,7 @@ const Academics = () => {
           {loading ? (
             <div className="flex h-[calc(100vh-4rem)] items-center justify-center">
               <div className="relative flex justify-center items-center">
-                <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-blue-500"></div>
+                <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-orange-500"></div>
                 <img
                   src={logo}
                   alt="Loading"
