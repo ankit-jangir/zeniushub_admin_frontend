@@ -47,6 +47,7 @@ import { fetchBatchesByCourseId } from "../../../Redux_store/Api/Batches";
 import avatar from "./dummy-avatar (1).jpg";
 import Swal from "sweetalert2";
 import logo from "../../../assets/Image/zeniushub.png";
+import No_data_found from "../No_data_found";
 
 const StudentHeader = () => {
   const PAGE_SIZE = 10;
@@ -337,27 +338,21 @@ const StudentHeader = () => {
                 sessionsLoading ||
                 batchesLoading ||
                 coursesLoading ? (
-                <div className="flex h-[60vh] items-center justify-center">
-                  <div className="relative flex flex-col items-center">
-                    <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-orange-500"></div>
-                    <img
-                      src={logo}
-                      alt="Loading"
-                      className="absolute h-12 w-12 sm:h-16 sm:w-16 animate-pulse"
-                    />
-                    <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm mt-4">
-                      Loading students...
-                    </p>
-                  </div>
-                </div>
+                  <div className="h-screen w-full flex items-center justify-center text-white">
+                              <div className="relative flex justify-center items-center">
+                               <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-orange-500"></div>
+                                <img
+                                  src={logo}
+                                  alt="Loading"
+                                  className="rounded-full h-28 w-28"
+                                />
+                              </div>
+                            </div>
               ) : error || !students?.data?.length ? (
                 <div className="text-center py-12">
-                  <p className="text-base sm:text-lg font-semibold text-gray-600 dark:text-gray-300">
-                    No Students Found
-                  </p>
-                  <p className="text-xs sm:text-sm text-gray-400 dark:text-gray-500">
-                    Try adjusting your search or filters.
-                  </p>
+               <div className="flex justify-center items-center h-64 mt-9 pt-9 text-gray-500 text-lg">
+              <No_data_found />
+            </div>
                 </div>
               ) : (
                 <div className=" w-full">
