@@ -174,6 +174,7 @@ const StudentHeader = () => {
 
   const handleUpdateStatus = async (studentId) => {
     await dispatch(updateStudentStatus(studentId)).then(() => {
+      console.log(studentId, 'stusid');
       toast.success("Student deleted successfully!");
       dispatch(
         getStudents({
@@ -364,7 +365,7 @@ const StudentHeader = () => {
                   {/* Desktop Table Layout */}
                   <Table className=" w-full">
                     <TableHeader>
-                      <TableRow className="bg-gray-100 dark:bg-gray-700">
+                      <TableRow className="bg-gradient-to-r from-orange-100 to-orange-200 text-white sticky top-0 z-10 dark:bg-gradient-to-r dark:from-orange-400 dark:to-orange-500">
                         <TableHead className="w-16 font-semibold text-gray-700 dark:text-gray-200 text-sm py-3">
                           ID
                         </TableHead>

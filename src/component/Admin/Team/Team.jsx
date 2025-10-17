@@ -2440,7 +2440,7 @@ const Team = ({ teacherData }) => {
           {loading ? (
             <div className="h-screen w-full flex items-center justify-center text-white">
               <div className="relative flex justify-center items-center">
-               <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-orange-500"></div>
+                <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-orange-500"></div>
                 <img
                   src={logo}
                   alt="Loading"
@@ -2484,7 +2484,7 @@ const Team = ({ teacherData }) => {
                             setSelectedEmployeeId(employee.id);
                             setOpenTask(true);  // ✅ dialog khol do
                           }}
-                          className="cursor-pointer text-gray-800 dark:text-gray-200 hover:bg-blue-800 dark:hover:bg-blue-900/50 px-4 py-2.5 text-sm font-medium whitespace-nowrap border-b border-gray-200 dark:border-gray-700 last:border-b-0"
+                          className="cursor-pointer text-gray-800 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-blue-900/50 px px-4 py-2.5 text-sm font-medium whitespace-nowrap border-b border-gray-200 dark:border-gray-700 last:border-b-0"
                         >
                           +Assign Task
                         </DropdownMenuItem>

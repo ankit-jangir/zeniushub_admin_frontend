@@ -276,7 +276,7 @@ const ExStudentsData = () => {
           {/* Table */}
           <div className="relative rounded-xl border border-gray-200 dark:border-gray-700 shadow-xl bg-white dark:bg-gray-800 sm:max-h-[65vh] md:max-h-[75vh] overflow-auto scrollbar-thin scrollbar-thumb-indigo-500 dark:scrollbar-thumb-indigo-600 scrollbar-track-gray-100 dark:scrollbar-track-gray-800 transition-all duration-300">
             <Table className="w-full text-sm md:text-base">
-              <TableHeader className="sticky top-0 z-10 bg-gradient-to-r from-white to-gray-50 dark:from-gray-800 dark:to-gray-700 shadow-sm">
+              <TableHeader className="bg-gradient-to-r from-orange-100 to-orange-200 text-white sticky top-0 z-10 dark:bg-gradient-to-r dark:from-orange-400 dark:to-orange-500">
                 <TableRow className="grid grid-cols-[60px_1fr_1fr_1fr_80px] text-left">
                   <TableHead className="font-semibold text-gray-700 dark:text-gray-200 pl-4 py-3">
                     Sr. No.

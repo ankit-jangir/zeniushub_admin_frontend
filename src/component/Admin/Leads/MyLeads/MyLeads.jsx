@@ -104,9 +104,8 @@ const MyLeads = () => {
 
   return (
     <div
-      className={`flex flex-col md:flex-row min-h-screen bg-gray-50 w-full ${
-        darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-black"
-      }`}
+      className={`flex flex-col md:flex-row min-h-screen bg-gray-50 w-full ${darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-black"
+        }`}
     >
       <aside className="md:w-64 w-full p-6 shadow-md flex flex-col gap-4">
         <Button
@@ -117,9 +116,8 @@ const MyLeads = () => {
         </Button>
 
         <Button
-          className={`w-full text-white mb-4 mt-3 ${
-            tab === "tab1" ? "bg-blue-600" : ""
-          }`}
+          className={`w-full text-white mb-4 mt-3 ${tab === "tab1" ? "bg-blue-600" : ""
+            }`}
           onClick={() => handleTabClick("tab1")}
         >
           All Leads
@@ -129,33 +127,29 @@ const MyLeads = () => {
         {(showFilters || tab !== "tab1") && (
           <>
             <Button
-              className={`w-full text-white mt-2 ${
-                tab === "tab2" ? "bg-blue-600" : ""
-              }`}
+              className={`w-full text-white mt-2 ${tab === "tab2" ? "bg-blue-600" : ""
+                }`}
               onClick={() => handleTabClick("tab2")}
             >
               Hot
             </Button>
             <Button
-              className={`w-full text-white mt-2 ${
-                tab === "tab3" ? "bg-blue-600" : ""
-              }`}
+              className={`w-full text-white mt-2 ${tab === "tab3" ? "bg-blue-600" : ""
+                }`}
               onClick={() => handleTabClick("tab3")}
             >
               In Conversation
             </Button>
             <Button
-              className={`w-full text-white mt-2 ${
-                tab === "tab4" ? "bg-blue-600" : ""
-              }`}
+              className={`w-full text-white mt-2 ${tab === "tab4" ? "bg-blue-600" : ""
+                }`}
               onClick={() => handleTabClick("tab4")}
             >
               Dropped
             </Button>
             <Button
-              className={`w-full text-white mt-2 ${
-                tab === "tab5" ? "bg-blue-600" : ""
-              }`}
+              className={`w-full text-white mt-2 ${tab === "tab5" ? "bg-blue-600" : ""
+                }`}
               onClick={() => handleTabClick("tab5")}
             >
               Converted
@@ -214,7 +208,7 @@ const MyLeads = () => {
         <Card className="w-full overflow-auto">
           <Table className="w-full">
             <TableHeader>
-              <TableRow>
+              <TableRow className="bg-gradient-to-r from-orange-100 to-orange-200 text-white sticky top-0 z-10 dark:bg-gradient-to-r dark:from-orange-400 dark:to-orange-500">
                 <TableHead>S.No</TableHead>
                 <TableHead>Name</TableHead>
                 <TableHead>Contact Number</TableHead>
