@@ -173,24 +173,34 @@ const StudentHeader = () => {
 
   const handleViewProfile = (id) => navigate(`/view/profile/${id}`);
 
-  const handleUpdateStatus = async (studentId) => {
-    await dispatch(updateStudentStatus(studentId)).then(() => {
-      console.log(studentId, 'stusid');
-      toast.success("Student deleted successfully!");
-      dispatch(
-        getStudents({
-          token,
-          page: currentPage,
-          limit: PAGE_SIZE,
-          name: searchQuery,
-          session_id: sessionID,
-          rt: showRT ? "true" : "",
-          course_id: selectedCourseId,
-          batch_id: selectedBatchId,
-        })
-      );
-    });
-  };
+const handleUpdateStatus = async (studentId) => {
+  try {
+    // Call API with both id and token
+    const res = await dispatch(
+      updateStudentStatus({ id: studentId, token })
+    ).unwrap();
+
+    // Once success, refresh the student list
+    await dispatch(
+      getStudents({
+        token,
+        page: currentPage,
+        limit: PAGE_SIZE,
+        name: searchQuery,
+        session_id: sessionID,
+        rt: showRT ? "true" : "",
+        course_id: selectedCourseId,
+        batch_id: selectedBatchId,
+      })
+    );
+
+    console.log("Student status updated successfully:", res);
+  } catch (error) {
+    console.error("Update student status failed:", error);
+  }
+};
+
+
 
   return (
     <SidebarProvider style={{ "--sidebar-width": "15rem" }}>

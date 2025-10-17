@@ -61,9 +61,6 @@ const Add_Payment = ({ studentId, back, studentEnrollmentId }) => {
   const [emiSchedule, setEmiSchedule] = useState([]);
   const [coursePrice, setCoursePrice] = useState(0);
   let token = localStorage.getItem("token");
-  console.log('====================================');
-  console.log("%%%%%%%%%%%%%%%%%%%%%%%", token);
-  console.log('====================================');
   // Select Redux states
   const { loading: emisLoading, error: emisError, data: emisData } = useSelector(
     (state) => state.emis || {}

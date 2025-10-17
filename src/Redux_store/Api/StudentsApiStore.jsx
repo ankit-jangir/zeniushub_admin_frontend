@@ -336,31 +336,32 @@ export const updateStudentsRt = createAsyncThunk(
 
 export const updateStudentStatus = createAsyncThunk(
   "students/updateStudentStatus",
-  async (studentId, token, { rejectWithValue }) => {
+  async ({ id, token }, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `${BASE_URL}/api/v1/student/updateStudentStatus/${studentId}`,
+        `${BASE_URL}/api/v1/student/updateStudentStatus/${id}`,
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
-
-            Authorization: `Bearer ${token}`, // Agar auth token lage to add this
+            Authorization: `Bearer ${token}`,
           },
-          redirect: "follow",
         }
       );
 
       const data = await response.json();
+
       if (!response.ok) {
         throw new Error(data.message || "Failed to update student status");
       }
+
       return data;
     } catch (error) {
       return rejectWithValue(error.message || "Something went wrong");
     }
   }
 );
+
 
 export const getStudentRecipients = createAsyncThunk(
   "students/getStudentRecipients",
