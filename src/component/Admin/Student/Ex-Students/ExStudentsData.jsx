@@ -83,7 +83,7 @@ const ExStudentsData = () => {
     () => get_Exstudent?.students || [],
     [get_Exstudent]
   );
-  console.log(students?.[0]?.enrollment, "!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
 
   const totalPages = useMemo(
     () => Math.ceil((get_Exstudent?.totalRecords || 0) / PAGE_SIZE),
