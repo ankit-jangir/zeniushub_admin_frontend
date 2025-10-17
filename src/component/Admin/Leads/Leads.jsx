@@ -1408,7 +1408,7 @@ const Leads = () => {
               <div className="min-w-[1000px]">
                 <Table className="w-full border border-gray-300 dark:border-gray-600">
                   <TableHeader className="sticky top-0 bg-white dark:bg-gray-900 shadow-md z-10">
-                    <TableRow className="border-b border-gray-300 dark:border-gray-600">
+                    <TableRow className="bg-gradient-to-r from-orange-100 to-orange-200 text-white sticky top-0 z-10 dark:bg-gradient-to-r dark:from-orange-400 dark:to-orange-500">
                       <TableHead className="border-r border-gray-300 dark:border-gray-600">
                         Name
                       </TableHead>

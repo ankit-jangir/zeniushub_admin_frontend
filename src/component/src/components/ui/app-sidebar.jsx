@@ -55,9 +55,7 @@ const AppSidebar = ({ ...props }) => {
       <SidebarContent>
         <NavMain items={data} />
       </SidebarContent>
-      <SidebarFooter>
-        © 2025 Zeniushub
-      </SidebarFooter>
+
       <SidebarRail />
 
 

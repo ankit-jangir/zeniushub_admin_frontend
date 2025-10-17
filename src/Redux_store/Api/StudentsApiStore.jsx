@@ -25,7 +25,7 @@ export const getStudents = createAsyncThunk(
         course_id,
         batch_id,
         rt,
-        
+
         session_id,
       }).toString();
 
@@ -89,13 +89,13 @@ export const getStudentsCoursesFees = createAsyncThunk(
 
 export const getSingleStudent = createAsyncThunk(
   "getSingleStudent",
-  async ({ id,token }, {  rejectWithValue }) => {
+  async ({ id, token }, { rejectWithValue }) => {
     try {
       const requestOptions = {
         method: "GET",
         redirect: "follow",
         headers: {
-          Authorization: `Bearer ${token}`, 
+          Authorization: `Bearer ${token}`,
         },
       };
 
@@ -128,7 +128,7 @@ export const addStudentsExcel = createAsyncThunk(
 
       const response = await fetch(`${BASE_URL}/api/v1/student/uploadexcel`, {
         method: "POST",
-         headers: {
+        headers: {
           Authorization: `Bearer ${token}`,
         },
         body: formData,
@@ -156,7 +156,7 @@ export const addStudentsExcel = createAsyncThunk(
 
 export const addStudent = createAsyncThunk(
   "students/addStudent",
-  async ({studentData, token}, { rejectWithValue }) => {
+  async ({ studentData, token }, { rejectWithValue }) => {
 
     try {
       const formdata = new FormData();
@@ -176,7 +176,7 @@ export const addStudent = createAsyncThunk(
       formdata.append("session_id", studentData.session_id);
       const response = await fetch(`${BASE_URL}/api/v1/student/add`, {
         method: "POST",
-       headers: {
+        headers: {
           Authorization: `Bearer ${token}`,
         },
         body: formdata,
@@ -205,14 +205,14 @@ export const addStudent = createAsyncThunk(
 
 export const check = createAsyncThunk(
   "students/checkAadharNo",
-  async ({studentData, token}, { rejectWithValue }) => {
+  async ({ studentData, token }, { rejectWithValue }) => {
     try {
       const { adhar_no, contact_no } = studentData;
 
       const response = await fetch(
         `${BASE_URL}/api/v1/student/check?adhar_no=${adhar_no}&contact_no=${contact_no}`,
         {
-          method: "GET", 
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`,
@@ -275,9 +275,9 @@ export const updateStudent = createAsyncThunk(
 
       const response = await fetch(`${BASE_URL}/api/v1/student/update/${id}`, {
         method: "PUT",
-         headers: {
-            Authorization: `Bearer ${token}`,
-          },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         body: formdata,
       });
 
@@ -304,7 +304,7 @@ export const updateStudent = createAsyncThunk(
 
 export const updateStudentsRt = createAsyncThunk(
   "students/updateStudentRtIsha",
-  async ({id, token}, { rejectWithValue }) => {
+  async ({ id, token }, { rejectWithValue }) => {
     try {
       console.log("Call me for Isha RT");
 
@@ -336,10 +336,10 @@ export const updateStudentsRt = createAsyncThunk(
 
 export const updateStudentStatus = createAsyncThunk(
   "students/updateStudentStatus",
-  async (id,token, {  rejectWithValue }) => {
+  async (studentId, token, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        `${BASE_URL}/api/v1/student/updateStudentStatus/${id}`,
+        `${BASE_URL}/api/v1/student/updateStudentStatus/${studentId}`,
         {
           method: "PUT",
           headers: {

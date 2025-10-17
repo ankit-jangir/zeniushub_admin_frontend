@@ -450,7 +450,7 @@ const ManageSalary = () => {
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-xs sm:text-sm md:text-base lg:text-lg">
                 <thead>
-                  <tr className="border-b">
+                  <tr className="bg-gradient-to-r from-orange-300 to-orange-400 text-white sticky top-0 z-10 dark:bg-gradient-to-r dark:from-orange-400 dark:to-orange-500">
                     <th className="p-2 sm:p-3 md:p-4 text-left">Sr.No</th>
                     <th className="p-2 sm:p-3 md:p-4 text-left">Name</th>
                     <th className="p-2 sm:p-3 md:p-4 text-left">From</th>
@@ -512,7 +512,7 @@ const ManageSalary = () => {
             <div className="overflow-x-auto">
               <table className="w-full border-collapse text-xs sm:text-sm md:text-base lg:text-lg">
                 <thead>
-                  <tr className="border-b">
+                  <tr className="bg-gradient-to-r from-orange-300 to-orange-400 text-white sticky top-0 z-10 dark:bg-gradient-to-r dark:from-orange-400 dark:to-orange-500">
                     <th className="p-2 sm:p-3 md:p-4 text-left">Sr.No</th>
                     <th className="p-2 sm:p-3 md:p-4 text-left">Name</th>
                     <th className="p-2 sm:p-3 md:p-4 text-left">From</th>

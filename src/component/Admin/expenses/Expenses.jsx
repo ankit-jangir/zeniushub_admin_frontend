@@ -59,6 +59,8 @@ import {
   updateCategoryExpense,
   deleteCategoryExpense,
 } from "../../../Redux_store/Api/categoryExpenses";
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "../../../component/src/components/ui/table";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../../../component/src/components/ui/tooltip";
 
 const paymentModeMapping = {
   UPI: "upi",
@@ -1037,118 +1039,149 @@ const Expenses = () => {
                     </Dialog>
                   </div>
                 </div>
+                <div className="w-full rounded-xl bg-white dark:bg-gray-900 shadow-md overflow-hidden">
+                  <div className="overflow-x-auto">
+                    <Table className="min-w-full border-collapse text-sm md:text-base">
+                      <TableCaption className="text-gray-500 dark:text-gray-400 py-3">
+                        List of all expenses
+                      </TableCaption>
 
-                <div className="overflow-x-auto">
-                  <table className="w-full border-collapse">
-                    <thead>
-                      <tr className="bg-gray-100 dark:bg-gray-800">
-                        <th className="p-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
-                          Title
-                        </th>
-                        <th className="p-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
-                          Amount
-                        </th>
-                        <th className="p-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
-                          Reference By
-                        </th>
-                        <th className="p-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
-                          Date
-                        </th>
-                        <th className="p-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
-                          Payment Mode
-                        </th>
-                        <th className="p-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
-                          Category
-                        </th>
-                        <th className="p-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
-                          Description
-                        </th>
-                        <th className="p-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-200">
-                          Actions
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {loading || isRefetching ? (
-                        <tr>
-                          <td
-                            colSpan="8"
-                            className="p-4 text-center text-gray-500 dark:text-gray-400"
-                          >
-                            Loading...
-                          </td>
-                        </tr>
-                      ) : currentExpenses.length === 0 ? (
-                        <tr>
-                          <td
-                            colSpan="8"
-                            className="p-4 text-center text-gray-500 dark:text-gray-400"
-                          >
-                            No expenses found.
-                          </td>
-                        </tr>
-                      ) : (
-                        currentExpenses.map((expense) => (
-                          <tr
-                            key={expense.id}
-                            className="border-b hover:bg-gray-50 dark:hover:bg-gray-900"
-                          >
-                            <td className="p-3 text-sm text-gray-900 dark:text-gray-100">
-                              {expense.name}
-                            </td>
-                            <td className="p-3 text-sm font-semibold text-primary ">
-                              ₹{parseFloat(expense.amount).toFixed(2)}
-                            </td>
-                            <td className="p-3 text-sm text-gray-600 dark:text-gray-400">
-                              {expense.referralName}
-                            </td>
-                            <td className="p-3 text-sm text-gray-600 dark:text-gray-400 flex items-center justify-center gap-1 flex-nowrap ">
-                              {expense.date}
-                            </td>
-                            <td className="p-3">
-                              <span className="text-xs px-2.5 py-1 rounded-full bg-primary/10 text-primary font-medium">
-                                {reversePaymentModeMapping[
-                                  expense.paymentMethod
-                                ] || expense.paymentMethod}
-                              </span>
-                            </td>
-                            <td className="p-3">
-                              <span className="text-xs px-2.5 py-1 rounded-full text-gray-400 font-medium">
-                                {categoryExpenses.find(
-                                  (cat) => cat.id === expense.categoryId
-                                )?.categoryName || "Unknown"}
-                              </span>
-                            </td>
+                      <TableHeader className="bg-gradient-to-r from-orange-100 to-orange-200 text-white sticky top-0 z-10 dark:bg-gradient-to-r dark:from-orange-400 dark:to-orange-500">
+                        <TableRow className='text-white'>
+                          <TableHead className="p-3 text-left font-semibold">Title</TableHead>
+                          <TableHead className="p-3 text-left font-semibold">Amount</TableHead>
+                          <TableHead className="p-3 text-left font-semibold">Reference By</TableHead>
+                          <TableHead className="p-3 text-left font-semibold">Date</TableHead>
+                          <TableHead className="p-3 text-left font-semibold">Payment Mode</TableHead>
+                          <TableHead className="p-3 text-left font-semibold">Category</TableHead>
+                          <TableHead className="p-3 text-left font-semibold">Description</TableHead>
+                          <TableHead className="p-3 text-center font-semibold">Actions</TableHead>
+                        </TableRow>
+                      </TableHeader>
 
-                            <td className="p-3 text-sm text-gray-600 dark:text-gray-400">
-                              {expense.description}
-                            </td>
-                            <td className="p-3 flex gap-2">
-                              <Button
-                                variant="outline"
-                                size="icon"
-                                onClick={() => {
-                                  setEditingExpense(expense);
-                                  setIsAddExpenseOpen(true);
-                                }}
-                              >
-                                <Pencil className="w-4 h-4" />
-                              </Button>
-                              <Button
-                                variant="destructive"
-                                size="icon"
-                                onClick={() => handleDeleteExpense(expense.id)}
-                              >
-                                <Trash2 className="w-4 h-4" />
-                              </Button>
-                            </td>
-                          </tr>
-                        ))
-                      )}
-                    </tbody>
-                  </table>
+                      <TableBody>
+                        {loading || isRefetching ? (
+                          <TableRow>
+                            <TableCell
+                              colSpan={8}
+                              className="p-4 text-center text-gray-500 dark:text-gray-400"
+                            >
+                              Loading...
+                            </TableCell>
+                          </TableRow>
+                        ) : currentExpenses.length === 0 ? (
+                          <TableRow>
+                            <TableCell
+                              colSpan={8}
+                              className="p-4 text-center text-gray-500 dark:text-gray-400"
+                            >
+                              No expenses found.
+                            </TableCell>
+                          </TableRow>
+                        ) : (
+                          currentExpenses.map((expense) => (
+                            <TableRow
+                              key={expense.id}
+                              className="border-b hover:bg-orange-50 dark:hover:bg-gray-800 transition-all duration-150"
+                            >
+                              {/* Title with tooltip */}
+                              <TableCell className="p-3 text-sm text-gray-900 dark:text-gray-100 max-w-[160px] truncate">
+                                <TooltipProvider>
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <span>{expense.name}</span>
+                                    </TooltipTrigger>
+                                    <TooltipContent className="bg-gray-800 text-white text-xs max-w-xs break-words">
+                                      {expense.name}
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TooltipProvider>
+                              </TableCell>
+
+                              {/* Amount */}
+                              <TableCell className="p-3 text-sm font-semibold text-orange-600 whitespace-nowrap">
+                                ₹{parseFloat(expense.amount).toFixed(2)}
+                              </TableCell>
+
+                              {/* Referral */}
+                              <TableCell className="p-3 text-sm text-gray-700 dark:text-gray-300 max-w-[140px] truncate">
+                                <TooltipProvider>
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <span>{expense.referralName || "—"}</span>
+                                    </TooltipTrigger>
+                                    <TooltipContent className="bg-gray-800 text-white text-xs max-w-xs break-words">
+                                      {expense.referralName || "—"}
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TooltipProvider>
+                              </TableCell>
+
+                              {/* Date */}
+                              <TableCell className="p-3 text-sm text-gray-700 dark:text-gray-300 whitespace-nowrap">
+                                {expense.date}
+                              </TableCell>
+
+                              {/* Payment Mode */}
+                              <TableCell className="p-3 text-sm">
+                                <span className="text-xs px-2.5 py-1 rounded-full bg-orange-100 text-orange-700 font-medium whitespace-nowrap">
+                                  {reversePaymentModeMapping[expense.paymentMethod] ||
+                                    expense.paymentMethod}
+                                </span>
+                              </TableCell>
+
+                              {/* Category */}
+                              <TableCell className="p-3 text-sm">
+                                <span className="text-xs px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 font-medium whitespace-nowrap">
+                                  {categoryExpenses.find(
+                                    (cat) => cat.id === expense.categoryId
+                                  )?.categoryName || "Unknown"}
+                                </span>
+                              </TableCell>
+
+                              {/* Description with truncate + tooltip */}
+                              <TableCell className="p-3 text-sm text-gray-600 dark:text-gray-400 max-w-[200px] truncate">
+                                <TooltipProvider>
+                                  <Tooltip>
+                                    <TooltipTrigger asChild>
+                                      <span>{expense.description || "—"}</span>
+                                    </TooltipTrigger>
+                                    <TooltipContent className="bg-gray-800 text-white text-xs max-w-xs break-words">
+                                      {expense.description || "—"}
+                                    </TooltipContent>
+                                  </Tooltip>
+                                </TooltipProvider>
+                              </TableCell>
+
+                              {/* Actions */}
+                              <TableCell className="p-3 flex gap-2 justify-center">
+                                <Button
+                                  variant="outline"
+                                  size="icon"
+                                  className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white"
+                                  onClick={() => {
+                                    setEditingExpense(expense);
+                                    setIsAddExpenseOpen(true);
+                                  }}
+                                >
+                                  <Pencil className="w-4 h-4" />
+                                </Button>
+                                <Button
+                                  variant="destructive"
+                                  size="icon"
+                                  className="hover:bg-red-600"
+                                  onClick={() => handleDeleteExpense(expense.id)}
+                                >
+                                  <Trash2 className="w-4 h-4" />
+                                </Button>
+                              </TableCell>
+                            </TableRow>
+                          ))
+                        )}
+                      </TableBody>
+                    </Table>
+                  </div>
                 </div>
-
                 <div className="flex justify-center">
                   <Pagination>
                     <PaginationContent>
