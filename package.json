@@ -24,6 +24,7 @@
     "@radix-ui/react-scroll-area": "^1.2.3",
     "@radix-ui/react-select": "^2.1.6",
     "@radix-ui/react-separator": "^1.1.2",
+    "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-tabs": "^1.1.3",
     "@radix-ui/react-tooltip": "^1.1.8",
     "@reduxjs/toolkit": "^2.7.0",
@@ -163,7 +164,6 @@
     "ignore": "^5.3.2",
     "import-fresh": "^3.3.1",
     "imurmurhash": "^0.1.4",
-    "zeniushub-admin-frontend": "file:",
     "internal-slot": "^1.1.0",
     "internmap": "^2.0.3",
     "is-array-buffer": "^3.0.5",
@@ -366,6 +366,7 @@
     "yallist": "^3.1.1",
     "yaml": "^2.7.0",
     "yocto-queue": "^0.1.0",
+    "zeniushub-admin-frontend": "file:",
     "zod": "^3.24.2"
   },
   "devDependencies": {
